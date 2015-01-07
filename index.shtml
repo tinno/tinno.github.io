@@ -13,5 +13,6 @@
         <h2>欢迎您</h2>
       </div>
     </header>
+    <!--#include virtual="index.html" --> 
     </body>
 </html>
