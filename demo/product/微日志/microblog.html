@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>微日志</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+	.article {width:960px;margin:0 auto;}
+	.article-output {margin-top:30px;border-top:1px solid #ccc;}
+	.article-output p {margin:20px 100px;font:14px/1.5 \5FAE\8F6F\96C5\9ED1;}
+	</style>
+	<script type="text/javascript">
+	var localStorge = new Array ();
+	localStorge[0]="目前你还没发表微日志哦~";
+
+	window.onload = function (){
+		Reader($("article_show"));
+
+		$("apply_article").onclick = function (){
+			Saver ($("article_area"));
+			Reader($("article_show"));
+		}
+	}
+	
+
+	//保存文章
+	function Saver(txtDom){
+		var string = txtDom.value;
+		localStorge.push(string);
+	}
+
+	//读文章
+	function Reader(publishDom){
+		var txtString = "";
+		if (localStorge.length == 1)
+			{
+				txtString = localStorge[0];
+			}
+			else {
+				if(localStorge.length == 2){
+					publishDom.innerHTML = "";
+				}
+				txtString = localStorge[localStorge.length - 1];
+			}
+			var article = document.createElement("p");
+			var txt = document.createTextNode(txtString);
+			article.appendChild(txt);
+			//publishDom.appendChild(article);
+			publishDom.insertBefore(article,publishDom.firstChild);
+		}
+
+	//基础功能类
+	function $(idName){//根据ID获取元素对象
+		return document.getElementById(idName);
+	}
+	</script>
+</head>
+<body>
+	<div class="article">
+		<h1>微日志</h1>
+		<!--日志发表处[[-->
+		<div class="article-input">
+			<textarea id="article_area">请输入不超过140字…</textarea>
+			<button id="apply_article" type="button">提交</button>
+		</div>
+		<!--日志发表处]] -->
+		<!--日志展示处[[-->
+		<div id="article_show" class="article-output">
+			<!--<p>文章内容</p>-->
+		</div>
+		<!--日志展示处]] -->
+	</div>
+</body>
+</html>

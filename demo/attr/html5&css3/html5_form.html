@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="gb2312" />
+		<title>HTML5 form Demo</title>
+		<style type="text/css">
+		label{font-weight:bold;margin-right:30px;}
+		</style>
+		<script type="text/javascript">
+		function resCalc()
+		{
+			numA=document.getElementById("num_a").value;
+			numB=document.getElementById("num_b").value;
+			document.getElementById("result").value=Number(numA)+Number(numB);
+		}
+		</script>
+	</head>
+	<body>
+		<h1>HTML5表单新增</h1>
+		<form action="test.jsp">
+        	<fieldset>
+				<legend>input新增type</legend>
+				<p><label>email</label><input type="email" /><span>works in **</span></p>
+				<p><label>url</label><input type="url" /><span>works in **</span></p>
+				<p><label>number</label><input type="number" /><span>works in **</span></p>
+				<p><label>range</label><input type="range" /><span>works in **</span></p>
+				<p><label>search</label><input type="search" /><span>works in **</span></p>
+				<p><label>color</label><input type="color" /><span>works in **</span></p>
+				<p><label>tel</label><input type="tel" /><span>works in **</span></p>
+				<dl>
+					<dt>Date pickers</dt>
+					<dd><p><label>date</label><input type="date" /><span>works in **</span></p></dd>
+					<dd><p><label>month</label><input type="month" /><span>works in **</span></p></dd>
+					<dd><p><label>week</label><input type="week" /><span>works in **</span></p></dd>
+					<dd><p><label>time</label><input type="time" /><span>works in **</span></p></dd>
+					<dd><p><label>datetime</label><input type="datetime" /><span>works in **</span></p></dd>
+					<dd><p><label>datetime-local</label><input type="datetime-local" /><span>works in **</span></p></dd>
+				</dl>
+            </fieldset>
+			<fieldset>
+				<legend>form新增控件</legend>
+				<p>
+					<label>datalist for text input</label><input type="text" list="datas" /><span>works in **</span></p>
+					<datalist id="datas">
+						<option value="test1" />
+						<option value="test2" />
+						<option value="test3" />
+					</datalist>
+				</p>
+				<p>
+					<label>keygen</label><keygen name="security" /><span>works in **</span>
+				</p>
+				<p>
+					<label>keygen</label><input id="num_a" /> +
+					<input id="num_b" /> =
+					<output id="result" onforminput="resCalc()"></output><span>works in **</span>
+				</p>
+			</fieldset>
+			<fieldset>
+				<legend>form新增属性</legend>
+				<p><label>autofocus</label><input type="text" autofocus="autofocus" /><span>test in type-text</span></p>
+				<p><label>width & height</label><input type="image" src="/img/test1.jpg" width="237" height="172" /><span>just for type-image</span></p>
+				<p><label>min,max & step</label><input type="number" min="0" max="10" step="3" /><span>test in type-number</span></p>
+				<p>
+					<label>list</label><input type="text" list="datas" /><span>works in **</span></p>
+					<datalist id="datas">
+						<option value="test1" />
+						<option value="test2" />
+						<option value="test3" />
+					</datalist>
+				</p>
+				<p><label>multiple</label><input type="file" multiple="multiple" /><span>test in type-file</span></p>
+				<p><label>placeholder</label><input type="search"  placeholder="Search keyword" /><span>test in type-search</span></p>
+				<p><label>required</label><input type="text" required="required" /><span>test in type-text</span></p>
+			</fieldset>
+			<fieldset>
+				<legend>其他属性应用说明</legend>
+				<p><label>autocomplete</label><input type="email" autocomplete="on" /><span>test in type-email</span></p>
+				<p><label>form</label><input type="email" form="form_idname" /><span>test in type-email</span></p>
+				<p><label>form override attributes</label></p>
+				<p><label>novalidate</label></p>
+				<p><label>pattern</label></p>
+			</fieldset>
+        </form>
+	</body>
+</html>

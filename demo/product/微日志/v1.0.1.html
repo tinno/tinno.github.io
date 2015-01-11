@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>微日志</title>
+	<meta charset="utf-8" />
+	<style type="text/css">
+	.article {width:960px;margin:0 auto;}
+	.article-output {margin-top:30px;border-top:1px solid #ccc;}
+	.article-output p {margin:20px 100px;font:14px/1.5 \5FAE\8F6F\96C5\9ED1;}
+	</style>
+</head>
+<body>
+	<div class="article">
+		<h1>微日志</h1>
+		<!--日志发表处[[-->
+		<div class="article-input">
+			<textarea id="article_area">请输入不超过140字…</textarea>
+			<button id="apply_article" type="button">提交</button>
+		</div>
+		<!--日志发表处]] -->
+		<!--日志展示处[[-->
+		<div id="article_show" class="article-output">
+			<!--<p>文章内容</p>-->
+		</div>
+		<!--日志展示处]] -->
+	</div>
+
+	<script type="text/javascript">
+	var localStorge = [];
+
+		reader($("article_show"));
+
+		$("apply_article").onclick = function (){
+			saver($("article_area"));
+			reader($("article_show"));
+		}
+
+	//保存文章
+	var saver = function (txtDom){
+		var string = txtDom.value;
+		localStorge.push(string);
+	}
+
+
+	//读文章
+	var reader = function (publishDom){
+		var txtString = "目前你还没发表微日志哦~";
+		if (localStorge.length > 0) {
+			if(localStorge.length == 1){
+				publishDom.innerHTML = "";
+			}
+			txtString = localStorge[localStorge.length - 1];
+		}
+		
+		var article = document.createElement("p");
+		article.innerHTML = txtString;
+		publishDom.insertBefore(article,publishDom.firstChild);
+	}
+
+	//基础功能类
+	function $(idName){//根据ID获取元素对象
+		return document.getElementById(idName);
+	}
+	</script>
+</body>
+</html>

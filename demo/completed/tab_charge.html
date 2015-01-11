@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>选项卡切换</title>
+		<meta charset="gb2312" />
+	</head>
+	<style type="text/css">
+		body,div,ul,li{margin:0;padding:0;}
+		a{text-decoration:none;background-color:#fff;color:#2096D6;}
+		a:hover{color:#FF8A26;}
+		ul li{list-style:none;}
+		.tab-content{background-color:#fff;}
+		.statement-1,.statement-2,.statement-3{display:none;padding-top:20px;text-align:center;}
+		.on-tab1 .statement-1{display:block;}
+		.on-tab2 .statement-2{display:block;}
+		.on-tab3 .statement-3{display:block;}
+		
+		/*--- 上下排列[[ ---*/
+		.pos-tb{height:200px;width:330px;margin:20px auto;border:10px solid #f3f3f3;}
+		.pos-tb .tab-area{width:100%;height:100%;}
+		.pos-tb .tab-nav:after{content:"";display:block;height:0;clear:both;visibility:hidden;}
+		.pos-tb .tab-nav li{float:left;}
+		.pos-tb .tab-content{width:328px;height:148px;border:1px solid #EB0E58;}
+		
+		/* 等粗、抖动 */
+		.style-1 .tab-nav li{width:110px;height:50px;}
+		.style-1 .tab-nav a{display:block;width:108px;height:49px;line-height:49px;text-align:center;border:1px solid #ccc;border-bottom:none;}
+		.style-1 .on-tab1 .nav-1, 
+		style-1 .on-tab2 .nav-2, 
+		style-1 .on-tab3 .nav-3 {position:relative;padding-bottom:1px;margin-bottom:-1px;border:1px solid #EB0E58;border-bottom:none;}
+		.style-1 .tab-content{width:328px;height:148px;border:1px solid #EB0E58;}
+
+		/* 等粗、不抖动 */
+		.style-2 .tab-nav li{width:110px;height:50px;}
+		.style-2 .tab-nav a{display:block;height:49px;line-height:49px;text-align:center;border:1px solid #ccc;border-bottom:none;}
+		.style-2 .tab-nav .nav-1{width:109px;border-right:none;}
+		.style-2 .tab-nav .nav-2{width:108px;}
+		.style-2 .tab-nav .nav-3{width:109px;border-left:none;}
+		.style-2 .on-tab1 .nav-1,
+		.style-2 .on-tab2 .nav-2,
+		.style-2 .on-tab3 .nav-3{position:relative;padding-bottom:1px;margin-bottom:-1px;border:1px solid #EB0E58;border-bottom:none;}
+		.style-2 .on-tab1 .nav-1{border-right:none;}
+		.style-2 .on-tab1 .nav-2{border-left:1px solid #EB0E58;}
+		.style-2 .on-tab3 .nav-3{border-left:none;}
+		.style-2 .on-tab3 .nav-2{border-right:1px solid #EB0E58;}
+		.style-2 .tab-content{width:328px;height:148px;border:1px solid #EB0E58;}
+
+		/* 不等粗、抖动 */
+		.style-3 .tab-nav li{width:110px;height:50px;}
+		.style-3 .tab-nav a{display:block;width:108px;height:49px;line-height:49px;text-align:center;border:1px solid #ccc;border-bottom:none;}
+		.style-3 .on-tab1 .nav-1, 
+		.style-3 .on-tab2 .nav-2, 
+		.style-3 .on-tab3 .nav-3 {position:relative;width:100px;height:45px;line-height:40px;padding-bottom:5px;margin-bottom:-5px;border:5px solid #EB0E58;border-bottom:none;}
+		.style-3 .tab-content{width:320px;height:140px;border:5px solid #EB0E58;}
+
+		/* 不等粗、不抖动 */
+		.style-4 .tab-nav li{width:110px;height:50px;}
+		.style-4 .tab-nav a{display:block;height:49px;line-height:49px;text-align:center;border:1px solid #ccc;border-bottom:none;}
+		.style-4 .tab-nav .nav-1{width:109px;border-right:none;}
+		.style-4 .tab-nav .nav-3{width:109px;border-left:none;}
+		.style-4 .on-tab1 .nav-1,
+		.style-4 .on-tab2 .nav-2,
+		.style-4 .on-tab3 .nav-3{position:relative;width:100px;height:45px;line-height:40px;padding-bottom:5px;margin-bottom:-5px;border:5px solid #EB0E58;border-bottom:none;}
+		.style-4 .on-tab1 .nav-2{width:109px;border-left:none;}
+		.style-4 .on-tab3 .nav-2{width:109px;border-right:none;}
+		.style-4 .tab-content{width:320px;height:140px;border:5px solid #EB0E58;}
+		
+		/*--- 左右排列[[ ---*/
+		.pos-lr{height:330px;width:500px;margin:20px auto;border:10px solid #f3f3f3;}
+		.pos-lr .tab-area{width:100%;height:100%;}
+		.pos-lr .tab-nav{width:100px;height:330px;float:left;}
+		.pos-lr .tab-content{float:left;width:390px;height:320px;border:5px solid #EB0E58;}
+
+		/* 左右排列：不等粗，不抖动 */
+		.style-5 .tab-nav li{width:100px;height:110px;}
+		.style-5 .tab-nav a{display:block;width:99px;line-height:109px;text-align:center;border:1px solid #ccc;border-right:none;}
+		.style-5 .tab-nav .nav-1{height:109px;border-bottom:none;}
+		.style-5 .tab-nav .nav-2{height:108px;}
+		.style-5 .tab-nav .nav-3{height:109px;border-top:none;}
+		.style-5 .on-tab1 .nav-1,
+		.style-5 .on-tab2 .nav-2,
+		.style-5 .on-tab3 .nav-3{position:relative;width:95px;height:100px;line-height:100px;padding-right:5px;margin-right:-5px;border:5px solid #EB0E58;border-right:none;}
+		.style-5 .on-tab1 .nav-2{height:109px;border-top:none;}
+		.style-5 .on-tab3 .nav-2{height:109px;border-bottom:none;}
+
+		
+	
+	</style>
+	<body>
+		<!--
+			选项卡排布位置
+			上下：pos-tb
+			左右:pos-lr
+			右左:pos-rl
+		-->
+		<!-- 选项卡类型（线框、切换时）
+			等粗、抖动：style-1
+			等粗、不抖动：style-2
+			不等粗、抖动:style-3
+			不等粗、不抖动：style-4
+		-->
+		<div class="pos-lr style-5">
+			<!--选项卡状态：on-tab1,on-tab2,on-tab3 -->
+			<div class="tab-area on-tab1">
+				<ul class="tab-nav">
+					<li><a class="nav-1" href="#none">选项卡1</a></li>
+					<li><a class="nav-2" href="#none">选项卡2</a></li>
+					<li><a class="nav-3" href="#none">选项卡3</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="statement-1">这是选项卡【一】内容哇</div>
+					<div class="statement-2">这是选项卡【二】内容哇</div>
+					<div class="statement-3">这是选项卡【三】内容哇</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

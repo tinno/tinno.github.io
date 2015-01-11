@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>弹性+固宽布局设计</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+/*本例中运用到一个永远固定到页脚的footer容器,这个层是独立于主内容区的.*/
+*{margin:0;padding:0;}
+html, body {height: 100%;font-size:12px;}
+#wrapper{width:100%;background:#777;height:100%;}
+#main {padding-bottom: 54px;min-width:960px;}/* 必须使用和footer相同的高度,最小宽度ie6中加JS解决 */
+#header{text-align:center;color:#fff;background:#333;}
+#inheader{width:960px;height:110px;line-height:110px;margin:0 auto;background:#CC9933;}
+h3{font-size:14px;line-height:50px;}
+#inheader p{font-size:12px;line-height:30px;}
+#footer {
+position: relative;
+margin-top: -54px; /* footer高度的负值 */
+height: 54px;/* footer高度*/
+width:100%;
+min-width:960px;/*最小宽度ie6中加JS解决*/
+clear:both;
+background:#666;
+text-align:center;
+color:#fff;
+}
+#infoot{height:54px;line-height:54px;width:960px;margin:0 auto;background:#CC9966;}
+#footer p{line-height:26px;}
+#content{background:#999;width:960px;margin:0 auto;height:692px;}
+#content p{line-height:30px;padding:0 30px;color:#fff;}
+/*说明: 需要注意的就是#main的padding值、footer的高度和负margin值，需要保持一致。下面是著名的万能float闭合Clearfix Hack*/
+.clearfix:after {
+content: ".";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="main" class="clearfix">
+			<div id="header">
+				<div id="inheader">
+					<h3>弹性+固宽布局设计（适合宽屏和大背景布局）</h3>
+					<p>页头背景可平铺整个浏览器宽度，而正文内容则始终居中显示，不管分辩率是多大。</p>
+				</div>
+			</div>
+			<div id="content">
+				<p> </p>
+				<p>正文内容背景可平铺整个浏览器宽度，你可以在body中加入一张超大的背景图片，并设置图片为居中。而正文内容则始终居中显示，不管分辩率是多大。当你分辩率超过1024时，在正文内容的两侧会出现图片，使宽屏的内容区两侧不显得空洞。</p>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="infoot">
+			<p>我是浮动的始终固定在底部的DIV,无论中间的文字内容高度是否不够一屏，我还是能居底显示，</p>
+			<p>当中间内容超过一屏时，我又可以向下浮动哟</p>
+		</div>
+	</div>
+</body>
+</html>

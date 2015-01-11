@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>弹性+固宽布局设计</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+html, body, #wrap {margin:0;height: 100%;background-color:#ccc;}
+body > #wrap {height: auto; min-height: 100%;}
+#main {padding-bottom: 150px;background-color:#999;}  /* 必须使用和footer相同的高度 */
+#footer {position: relative;
+	margin-top: -150px; /* footer高度的负值 */
+	height: 150px;
+	clear:both;
+	background-color:#333;}
+.clearfix:after {content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix { height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="main" class="clearfix">
+		<div id="content">
+			我是内容
+		</div>
+		<div id="side">
+		我是侧边栏
+		</div>
+	</div>
+</div>
+<div id="footer">
+我是底部
+</div>
+</body>
+</html>
