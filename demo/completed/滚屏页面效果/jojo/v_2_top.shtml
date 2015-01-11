@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>页面切换</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<style>
+	.demo{position: absolute;width:100%;}
+</style>
+</head>
+<body>
+
+	<div class="demo" style="height:200%;top:0">  <!-- height:页面个数*100% -->
+		<div class="a" style="height:50%">  <!-- height:100%/页面个数 -->
+			a
+			<div class="arrow btn-down"><!-- 向下滑 --></div>
+		</div>
+		<div class="b" style="height:50%">  <!-- height:100%/页面个数 -->
+			b
+			<div class="arrow btn-up"><!-- 向上滑 --></div>
+		</div>
+	</div>
+
+<script src="zepto.js"></script>
+<script src="touch.js"></script>
+<script>
+		
+    $(".demo .a").on("swipeUp",function(){
+        $(".demo").css({"top":"-100%"});
+    });
+	
+    $(".demo .b").on("swipeDown",function(){
+        $(".demo").css({"top":"0"});
+    });
+
+	//阻止iso的事件冒泡
+	$(document).on("touchmove",function(e){e.preventDefault();})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>【研究会】页面滑屏方法研究</title>
+<link rel="icon" href="http://www.whatwg.org/images/icon">
+<style>  
+html{overflow-x:hidden;}
+body{background: #3D3D3D;}
+body,  ul, li{margin:0; padding:0;font-family: \5FAE\8F6F\96C5\9ED1;}
+a img{border:0;}
+ul, li{list-style:none;}
+.switchbox{position:absolute; width:1200px; height:6000px; overflow:hidden; top:0px; left:50%; margin-left:-600px;background: #fff;box-shadow: 0 0 15px #000;}
+.switchbox .switchbox-main{width:3600px; position:absolute; left:0px;}
+.switchbox .switchbox-li{width:1180px; float:left;position:relative;margin:0 10px; }
+.switchbox .switchbox-li:after{content: "";display: block;clear: both;}
+/*图片介绍标题*/
+.goto-right, .goto-left{width:30px; height:100%; background:url(http://mat1.gtimg.com/paipaimai/images/template/space.png); display:block; position:fixed; top:0;}
+.goto-right{left:0;}
+.goto-left{right:0;}
+.goto-right:hover, .goto-left:hover{background:#666;opacity:0.5;filter:alpha(opacity=50);height:100%;}
+/*页面内样式*/
+h2{font-size: 16px;color:#6E6C6C;}
+article{padding: 10px 0;}
+article h1{color:#6f9934;}
+em{font-style: normal;}
+article .tt{padding-left: 26px;line-height: 22px;}
+.box-wrap{padding:0 10px;}
+.box-wrap p{line-height: 28px;padding:0 5px;}
+.box-wrap em{color:#ec6c0f;}
+.box-wrap strong{color:#ff6633;font-size: 18px}
+
+.syntax{background: #f4f5f3;padding:5px 10px;}
+.syntax .js{font-size: 14px;}
+.syntax .js p{border:1px dotted #ccc;background: #fff}
+.syntax .js table{width:100%;}
+.syntax .js table th{text-align: left;background: #ccc;text-indent: 12px;}
+.syntax .js table td{text-indent: 12px;background: #d1dfac;}
+
+.exp-code pre, .exp-code pre em{color:#5aa610;font-family: \5FAE\8F6F\96C5\9ED1;font-size: 14px;line-height: 24px;}
+.exp-code pre em{font-weight: bold;}
+.exp-code pre span{color:#999;}
+
+.explain {margin: 0 20px;}
+.explain li {list-style:decimal inside;}
+.explain li em {margin: 0 5px;font-weight: bold;}
+
+iframe {border: none;width: 100%;height: 564px;margin-bottom: 20px;}
+.iframe-ac {height: 600px;}
+.iframe-ff {height: 80px;}
+.iframe-flex {height: 450px;margin-bottom: 0;}
+
+.hide {display: none !important;}
+
+/* jojo */
+/*.switchbox{height:1400px;}*/
+/*.switchbox li.jojo{height:6000px;}*/
+.jojo .cb{overflow: hidden;}
+.jojo .l{float: left;}
+.jojo .r{float: right;}
+.jojo a{color: #f60;text-decoration: none}
+.jojo h3{margin:0;padding:20px 0 4px;}
+.jojo .sub-title{display:inline-block;margin-top:15px;padding: 5px;border-radius: 3px;}
+.jojo p{margin:0;padding:6px 0;}
+.jojo i{font-style: normal}
+.jojo .img{border:1px solid rgba(0,0,0,0.5);}
+.jojo pre{margin:0;display:inline-block;padding:5px 10px;line-height:1.4;background-color: #272822;border-radius:3px;color:#fff;font-size: 14px}
+.jojo pre xmp{margin:0;padding:0;}
+.jojo table.dataintable {border-collapse:collapse;border:1px solid #aaa;text-align: center}
+.jojo table.dataintable th {
+  vertical-align:baseline;
+  padding:5px 15px 5px 5px;
+  background-color:#d5d5d5;
+  border:1px solid #aaa;
+  }
+.jojo table.dataintable td {
+  vertical-align:text-top;
+  padding:5px 15px 5px 5px;
+  background-color:#efefef;
+  border:1px solid #aaa;
+  line-height: 24px
+  }
+.jojo table.dataintable td.v{vertical-align: middle}
+</style>
+</head> 
+
+<body>
+<div class="switchbox">
+      <ul id="conTend" class="switchbox-main">  
+        <li class="switchbox-li">
+          <article>
+            <h1>背景</h1>
+            <p>就流行的H5滑屏页面，探究下这种页面基本的切换方法。</p>
+            <p>例子：  <a href="http://tid.tenpay.com/join/?from=timeline&isappinstalled=0" target="_blank">邀请函</a></p>
+            <div><img src="res/invite.png"><img class="hide" src="res/code_invite.png"></div>
+          </article>
+        </li>
+        <li class="switchbox-li">
+         <article>
+            <h1>切换方法 - 分页</h1>
+              <ul class="explain">
+                <li>
+                    <h3>单页滑动（以下实例页面均采用绝对定位布局position:absolute，宽高100%满屏）</h3>
+                  <div>
+                    <p>1）滑入：目标页进场</p>
+                    <div><img src="res/single_slide_in.jpg"></div>
+                    <p>原理：translateX(Y) 定位初始位置，translateX(Y)控制目标页面百分比进场，自然文档流顺序后面的页面叠在前面的页面上</p>
+                    <div><img src="res/qrcode_single_slide_in.png"><a href="http://tid.tenpay.com/ui_static/demo/tinno/yjh/slide_method/tinno/single_slide_in.shtml" target="_blank">扫一扫，看一看</a></div>
+                    <div>核心代码</div>
+                    <div><img src="res/code_1_1.jpg"></div>
+                    <div><img src="res/code_1_2.jpg"></div>
+                    <p>【扩】淡入效果</p>
+                    <div><img src="res/qrcode_single_slide_half.png"><a href="http://tid.tenpay.com/ui_static/demo/tinno/yjh/slide_method/tinno/single_slide_half.shtml" target="_blank">扫一扫，看一看</a></div>
+                  </div>
+                  <div>
+                    <p>2）滑出：当前页退场</p>
+                    <div><img src="res/single_slide_out.jpg"></div>
+                    <p>原理：translateX(Y) 定位初始位置和z-index控制先后顺序页面的层级（越先值越高），translateX(Y)控制当前页面百分比退场</p>
+                    <div><img src="res/qrcode_single_slide_out.png"><a href="http://tid.tenpay.com/ui_static/demo/tinno/yjh/slide_method/tinno/single_slide_out.shtml" target="_blank">扫一扫，看一看</a></div>
+                    <div>核心代码</div>
+                    <div><img src="res/code_2_1.jpg"></div>
+                    <div><img src="res/code_2_2.jpg"></div>
+                  </div>
+                  <div>
+                    <p>3）双页联动：目标页进场、当前页面退场同时进行</p>
+                    <div><img src="res/double_slide.jpg"></div>
+                    <p>原理：translateX(Y) 定位初始位置和z-index控制先后顺序页面的层级（越先值越高），translateX(Y)控制当前页面百分比退场</p>
+                    <div><img src="res/qrcode_double_slide.png"><a href="http://tid.tenpay.com/ui_static/demo/tinno/yjh/slide_method/tinno/double_slide.shtml" target="_blank">扫一扫，看一看</a></div>
+                    <div>核心代码</div>
+                    <div><img src="res/code_3_1.jpg"></div>
+                    <div><img src="res/code_3_2.jpg"></div>
+                    <p>【扩】垂直水平混合滚动</p>
+                    <div><img src="res/qrcode_multiple.png"><a href="http://tid.tenpay.com/ui_static/demo/tinno/yjh/slide_method/tinno/multiple.shtml" target="_blank">扫一扫，看一看</a></div>
+                  </div>  
+                </li>
+              </ul>
+          </article>
+        </li>
+        <li class="switchbox-li jojo">
+          <article>
+            <h1>切换方法 - 移动父容器</h1>
+            <div class="desc">
+              <h3>2个页面切换</h3>
+                <img width="90%" src="jojo/1.jpg">
+                <img src="jojo/code.png" alt="">
+                <a href="http://tid.tenpay.com/ui_static/demo/tinno/yjh/slide_method/jojo/list.shtml" target="blank">DEMO</a>
+                <p>改变margin</p>
+                <div class="cb">
+                  <img height="80" src="jojo/2.jpg">
+                  <img height="80" src="jojo/3.jpg">
+                </div>
+                <p>改变left</p>
+                <div class="cb">
+                  <img height="80" src="jojo/5.jpg">
+                  <img height="80" src="jojo/6.jpg">
+                </div>
+                <p>改变translateX</p>
+                <div class="cb">
+                  <img height="76" src="jojo/2.jpg">
+                  <img height="76" src="jojo/4.jpg">
+                </div>
+
+              <h3>3个页面切换</h3>
+                <div class="cb">
+                  <img height="80" src="jojo/7.jpg">
+                </div>
+                <p>出现的问题：计算的每个页面宽度会有误差，如果每个页面的底色不同，可以明显看到1px左右的偏差</p>
+                <p>解决的办法：子容器宽度不用%，js计算屏幕宽度，设置子容器的宽度为此宽度即可，translateX也改为具体的px数值</p>
+
+              <h3>小结</h3>
+              <p>n代表总页数，i代表页码</p>
+              <table class="dataintable" width="96%">
+                <tbody>
+                  <tr>
+                    <th>方向</th>
+                    <th>margin</th>
+                    <th>left/top</th>
+                    <th>translate</th>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="v">水平</td>
+                    <td colspan="3">父容器 width: n * 100%<br>子容器 width: 100% / n</td>
+                  </tr>
+
+                  <tr>
+                    <td>margin-left:-(i-1)*100% <br>全兼容</td>
+                    <td>left: -(i-1)*100% <br>全兼容(需设置初始left值)</td>
+                    <td>translateX: -(i-1)*100%/n <br>要做兼容性处理</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="v">垂直</td>
+                    <td colspan="3">父容器 height: n * 100%<br>子容器 height: 100% / n</td>
+                  </tr>
+
+                  <tr>
+                    <td class="v">方法不可行</td>
+                    <td>top: -(i-1)*100% <br>全兼容(需设置初始top值)</td>
+                    <td>translateY: -(i-1)*100%/n <br>要做兼容性处理</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </li>
+        <li class="switchbox-li jojo">
+          <article>
+            <h1>两种方法比较</h1>
+            <table class="dataintable" width="96%">
+              <tbody>
+                <tr>
+                  <th>子容器</th>
+                  <th>父容器</th>
+                </tr>
+                <tr>
+                  <td>切换需要控制每个页面的样式(n个)</td>
+                  <td>切换只需控制父容器的样式(1个)</td>
+                </tr>
+                <tr>
+                  <td>无论多少页，均能完美展示一屏效果</td>
+                  <td>奇数页时，宽度/高度会存在误差</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>性能比较</h3>
+            <p>与子容器和父容器无关，与改变的属性有关</p>
+            <table class="dataintable" width="96%">
+              <tbody>
+                <tr>
+                  <th>margin/left/top</th>
+                  <th>translate</th>
+                </tr>
+                <tr>
+                  <td>内容简单时，与translate无差别<br>内容复杂时，部分android手机会有卡顿的现象</td>
+                  <td class="v">效果流畅</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>注意事项</h3>
+            <p>1、所有内容需在一页内显示完，需做不同分辨率的自适应</p>
+            <p>2、微信里滑动会有一定影响</p>
+            <h3>如何选择最优的方法呢？</h3>
+            <p>1. 切换内容简单的：margin/left/top</p>
+            <p>2. 所有页面底色相同时：父容器</p>
+            <p>3. 所有页面底色不同且是奇数页时：子容器</p>
+            <p>4. 页面复杂：translate</p>
+            <p><a href="http://tid.tenpay.com/ui_static/hybrid/www/weixin/fund/weeklyprofit/v5/weekly_profit.shtml?page=1" target="_blank">复杂demo</a> </p>
+            <img src="jojo/code2.png" alt="">
+            <p><a href="http://tid.tenpay.com/ui_static/hybrid/www/weixin/fund/charge/index_v2.0.shtml?page=2" target="_blank">简单demo</a></p>
+            <img src="jojo/code3.png" alt="">
+          </article>
+        </li>
+      </ul>
+  </div>
+  <div>
+    <a href="#nolink" class="goto-right" id="btnR" ></a>
+    <a href="#nolink" class="goto-left" id="btnL" ></a>
+  </div>  
+<script>
+var k=0;//速度
+var gotoLeft;
+var gotoRight;
+var nowLeft=0;//当前位置
+var targetLeft;//移动后的目标位置
+var isContrl=true;
+
+var $id=function(id){
+	if(id) return document.getElementById(id);
+}
+
+//ul的总宽度
+//li的宽度
+//(ul-li)最后一屏的位置
+//点击右边按钮，展示区域向左滑动
+function goToLeft(lst, ul, li){
+//控制右按钮禁用
+  if(lst.offsetLeft === -(ul-li)){
+    targetLeft = -(ul-li);
+    alert('这是最后一张');
+  }
+  else if(isContrl==true){
+    isContrl=false;
+    targetLeft=nowLeft-li;
+    goWhere(gotoLeft, gotoRight, lst);
+  }
+}
+//点击左边按钮，展示区域向右滑动 
+function goToRight(lst, ul, li){
+
+  //控制左按钮禁用
+  if(lst.offsetLeft === 0 ){
+    targetLeft=0;
+    alert('这是第一张');
+  }
+  else if(isContrl==true){
+    isContrl=false;
+    targetLeft=nowLeft+li;
+    goWhere(gotoLeft, gotoRight, lst);
+  }
+  
+}
+//控制左右滑动的时间，数值越大速度越慢
+function goWhere(gotoLeft, gotoRight, lst){
+  if(nowLeft>targetLeft){
+    gotoLeft = window.setInterval(
+      //控制向左的速度
+      function(){ 
+        if(lst.offsetLeft>targetLeft){
+          lst.style.left=lst.offsetLeft-k+"px";
+          k++;
+        }
+
+        else{
+            lst.style.left=targetLeft+"px";
+            window.clearInterval(gotoLeft);
+            nowLeft=targetLeft;
+            k=0;
+            isContrl=true;
+        } 
+      },10);
+  }
+  else{
+    gotoRight = window.setInterval(
+    //控制向右的速度
+    function(){
+      if(lst.offsetLeft<targetLeft){
+        lst.style.left=lst.offsetLeft+k+"px";
+        k++;
+      }
+
+      else{ 
+         lst.style.left=targetLeft+"px";
+          window.clearInterval(gotoRight);
+          nowLeft=targetLeft;
+          k=0;
+          isContrl=true;
+      } 
+    } ,10);
+  }  
+}
+
+$id('btnR').onclick = function(){
+  goToRight($id('conTend'), 3600, 1200);
+}
+$id('btnL').onclick = function(){
+  goToLeft($id('conTend'), 3600, 1200);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>伸缩项目</title>
+<script type="text/javascript" src="jquery.js"></script>
+<style type="text/css">
+.info{
+margin:20xp 0;
+font-family:"微软雅黑";
+}
+
+.info h2{
+	font-size:22px;
+}
+
+.info p{
+	font-size:15px;
+	padding-left:10px;
+}
+
+.info ul{
+	margin:0 0 0 -10px;
+}
+
+.info li{
+	padding:5px 0;
+	font-size:14px;
+	overflow:hidden;
+	margin:5px 0;
+	width:700px;
+}
+
+.info strong{
+	width:150px;
+	float:left;
+}
+
+.info .try{
+	padding:5px 8px;
+	background-color:#666666;
+	color:#fff;
+	font-size:14px;
+	cursor:pointer;
+	float:right;
+}
+
+.info .red{
+	font-size:18px;
+	font-weight:700;
+	color:#E54645;
+}
+
+.info .text{
+	overflow:hidden;
+	display:inline-block;
+	width:500px;
+}
+
+.outer-box{
+	width:980px;
+	height:300px;
+	max-height:300px;
+	margin:10px;
+	background-color:#AAAAAA;
+	border:1px solid #000000;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.a, .b, .c, .d{
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	width: 25%;               /* For old syntax, otherwise collapses. */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	color:#000;
+	font-size:30px;
+	height:200px;
+}
+
+.a{
+	background-color:#9FE0F6;
+}
+
+.b{
+	background-color:#F3E59A;
+	height:130px;
+}
+
+.c{
+	background-color:#F3B59B;
+	height:160px;
+}
+
+.d{
+	background-color:#0092C7;
+	height:230px;
+	font-size:40px;
+}
+
+.fs{
+	align-self:flex-start !important;
+}
+
+.fe{
+	align-self:flex-end !important;
+}
+
+.baseline{
+	align-self:baseline !important;
+}
+
+.center{
+	align-self:center !important;
+}
+
+.stretch{
+	align-self:stretch !important;
+	height:auto;
+}
+</style>
+</head>
+
+<body>
+<div class="info">
+	<h2>[侧轴对齐]align-self</h2>
+
+	<p>属性值：</p>
+
+	<ul >
+		<li><strong>auto，默认值</strong><span class="text">其计算值为元素的父元素的「align-items」值，如果该元素没有父元素，则计算值为「stretch」。</span></li>
+		<li><strong>flex-start</strong><span class="text">伸缩项目在侧轴起点边的外边距紧靠住该行在侧轴起始的边。</span><a class="try" id="add1">try</a></li>
+		<li><strong>flex-end</strong><span class="text">伸缩项目在侧轴终点边的外边距靠住该行在侧轴终点的边 。</span><a class="try" id="add2">try</a></li>
+		<li><strong>center</strong><span class="text">伸缩项目的外边距盒在该行的侧轴上居中放置。</span><a class="try" id="add3">try</a></li>
+		<li><strong>baseline</strong><span class="text">将参与基线对齐。</span><a class="try" id="add4">try</a></li>
+		<li><strong>stretch</strong><span class="text">如果侧轴长度属性的值为「auto」，则此值会使项目的外边距盒的尺寸在遵照「min/max-width/height」属性的限制下尽可能接近所在行的尺寸。</span><a class="try" id="add5">try</a></li>
+
+	</ul>
+
+
+
+</div>
+
+<div class="outer-box" id="outerbox">
+
+	<span class="a " id="abox">item 1</span>
+	<span class="b " id="bbox">item 2</span>
+	<span class="c " id="cbox">item 3</span>
+	<span class="d " id="dbox">item 4</span>
+
+</div>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+(function($, win) {
+	$('#add1').on('click',function() {
+	$('#abox').addClass('fs');
+	$('#bbox').addClass('fs');
+	$('#cbox').addClass('fs');
+	$('#dbox').addClass('fs');
+	});	
+
+	$('#add2').on('click',function() {
+	$('#abox').addClass('fe');
+	$('#bbox').addClass('fe');
+	$('#cbox').addClass('fe');
+	$('#dbox').addClass('fe');
+	});	
+
+	$('#add3').on('click',function() {
+	$('#abox').addClass('center');
+	$('#bbox').addClass('center');
+	$('#cbox').addClass('center');
+	$('#dbox').addClass('center');
+	});	
+
+	$('#add4').on('click',function() {
+	$('#abox').addClass('baseline');
+	$('#bbox').addClass('baseline');
+	$('#cbox').addClass('baseline');
+	$('#dbox').addClass('baseline');
+	});	
+
+	$('#add5').on('click',function() {
+	$('#abox').addClass('stretch');
+	$('#bbox').addClass('stretch');
+	$('#cbox').addClass('stretch');
+	$('#dbox').addClass('stretch');
+	});	
+
+})(jQuery, window);
+</script>

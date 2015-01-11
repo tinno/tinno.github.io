@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>点赞</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+</script>
+<style type="text/css">
+body {margin: 0;}
+.article {margin: 15px 10px;}
+.mark,.cancle span,.btn-praise{display: inline-block; background: url("img/praise.png") no-repeat;}
+.btn-cancle {background-position: 0 -47px;}
+.comment {width: 500px;height: 400px;margin: 50px auto;border: 1px solid #CCC;position: relative;}
+.mark {width: 51px;height: 44px;position: absolute;right: 50px;bottom: 55px;}
+.cancle .part-1 {width: 28px;height: 44px;background-position: -53px 0;position: absolute;right: 73px;bottom: 74px;}
+.cancle .part-2 {width: 30px;height: 44px;background-position: -83px 0;position: absolute;right: 50px;bottom: 74px;}
+.mark,.cancle span {opacity: 0;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);_display: none;}
+.btn-praise {width: 51px;height: 44px;line-height: 300px;overflow: hidden;position: absolute;bottom: 20px;right: 60px;}
+/* 浏览器兼容 */
+.mark,.cancle span {display: none\0\9;*display: none;}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+   .mark,.cancle span {display: inline-block;}
+}
+/* 点赞动画 */
+.mark-in .mark {animation:rise 0.5s ease 0s 1;-webkit-animation:rise 0.5s ease 0s 1;-moz-animation:rise 0.5s ease 0s 1;-o-animation:rise 0.5s ease 0s 1;}
+@keyframes rise {
+	0% {opacity: 0;transform:rotate(-10deg);}
+	80% {opacity: 1;transform:rotate(5deg);}
+	100% {opacity: 0;transform:rotate(10deg);right: 45px;bottom: 80px;}
+}
+@-webkit-keyframes rise {
+	0% {opacity: 0;-webkit-transform:rotate(-10deg);}
+	80% {opacity: 1;-webkit-transform:rotate(5deg);}
+	100% {opacity: 0;-webkit-transform:rotate(10deg);right: 45px;bottom: 80px;}
+}
+@-moz-keyframes rise {
+	0% {opacity: 0;-moz-transform:rotate(-10deg);}
+	80% {opacity: 1;-moz-transform:rotate(5deg);}
+	100% {opacity: 0;-moz-transform:rotate(10deg);right: 45px;bottom: 80px;}
+}
+@-o-keyframes rise {
+	0% {opacity: 0;-o-transform:rotate(-10deg);}
+	80% {opacity: 1;-o-transform:rotate(5deg);}
+	100% {opacity: 0;-o-transform:rotate(10deg);right: 45px;bottom: 80px;}
+}
+
+.cancle-in .cancle .part-1 {animation:break-l 0.5s ease 0s 1;-webkit-animation:break-l 0.5s ease 0s 1;-moz-animation:break-l 0.5s ease 0s 1;-o-animation:break-l 0.5s ease 0s 1;}
+.cancle-in .cancle .part-2 {animation:break-r 0.5s ease 0s 1;-webkit-animation:break-r 0.5s ease 0s 1;-moz-animation:break-r 0.5s ease 0s 1;-o-animation:break-r 0.5s ease 0s 1;}
+@keyframes break-l {
+	80% {opacity: 1;}
+	100% {opacity: 0;transform:rotate(-10deg);right: 83px;bottom: 65px;}
+}
+@keyframes break-r {
+	80% {opacity: 1;}
+	100% {opacity: 0;transform:rotate(10deg);right: 46px;bottom: 65px;}
+}
+@-webkit-keyframes break-l {
+	80% {opacity: 1;}
+	100% {opacity: 0;-webkit-transform:rotate(-10deg);right: 83px;bottom: 65px;}
+}
+@-webkit-keyframes break-r {
+	80% {opacity: 1;}
+	100% {opacity: 0;-webkit-transform:rotate(10deg);right: 46px;bottom: 65px;}
+}
+@-moz-keyframes break-l {
+	80% {opacity: 1;}
+	100% {opacity: 0;-moz-transform:rotate(-10deg);right: 83px;bottom: 65px;}
+}
+@-moz-keyframes break-r {
+	80% {opacity: 1;}
+	100% {opacity: 0;-moz-transform:rotate(10deg);right: 46px;bottom: 65px;}
+}
+@-o-keyframes break-l {
+	80% {opacity: 1;}
+	100% {opacity: 0;-o-transform:rotate(-10deg);right: 83px;bottom: 65px;}
+}
+@-o-keyframes break-r {
+	80% {opacity: 1;}
+	100% {opacity: 0;-o-transform:rotate(10deg);right: 46px;bottom: 65px;}
+}
+</style>
+</head>
+<body>
+<div class="comment">
+<div class="article">
+	<p>邀请女生出来玩失败有两个原因 一是她懒得洗头 二是你的邀请不值得她洗头（via无倪）</p>
+</div>
+<div>
+	<span class="mark"><!--点赞--></span>
+	<span class="cancle"><span class="part-1"><!--取消赞左半部分--></span><span class="part-2"><!--取消赞右半部分--></span></span>
+</div>
+<a class="btn-praise btn-cancle" href="#none">点赞</a>
+</div>
+<script type="text/javascript">
+var flag = true;
+$(".btn-praise").click(function () {
+	$(".btn-praise").toggleClass("btn-cancle");
+	if(flag){
+		$(".comment").addClass("mark-in");
+		$(".comment").removeClass("cancle-in");
+		flag = false;
+	}
+	else{
+		$(".comment").toggleClass("cancle-in");
+		$(".comment").removeClass("mark-in");
+		flag = true;
+	}
+	
+});
+</script>
+</body>
+</html>

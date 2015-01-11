@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>页面切换</title>
+<link rel="stylesheet" type="text/css" href="css/comm.css">
+<link rel="stylesheet" type="text/css" href="css/multiple.css">
+</head>
+<body>
+<section class="container">
+	<article class="page-1 page-v-active">
+		<p class="cnt">页面一</p>
+		<a class="btn-next" href="#none">下一页</a>
+	</article>
+	<article class="page-2 page-v-next">
+		<div class="inner-page inner-page-1 page-h-active"><p>页面二:小分页一</p></div>
+		<div class="inner-page inner-page-2 page-h-next"><p>页面二:小分页二</p></div>
+		<div class="inner-page inner-page-3 page-h-next"><p>页面二:小分页三</p></div>
+		<a class="btn-next" href="#none">下一页</a>
+	</article>
+	<article class="page-3 page-v-next">
+		<p class="cnt">页面三</p>
+	</article>
+</section>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script type="text/javascript">
+$(".page-1").on("swipeUp",function(){
+	$(".page-1").removeClass('page-v-active').addClass('page-v-prev');
+	$(".page-2").removeClass('page-v-next').addClass('page-v-active');
+});
+$(".page-2").on("swipeUp",function(){
+	$(".page-2").removeClass('page-v-active').addClass('page-v-prev');
+	$(".page-3").removeClass('page-v-next').addClass('page-v-active');
+});
+$(".page-2").on("swipeDown",function(){
+	$(".page-2").removeClass('page-v-active').addClass('page-v-next');
+	$(".page-1").removeClass('page-v-prev').addClass('page-v-active');
+});
+$(".page-3").on("swipeDown",function(){
+	$(".page-3").removeClass('page-v-active').addClass('page-v-next');
+	$(".page-2").removeClass('page-v-prev').addClass('page-v-active');
+});
+
+//分页切换
+$(".inner-page-1").on("swipeLeft",function(){
+	$(".inner-page-1").removeClass('page-h-active').addClass('page-h-prev');
+	$(".inner-page-2").removeClass('page-h-next').addClass('page-h-active');
+});
+$(".inner-page-2").on("swipeLeft",function(){
+	$(".inner-page-2").removeClass('page-h-active').addClass('page-h-prev');
+	$(".inner-page-3").removeClass('page-h-next').addClass('page-h-active');
+});
+$(".inner-page-2").on("swipeRight",function(){
+	$(".inner-page-2").removeClass('page-h-active').addClass('page-h-next');
+	$(".inner-page-1").removeClass('page-h-prev').addClass('page-h-active');
+});
+$(".inner-page-3").on("swipeRight",function(){
+	$(".inner-page-3").removeClass('page-h-active').addClass('page-h-next');
+	$(".inner-page-2").removeClass('page-h-prev').addClass('page-h-active');
+});
+//阻止iso的事件冒泡
+$(document).on("touchmove",function(e){e.preventDefault();})
+</script>
+</body>
+</html>

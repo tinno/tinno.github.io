@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>justify-content主轴对齐</title>
+<link rel="icon" href="http://www.whatwg.org/images/icon">
+<style>
+/* 公共 */
+body,div,h1,h2,ul,li,p {margin: 0;padding: 0;}
+ul {list-style: none;}
+body {font: 14px/1.5 \5FAE\8F6F\96C5\9ED1;}
+
+.state{margin: 10px;font-size: 16px;}
+.attr-li {margin-bottom: 10px;}
+.attr-li:after{content: "";display: block;width: 0;height: 0;clear: both;}
+.attr-li label {width: 150px; font-weight: bolder;margin-right: 20px;}
+.attr-li label,.attr-li p {float: left;}
+
+.demo-area {clear: both;}
+/* 私有 */
+.item-wrap {
+  height: 300px;
+  margin: 10px;
+  border: 1px solid #000;
+  background-color: #aaa;
+  direction: ltr;
+  display: flex;
+  display: -webkit-flex;
+  justify-content:flex-start;
+  -webkit-justify-content:flex-start;
+}
+.item {
+  width: 100px;
+  height: 30px;
+  border:1px solid #000;
+  font-size: 20px;
+  background-color: #ccc;
+}
+</style>
+</head> 
+<body>
+<section>
+  <header>
+    <h1>[主轴对齐]  justify-content</h1>
+  </header>
+  <div class="opt-area">
+    <p class="state">属性值</p>
+    <ul class="attrs">
+      <li class="attr-li"><label for="item_1"><input id="item_1" type="radio" name="attr" value="flex-start" checked="checked">flex-start(默认)</label><p>伸缩项目在主轴上居起点对齐</p></li>
+      <li class="attr-li"><label for="item_2"><input id="item_2" type="radio" name="attr" value="flex-end">flex-end</label><p>伸缩项目在主轴上居终点对齐</p></li>
+      <li class="attr-li"><label for="item_3"><input id="item_3" type="radio" name="attr" value="center">center</label><p>伸缩项目在主轴上居中对齐</p></li>
+      <li class="attr-li"><label for="item_4"><input id="item_4" type="radio" name="attr" value="space-between">space-between</label><p>伸缩项目在主轴方向上之间空白空间分配方法一</p></li>
+      <li class="attr-li"><label for="item_5"><input id="item_5" type="radio" name="attr" value="space-around">space-around</label><p>伸缩项目在主轴方向上之间空白空间分配方法二</p></li>
+    </ul>
+  </div>
+  <div class="demo-area">
+    <div class="item-wrap">
+      <div class="item item-1">item 1</div>
+      <div class="item item-2">item 2</div>
+      <div class="item item-3">item 3</div>
+      <div class="item item-4">item 4</div>
+    </div>
+  </div>
+</section>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$("input[type='radio']").click(function(event) {
+  var attr_value = $(this).attr('value');
+  $(".item-wrap").css('justify-content',attr_value);
+  $(".item-wrap").css('-webkit-justify-content',attr_value);
+});
+</script>
+</body>
+</html>

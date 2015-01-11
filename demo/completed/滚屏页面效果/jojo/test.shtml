@@ -1,0 +1,33 @@
+<div class="demo" style="width:300%">
+	<div class="a" style="width:33.33%">a</div>
+	<div class="b" style="width:33.33%">b</div>
+	<div class="c" style="width:33.33%">c</div>
+</div>
+
+<div class="demo" style="width:200%;transform:translateX(-50%)">
+	<div class="a" style="width:50%">a</div>
+	<div class="b" style="width:50%">b</div>
+</div>
+
+<div class="demo" style="width:200%;left:100%">
+	<div class="a" style="width:50%">a</div>
+	<div class="b" style="width:50%">b</div>
+</div>
+
+<div class="demo" style="width:200%;left:0">
+	<div class="a" style="width:50%">a</div>
+	<div class="b" style="width:50%">b</div>
+</div>
+
+
+
+<div class="demo" style="width:200%;margin-left:100%">
+	<div class="a" style="width:50%">a</div>
+	<div class="b" style="width:50%">b</div>
+</div>
+
+<div class="demo" style="width:200%">
+	<div class="a" style="width:50%">a</div>
+	<div class="b" style="width:50%">b</div>
+</div>
+

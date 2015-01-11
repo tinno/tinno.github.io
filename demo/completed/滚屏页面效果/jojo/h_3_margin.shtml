@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>页面切换</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<style>
+</style>
+</head>
+<body>
+
+	<div class="demo hide" style="width:300%">
+		<div class="box a" style="width:33.33%">
+			a
+			<div class="arrow btn-right"><!-- 向右滑 --></div>
+		</div>
+		<div class="box b" style="width:33.33%">
+			b
+			<div class="arrow btn-right"><!-- 向右滑 --></div>
+			<div class="arrow btn-left"><!-- 向左滑 --></div>
+		</div>
+		<div class="box c" style="width:33.33%">
+			c
+			<div class="arrow btn-left"><!-- 向左滑 --></div>
+		</div>
+	</div>
+
+<script src="zepto.js"></script>
+<script src="touch.js"></script>
+<script>
+
+
+	$(".demo").removeClass('hide');
+	
+    $(".demo .a").on("swipeLeft",function(){
+        $(".demo").css({"margin-left":"-100%"});
+    });
+	
+    $(".demo .b").on("swipeLeft",function(){
+        $(".demo").css({"margin-left":"-200%"});
+    });
+	
+    $(".demo .b").on("swipeRight",function(){
+        $(".demo").css({"margin-left":"0"});
+    });
+	
+    $(".demo .c").on("swipeRight",function(){
+        $(".demo").css({"margin-left":"-100%"});
+    });
+
+	//阻止iso的事件冒泡
+	$(document).on("touchmove",function(e){e.preventDefault();})
+
+</script>
+</body>
+</html>

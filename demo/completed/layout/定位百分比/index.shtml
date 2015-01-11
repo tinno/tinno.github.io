@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>定位百分比</title>
+<link rel="stylesheet" type="text/css" href="../css/comm.css">
+<style type="text/css">
+body {background: url("img/bg.jpg") no-repeat;background-size: 100% 100%;-webkit-background-size: 100% 100%;}
+.contain {width: 80%;height: 100%;position: absolute;}
+p{font-size: 20px;width: 150px;background-color: #9CAFDF;text-align: center;}
+.hide {display: none !important;}
+
+.m-attr {padding-top: 1px;margin-top: -1px;}
+.m-attr p {margin: 40% 0 0 10%;}
+
+.p-attr .wrap {padding: 40% 0 0 10%;}
+.p-attr p {/*margin:0 auto;*/}
+
+.t-attr {position: absolute;}
+.t-attr p {position: absolute;top: 40%;left:10%;}
+</style>
+</head>
+<body>
+<!-- 比较各种百分比定位依据 -->
+	<div class="contain m-attr">
+		<p>margin百分比</p>
+	</div>
+	<div class="contain p-attr">
+		<div class="wrap"><p>padding百分比</p></div>
+	</div>
+	<div class="contain t-attr">
+		<p>top百分比</p>
+	</div>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+</body>
+</html>

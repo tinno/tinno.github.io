@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>页面切换</title>
+<link rel="stylesheet" type="text/css" href="css/comm.css">
+<link rel="stylesheet" type="text/css" href="css/double_slide.css">
+</head>
+<body>
+<section class="container">
+	<article class="page-1 page-active">
+		<p>页面一</p>
+		<a class="btn-next" href="#none">下一页</a>
+	</article>
+	<article class="page-2 page-next">
+		<p>页面二</p>
+		<a class="btn-next" href="#none">下一页</a>
+	</article>
+	<article class="page-3 page-next">
+		<p>页面三</p>
+	</article>
+</section>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+<script type="text/javascript">
+$(".page-1").on("swipeUp",function(){
+	$(".page-1").removeClass('page-active').addClass('page-prev');
+	$(".page-2").removeClass('page-next').addClass('page-active');
+});
+$(".page-2").on("swipeUp",function(){
+	$(".page-2").removeClass('page-active').addClass('page-prev');
+	$(".page-3").removeClass('page-next').addClass('page-active');
+});
+$(".page-2").on("swipeDown",function(){
+	$(".page-2").removeClass('page-active').addClass('page-next');
+	$(".page-1").removeClass('page-prev').addClass('page-active');
+});
+$(".page-3").on("swipeDown",function(){
+	$(".page-3").removeClass('page-active').addClass('page-next');
+	$(".page-2").removeClass('page-prev').addClass('page-active');
+});
+
+//阻止iso的事件冒泡
+$(document).on("touchmove",function(e){e.preventDefault();})
+</script>
+</body>
+</html>

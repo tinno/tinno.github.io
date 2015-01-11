@@ -1,0 +1,31 @@
+div,ul,li,h1,dl,dt,dd,p {margin: 0;padding: 0;}
+ul li {list-style: none;}
+body {font:12px/1.5 Tahoma,Arial,\5b8b\4f53;}
+
+.part-2,.status-2 .part-1 {display: none;}
+.status-2 .part-2 {display: block;}
+
+.hide {display: none;}
+
+/*result.html*/
+.voter {margin-bottom: 20px;border-bottom: 1px solid #CCC;}
+.ico-tag {display: inline-block;width: 9px;height: 9px;margin-right: 5px;border:1px solid #000;position: relative;}
+.ico-tag-1 {display: inline-block;width: 9px;border-bottom: 1px solid #000;position: absolute;top: 4px;}
+.ico-tag-2 {display: inline-block;height: 9px;border-right: 1px solid #000;position: absolute;left: 4px;}
+.vote-name {margin-right: 5px;}
+.vote-winners {font-weight: bold;font-style:normal;}
+.voter dl,.voter dl dt {display: none;}
+.voter dd p {float: left;padding-left: 16px;}
+.voter .voter-line {font-size: 14px;font-weight: bold;margin-bottom: 5px;cursor: default;}
+.voter .btn-line {float: right;}
+.voter .btn-redo {display: none;}
+.voter dd:after{content: "";display: block;clear: both;height: 0;font-size: 0;overflow: hidden;visibility: hidden;zoom:1;}
+
+.show-comment dl,
+.check-pass .btn-redo,
+.check-nopass .btn-redo {display: block;}
+.show-comment .ico-tag-2,
+.check-pass .btn-ok,.check-pass .btn-del,
+.check-nopass .btn-ok,.check-nopass .btn-del {display: none;}
+.check-pass p {color: #0f0;}
+.check-nopass p {text-decoration: line-through;}

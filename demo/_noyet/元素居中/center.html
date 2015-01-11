@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>居中的方法</title>
+</head>
+<style type="text/css">
+html,body,div,p {margin: 0;padding: 0;}
+.main {background-color: #ccc;}
+.way-1 .main {width: 400px;margin: 10px auto;text-align: center;line-height: 100px;}
+.way-2 .main {width: 400px;margin: 10px auto;line-height: 300px;text-align: center;}
+.way-2 .main img {vertical-align: middle;}
+.way-3 .main {}
+</style>
+<body>
+<p>单行文本水平、垂直居中:center</p>
+<div class="way-1">
+	<div class="main">内容</div>
+</div>
+<p>图片水平、垂直居中</p>
+<div class="way-2">
+	<div class="main"><img width="212" height="182" src="1.jpg" alt=""></div>
+</div>
+<p>单行文本水平、垂直居中:table-cell</p>
+<div class="way-3">
+	<div class="main">内容</div>
+</div>
+http://blog.csdn.net/wolinxuebin/article/details/7615098
+
+</body>
+</html>

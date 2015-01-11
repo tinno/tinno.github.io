@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>【研究会】flex布局精灵</title>
+<link rel="icon" href="http://www.whatwg.org/images/icon">
+<style>  
+  html{overflow-x:hidden;}
+  body{background: #3D3D3D;}
+  body,  ul, li{margin:0; padding:0;font-family: \5FAE\8F6F\96C5\9ED1;}
+  a img{border:0;}
+  ul, li{list-style:none;}
+  .switchbox{position:absolute; width:1000px; height:4500px; overflow:hidden; top:0px; left:50%; margin-left:-500px;background: #fff;box-shadow: 0 0 15px #000;}
+  .switchbox ul{width:3000px; position:absolute; left:0px;}
+  .switchbox li{width:1000px; float:left; /*height:1000px;*/ position:relative; }
+ /*图片介绍标题*/
+  .goto-right, .goto-left{width:30px; height:100%; background:url(http://mat1.gtimg.com/paipaimai/images/template/space.png); display:block; position:fixed; top:0;}
+  .goto-right{left:0;}
+  .goto-left{right:0;}
+  .goto-right:hover, .goto-left:hover{background:#666;opacity:0.5;filter:alpha(opacity=50);height:100%;}
+/*页面内样式*/
+h2{font-size: 16px;color:#6E6C6C;}
+article{padding: 10px 0;}
+article h1{color:#6f9934;}
+em{font-style: normal;}
+article .tt{padding-left: 26px;line-height: 22px;}
+.box-wrap{padding:0 10px;}
+.box-wrap p{line-height: 28px;padding:0 5px;}
+.box-wrap em{color:#ec6c0f;}
+.box-wrap strong{color:#ff6633;font-size: 18px}
+
+.syntax{background: #f4f5f3;padding:5px 10px;}
+.syntax .js{font-size: 14px;}
+.syntax .js p{border:1px dotted #ccc;background: #fff}
+.syntax .js table{width:100%;}
+.syntax .js table th{text-align: left;background: #ccc;text-indent: 12px;}
+.syntax .js table td{text-indent: 12px;background: #d1dfac;}
+
+.exp-code pre, .exp-code pre em{color:#5aa610;font-family: \5FAE\8F6F\96C5\9ED1;font-size: 14px;line-height: 24px;}
+.exp-code pre em{font-weight: bold;}
+.exp-code pre span{color:#999;}
+</style>
+</head> 
+
+<body>
+<div class="switchbox"> 
+     <!--图片换这里-->
+      <ul id="conTend">  
+        <li>
+        	<!-- 1 主要内容 start 内容放这里，如需增加一页则增加 li 标签-->
+        	<div class="box-wrap">
+        		<section>
+        			<hgroup>
+        				<h1>Canvas初体验</h1>
+        				<h2></h2>
+        			</hgroup>
+
+        			<article>
+        				<h1>通过 JavaScript 来绘制</h1>
+        				<div class="desc">
+                  <p>canvas 元素本身是没有绘图能力的。所有的绘制工作必须在 JavaScript 内部完成。</p>
+                  <p>理解坐标</p>
+                  <canvas id="testCanvas" width="400" height="120"></canvas>
+                  <script type="text/javascript">
+                    var $id = function(id){
+                      if(id){return document.getElementById(id);}
+                    }
+                    var cont = $id("testCanvas");
+                    var drw = cont.getContext("2d");
+                    //建立矩形
+                    drw.rect(1,1,200,100)
+                    drw.strokeStyle="#666";
+                    drw.stroke();
+                    //输入文字
+                    drw.font="14px arial";
+                    drw.fillText("x",100,15);
+                    drw.fillText("y",5,50);
+                  </script>
+                </div>
+        			</article>
+
+              <article>
+                  <h1>1/ <strong>Line</strong> 绘制直线</h1>
+                  <div class="desc">
+                    <iframe src="canvas/test_index_line.html" scrolling="no" frameborder="0" height="220"></iframe>
+                    
+                    <div class="syntax">
+
+                      <h2>Javascript 语法</h2>
+
+                      <div class="js">
+                        <p>context.moveTo(x,y);</p>
+                        <table>
+                          <tr>
+                            <th>参数</th>
+                            <th>描述</th>
+                          </tr>
+                          <tr>
+                            <td>x</td>
+                            <td>路径的目标位置的 x 坐标</td>
+                          </tr> 
+                          <tr>
+                            <td>y</td>
+                            <td>路径的目标位置的 y 坐标</td>
+                          </tr> 
+                        </table>
+                      </div>
+
+                      <div class="js">
+                        <p>context.lineTo(x,y);</p>
+                         <table>
+                          <tr>
+                            <th>参数</th>
+                            <th>描述</th>
+                          </tr>
+                          <tr>
+                            <td>x</td>
+                            <td>路径的目标位置的 x 坐标</td>
+                          </tr> 
+                          <tr>
+                            <td>y</td>
+                            <td>路径的目标位置的 y 坐标</td>
+                          </tr> 
+                        </table>
+                      </div>
+
+                    </div><!-- syntax end -->
+
+                  </div>
+                  <div class="exp-code">
+                    <pre>
+  var node = $id("myCanvas");
+  <span>//getContext() 方法返回一个用于在画布上绘图的环境。参数 指定了您想要在画布上绘制的类型。当前唯一的合法值是 "2d"</span>
+  var cxt=node.<em>getContext("2d")</em>;
+  <span>//【用线画矩形】</span>
+  cxt.moveTo(10,10);<span>//第一个起点从 10,10开始;把路径移动到画布中的指定点，不创建线条</span>
+  cxt.lineTo(100,10);<span>//第二个点150,10</span>
+  cxt.lineTo(100,50);<span>//第三个点150,100</span>
+  cxt.lineTo(10,50);<span>//第四个点10,100</span>
+  cxt.lineTo(10,10);<span>//第五个(矩形终点)10,100</span>
+  cxt.strokeStyle="#0000ff";<span>// * 一定要写在stroke()前面 T-T</span>
+  cxt.stroke();<span>//使用 stroke() 方法在画布上绘制确切的路径。</span>
+                    </pre>  
+                </div>
+              </article>
+
+              <article>
+                  <h1>2/ <strong>Rectangle</strong> 绘制矩形</h1>
+                  <div class="desc">
+                      <iframe src="canvas/test_index_rectangle.html" scrolling="no" frameborder="0" height="220"></iframe>
+
+                      <div class="syntax">
+                        <h2>Javascript 语法</h2>
+                        <div class="js">
+                            <p>context.fillRect(x,y,width,height);</p>
+                            <table>
+                              <tr>
+                                <th>参数</th>
+                                <th>描述</th>
+                              </tr>
+                              <tr>
+                                <td>x</td>
+                                <td>矩形左上角的 x 坐标</td>
+                              </tr> 
+                              <tr>
+                                <td>y</td>
+                                <td>矩形左上角的 y 坐标</td>
+                              </tr>
+                              <tr>
+                                <td>width</td>
+                                <td>矩形的宽度，以像素计</td>
+                              </tr>  
+                              <tr>
+                                <td>height</td>
+                                <td>矩形的高度，以像素计</td>
+                              </tr> 
+                            </table>
+                        </div>
+                      </div>
+
+                  </div>
+                  <div class="exp-code">
+                    <pre>
+<span>//【填充矩形】</span>
+cxt.fillStyle="#FF6600";<span>//fillStyle 方法将其染成红色</span>
+cxt.<em>fillRect(0,0,150,75)</em>; <span>//fillRect 方法规定了形状、位置和尺寸,意思是:在画布上绘制 150x75 的矩形，从左上角开始 (0,0)</span>
+                    </pre>
+                  </div>
+
+              </article>
+
+              <article>
+                  <h1>3/ <strong>Circle</strong> 绘制圆形</h1>
+                  <div class="desc">
+                      <iframe src="canvas/test_index_circle.html" scrolling="no" frameborder="0" height="220"></iframe>
+
+                      <div class="syntax">
+                        <h2>Javascript 语法</h2>
+                        <div class="js">
+                            <p>context.arc(x,y,r,sAngle,eAngle,counterclockwise);</p>
+                            <table>
+                              <tr>
+                                <th>参数</th>
+                                <th>描述</th>
+                              </tr>
+                              <tr>
+                                <td>x</td>
+                                <td>圆的中心的 x 坐标</td>
+                              </tr> 
+                              <tr>
+                                <td>y</td>
+                                <td>圆的中心的 y 坐标</td>
+                              </tr>
+                              <tr>
+                                <td>r</td>
+                                <td>圆的半径</td>
+                              </tr>  
+                              <tr>
+                                <td>sAngle</td>
+                                <td>起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。</td>
+                              </tr> 
+                              <tr>
+                                <td>eAngle</td>
+                                <td>结束角，以弧度计。</td>
+                              </tr>
+                              <tr>
+                                <td>counterclockwise</td>
+                                <td>可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。</td>
+                              </tr>
+                            </table>
+                        </div>
+                      </div>
+
+                  </div>
+                  <div class="exp-code">
+                    <img src="img/arc.png" alt="">
+                    <pre>
+  <span>//【通过规定尺寸、颜色和位置，来绘制一个圆】</span>
+  cxt.beginPath();<span>//起始一条路径，或重置当前路径</span>
+  cxt.<em>arc(100,75,50,0,2*Math.PI)</em>;
+  cxt.closePath();<span>//创建从当前点回到起始点的路径</span>
+  cxt.fillStyle = "#ff6600";
+  cxt.fill();<span>//填充当前绘图（路径）</span>
+  cxt.stroke();<span>//绘制已定义的路径</span>
+                    </pre>
+                  </div>
+
+              </article>
+
+              <article>
+                  <h1>4/ <strong>LinearGradient</strong> 渐变</h1>
+                  <div class="desc">
+                      <iframe src="canvas/test_index_linearGradient.html" scrolling="no" frameborder="0" height="220"></iframe>
+
+                      <div class="syntax">
+                        <h2>Javascript 语法</h2>
+                        <div class="js">
+                            <p>context.createLinearGradient(x0,y0,x1,y1);</p>
+                            <table>
+                              <tr>
+                                <th>参数</th>
+                                <th>描述</th>  
+                              </tr>
+                              <tr>
+                                <td>x0</td>
+                                <td>渐变开始点的 x 坐标</td>
+                              </tr> 
+                              <tr>
+                                <td>y0</td>
+                                <td>渐变开始点的 y 坐标</td>
+                              </tr>
+                              <tr>
+                                <td>x1</td>
+                                <td>渐变结束点的 x 坐标</td>
+                              </tr> 
+                              <tr>
+                                <td>y1</td>
+                                <td>渐变结束点的 y 坐标</td>
+                              </tr>
+                            </table>
+                        </div>
+
+                        <div class="js">
+                            <p>gradient.addColorStop(stop,color);</p>
+                            <table>
+                              <tr>
+                                <th>参数</th>
+                                <th>描述</th>  
+                              </tr>
+                              <tr>
+                                <td>stop</td>
+                                <td>介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。</td>
+                              </tr> 
+                              <tr>
+                                <td>color</td>
+                                <td>在结束位置显示的 CSS 颜色值</td>
+                              </tr>
+                            </table>
+                        </div>
+
+                      </div>
+
+                  </div>
+                  <div class="exp-code">
+                    <pre>
+  <span>//【渐变】</span>
+  var grd = cxt.<em>createLinearGradient(0,0,150,75)</em>;<span>//第一个渐变矩形 创建线性渐变对象</span>
+  grd.<em>addColorStop(0,"black")</em>;
+  grd.addColorStop(0.3,"magenta");
+  grd.addColorStop(0.5,"blue");
+  grd.addColorStop(0.6,"green");
+  grd.addColorStop(0.8,"yellow");
+  grd.addColorStop(1,"red");
+
+  cxt.fillStyle = grd;
+  cxt.fillRect(20,20,150,75);
+
+  var grd2 = cxt.createLinearGradient(0,0,150,0);<span>//第二个渐变矩形</span>
+  grd2.addColorStop(0,"black");
+  grd2.addColorStop(1,"red");
+
+  cxt.fillStyle = grd2;
+  cxt.fillRect(20,100,150,75);
+
+                    </pre>
+                  </div>
+
+              </article>
+
+
+        		</section>
+        	</div>
+        	<!-- 1 主要内容 end -->
+          <p>HTML 5 Canvas 参考手册：<a href="http://www.w3school.com.cn/tags/html_ref_canvas.asp" target="_blank">http://www.w3school.com.cn/tags/html_ref_canvas.asp</a></p>
+        </li>  
+        <li>
+          <div class="box-wrap">
+            <article>
+                <h1></h1>
+                
+            </article>
+    
+          </div>
+        </li>
+        <li>
+          <article>
+                <h1></h1>
+
+          </article>
+        </li>
+      </ul>
+  </div>
+  <div>
+    <a href="#nolink" class="goto-right" id="btnR" ></a>
+    <a href="#nolink" class="goto-left" id="btnL" ></a>
+  </div>  
+<script>
+var k=0;//速度
+var gotoLeft;
+var gotoRight;
+var nowLeft=0;//当前位置
+var targetLeft;//移动后的目标位置
+var isContrl=true;
+
+var $id=function(id){
+	if(id) return document.getElementById(id);
+}
+
+//ul的总宽度
+//li的宽度
+//(ul-li)最后一屏的位置
+//点击右边按钮，展示区域向左滑动
+function goToLeft(lst, ul, li){
+//控制右按钮禁用
+  if(lst.offsetLeft === -(ul-li)){
+    targetLeft = -(ul-li);
+    alert('这是最后一张');
+  }
+  else if(isContrl==true){
+    isContrl=false;
+    targetLeft=nowLeft-li;
+    goWhere(gotoLeft, gotoRight, lst);
+  }
+}
+//点击左边按钮，展示区域向右滑动 
+function goToRight(lst, ul, li){
+
+  //控制左按钮禁用
+  if(lst.offsetLeft === 0 ){
+    targetLeft=0;
+    alert('这是第一张');
+  }
+  else if(isContrl==true){
+    isContrl=false;
+    targetLeft=nowLeft+li;
+    goWhere(gotoLeft, gotoRight, lst);
+  }
+  
+}
+//控制左右滑动的时间，数值越大速度越慢
+function goWhere(gotoLeft, gotoRight, lst){
+  if(nowLeft>targetLeft){
+    gotoLeft = window.setInterval(
+      //控制向左的速度
+      function(){ 
+        if(lst.offsetLeft>targetLeft){
+          lst.style.left=lst.offsetLeft-k+"px";
+          k++;
+        }
+
+        else{
+            lst.style.left=targetLeft+"px";
+            window.clearInterval(gotoLeft);
+            nowLeft=targetLeft;
+            k=0;
+            isContrl=true;
+        } 
+      },10);
+  }
+  else{
+    gotoRight = window.setInterval(
+    //控制向右的速度
+    function(){
+      if(lst.offsetLeft<targetLeft){
+        lst.style.left=lst.offsetLeft+k+"px";
+        k++;
+      }
+
+      else{ 
+         lst.style.left=targetLeft+"px";
+          window.clearInterval(gotoRight);
+          nowLeft=targetLeft;
+          k=0;
+          isContrl=true;
+      } 
+    } ,10);
+  }  
+}
+
+$id('btnR').onclick = function(){
+  goToRight($id('conTend'), 3000, 1000);
+}
+$id('btnL').onclick = function(){
+  goToLeft($id('conTend'), 3000, 1000);
+}
+</script>
+</body>
+</html>

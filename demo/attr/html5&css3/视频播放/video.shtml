@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>彩贝视频广告分享领好礼</title>
+<link rel="stylesheet" type="text/css" href="css/video.css">
+</head>
+<body class="show-act-main">
+<div class="container">
+	<section class="act-main">
+		<div id="wrapper" class="inner">
+			<!-- 分享视频 -->
+			<div class="share-video">
+				<div class="video-wrap">
+					<iframe class="player" frameborder=0 src="http://v.qq.com/iframe/player.html?vid=x0132h1l55l&tiny=0&auto=0" allowfullscreen></iframe>
+					<!-- <div class="player" id="mod_player"></div> -->
+				</div>
+				<div class="btn-line"><a class="btn-share" href="#none">分享视频拿礼品</a></div>
+				<div class="steps">观看视频->分享视频->领取奖品</div>
+			</div>
+		</div>
+		<footer>
+			<a class="link-item" href="rule.shtml"><span class="cnt"><i class="ico ico-rule"></i>活动说明</span></a>
+			<a class="link-item" href="my_prize.shtml"><span class="cnt"><i class="ico ico-prize"></i>我的奖品</span></a>
+		</footer>
+	</section>
+</div>
+<script type="text/javascript" src="js/iscroll-lite.js"></script>
+<!-- <script type="text/javascript" src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2_mobile.js"></script> -->
+<script type="text/javascript">
+    var myScroll;
+    function loaded() {
+        myScroll = new iScroll('wrapper',{useTransform:true});
+    }
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+
+    /*var video = new tvp.VideoInfo();
+	video.setVid("x0132h1l55l");
+	var player =new tvp.Player();
+	player.create({
+	    width:"100%",
+	    height:"100%",
+	    video:video,
+	    modId:"mod_player", //mod_player是刚刚在页面添加的div容器
+	    autoplay:true
+	});*/
+</script>
+</body>
+</html>

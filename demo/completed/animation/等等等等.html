@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>动画</title>
+<style type="text/css">
+body {margin: 0;}
+.oject {width: 300px;height: 200px;}
+/* animation 动画 */
+ul li {list-style: none;float: left;margin-right: 3px;font-family: Arial;
+animation: myfirst 1s linear 0s 1 alternate running both;
+-moz-animation: myfirst 1s linear 0s 1 alternate running both;
+-webkit-animation: myfirst 1s linear 0s 1 alternate running both;
+}
+.b-1 {
+animation-delay:0;
+-webkit-animation-delay:0;
+-moz-animation-delay:0;
+}
+.b-2 {
+animation-delay:0.5s;
+-webkit-animation-delay:0.5s;
+-moz-animation-delay:0.5s;
+}
+.b-3 {
+animation-delay:1s;
+-webkit-animation-delay:1s;
+-moz-animation-delay:1s;
+}
+.b-4 {
+animation-delay:1.5s;
+-webkit-animation-delay:1.5s;
+-moz-animation-delay:1.5s;
+}
+.b-5 {
+animation-delay:2s;
+-webkit-animation-delay:2s;
+-moz-animation-delay:2s;
+}
+.b-6 {
+animation-delay:2.5s;
+-webkit-animation-delay:2.5s;
+-moz-animation-delay:2.5s;
+}
+.b-7 {
+animation-delay:3s;
+-webkit-animation-delay:3s;
+-moz-animation-delay:3s;
+}
+.b-8 {
+animation-delay:3.5s;
+-webkit-animation-delay:3.5s;
+-moz-animation-delay:3.5s;
+}
+@keyframes myfirst
+{
+0%   {opacity: 0;}
+100% {opacity: 1;}
+}
+
+@-moz-keyframes myfirst
+{
+0%   {opacity: 0;}
+100% {opacity: 1;}
+}
+
+@-webkit-keyframes myfirst
+{
+0%   {opacity: 0;}
+100% {opacity: 1;}
+}
+
+/* 过渡动画 */
+ul {height: 100px; border: 1px solid #CCC;list-style: none;}
+ul li { float: left;margin-right: 3px;font-family: Arial;opacity: 0;transition:opacity 0.5s ease 0;-webkit-transition:opacity 0.5s ease 0;}
+.b-1 {transition-delay:0;-webkit-transition-delay:0;}
+.b-2 {transition-delay:0.5s;-webkit-transition-delay:0.5s;}
+.b-3 {transition-delay:1s;-webkit-transition-delay:1s;}
+.b-4 {transition-delay:1.5s;-webkit-transition-delay:1.5s;}
+.b-5 {transition-delay:2s;-webkit-transition-delay:2s;}
+.b-6 {transition-delay:2.5s;-webkit-transition-delay:2.5s;}
+.b-7 {transition-delay:3s;-webkit-transition-delay:3s;}
+.b-8 {transition-delay:3.5s;-webkit-transition-delay:3.5s;}
+.change ul li {opacity: 1;}
+</style>
+</head>
+<body>
+<div class="oject">
+	<ul>
+		<li class="b-1">给</li>
+		<li class="b-2">你</li>
+		<li class="b-3">的</li>
+		<li class="b-4">，</li>
+		<li class="b-5">超</li>
+		<li class="b-6">出</li>
+		<li class="b-7">预</li>
+		<li class="b-8">期</li>
+	</ul>
+</div>
+</body>
+</html>

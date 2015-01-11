@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>页面切换</title>
+<style>
+*{margin:0;padding:0;}
+html,body{position:relative;width:100%;height:100%;overflow: hidden;}
+/*.box-wrap{position:relative;height:200%;}*/
+.box{position:absolute;width:100%;height:100%;line-height:100px;text-align: center;color:#fff;font-weight:bold;/*-webkit-backface-visibility: hidden;-webkit-perspective: 1000;-webkit-transform: translate3d(0, 0, 0);*/}  
+.box1{background-color: #f68dbb}
+.box2{background-color: #60d7a9}
+body{ text-align: center; }
+.hide{display: none}
+
+.box{-webkit-transition:top 0.6s ease-in-out;transition:top 0.6s ease-in-out;}
+.demo4{-webkit-transition:all 0.6s ease-in-out;transition:all 0.6s ease-in-out;}
+
+.demo4-body{height: 100%;overflow: hidden;}
+.demo4{height: 200%;}
+.demo4 .box{height: 50%;position: static;}
+</style>
+</head>
+<body class="demo4-body">
+	<div class="demo1 hide">
+		<div class="box box1" style="top:0;">
+			page 1
+		</div>
+		<div class="box box2" style="top:100%;">
+			page 2
+		</div>
+	</div>
+
+
+	<div class="demo2 hide">
+		<div class="box box1" style="top:0;z-index:1">
+			page 1
+		</div>
+		<div class="box box2" style="top:0;">
+			page 2
+		</div>
+	</div>
+
+
+	<div class="demo3 hide">
+		<div class="box box1" style="top:0;">
+			page 1
+		</div>
+		<div class="box box2" style="top:100%;">
+			page 2
+		</div>
+	</div>
+
+
+	<div class="demo4 hide">
+		<div class="box box1">
+			page 1
+		</div>
+		<div class="box box2">
+			page 2
+		</div>
+	</div>
+
+
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script>
+	var url = window.location.href;
+	var pos = url.lastIndexOf("?page=");
+	var flag = url.substr(pos+6,1);
+	if(flag==1){
+		$(".demo1").removeClass('hide');
+		
+	    $(".box1").click(function(){
+	        $(".box1").css({"top":"-100%"});
+	        $(".box2").css({"top":"0"});
+	    });
+	    $(".box2").click(function(){
+	        $(".box1").css({"top":"0"});
+	        $(".box2").css({"top":"100%"});
+	    });
+		
+	}
+	if(flag==2){
+		$(".demo2").removeClass('hide');
+		
+	    $(".box1").click(function(){
+	        $(".box1").css({"top":"-100%"});
+	    });
+		
+	    $(".box2").click(function(){
+	        $(".box1").css({"top":"0"});
+	    });
+
+	}
+
+	if(flag==3){
+		$(".demo3").removeClass('hide');
+		
+	    $(".box1").click(function(){
+	        $(".box2").css({"top":"0"});
+	    });
+		
+	    $(".box2").click(function(){
+	        $(".box2").css({"top":"100%"});
+	    });
+
+	}
+
+	if(flag==4){
+		$(".demo4").removeClass('hide');
+		
+	    $(".box1").click(function(){
+	        $(".demo4").css({"-webkit-transform":"translateY(-50%)"});
+	    });
+		
+	    $(".box2").click(function(){
+	        $(".demo4").css({"-webkit-transform":"translateY(0)"});
+	    });
+
+	}
+</script>
+</body>
+</html>

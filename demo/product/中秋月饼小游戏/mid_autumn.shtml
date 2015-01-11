@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="pgv" content="" />
+<meta name="pgv" content="" />
+<title>天上掉福饼</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style type="text/css">
+/* 交互 */
+.game-loading,.game-start,.game-main,.game-over,.game-timeout,.game-result,.pay-index,.pay-success,.fail,
+.moon,.tid-toy,.score,.countdown-wrap,.cakes,
+.copyright { display:none;}
+.show-loading .game-loading,.show-loading .game-main,
+.show-enter .game-start,.show-enter .game-main,
+.show-game .game-main,.show-game .moon,.show-game .tid-toy,.show-game .score,.show-game .countdown-wrap,.show-game .cakes,
+.show-over .game-over,.show-over .game-main,
+.show-timeout .game-timeout,.show-timeout .game-main,
+.show-result .game-result,.show-result .copyright,
+.show-pay .pay-index,.show-pay .copyright,
+.show-success .pay-success,.show-success .copyright{ display:block;}
+.show-loading .game-loading,.show-enter .game-start,.show-game .game-main,.show-over .game-over,.show-timeout .game-timeout,.show-result .game-result,.show-pay .pay-index,.show-success .pay-success,.show-fail .fail {z-index: 2;}
+
+/* 测试 */
+.cake {/*background-color: #ccc;*/}
+</style>
+</head>
+<body class="container show-enter" ontouchstart="">
+<!-- 
+    分页类名(加在body上)：
+    show-loading     | 活动加载中
+    show-enter       | 活动入口
+    show-game        | 游戏主界面
+    show-over      	 | 游戏结束(点到五仁君)
+    show-timeout     | 游戏时间结束
+    show-result      | 游戏结果无Q币
+    show-pay         | 游戏结果有Q币(支付首页)
+    show-success     | 支付成功页
+ -->
+<div class="act-main">
+    <!-- 加载中 -->
+    <div class="game-loading">
+        <div class="explain">
+            <p id="loading_text">加载中...</p>
+            <div class="tid-slogan"><span><em>TID</em><br>财付通设计中心</span></div>
+        </div>
+    </div>
+
+    <!-- 活动入口 -->
+    <div class="game-start">
+        <div class="game-title">
+            <h1>天上掉福饼</h1>
+            <h2>看你多有福气</h2>
+        </div>
+        <!-- 
+            说明：
+            鼠标MS效果 | 加btn-line-on类 | 加在btn-line后面
+         -->
+        <div class="btn-line">
+		<a data-adtag="WXPAY_2014.MID_AUT.GAME.START" class="btn-opt btn-start" id="js_start">开始游戏</a>
+		<p class="warmtips">不要点发霉的五仁月饼哦<br>还有机会获得Q币大奖！</p>
+	</div>
+        <p class="p-copyright hide">版权归财付通设计中心所有</p>
+    </div>
+    
+    <!-- 游戏主界面 -->
+    <div class="game-main">
+        <div class="foreground">
+            <div class="stars">
+                <span class="star star-1"><!-- 星星 --></span>
+                <span class="star star-2"><!-- 星星 --></span>
+                <span class="star star-3"><!-- 星星 --></span>
+                <span class="star star-4"><!-- 星星 --></span>
+                <span class="star star-5"><!-- 星星 --></span>
+                <span class="star star-6"><!-- 星星 --></span>
+                <span class="star star-7"><!-- 星星 --></span>
+            </div>
+            <div class="tid-toy">
+                <span class="eyes"><!--眼睛--></span>
+                <span class="nose"><!--鼻子--></span>
+            </div>
+            <div class="moon"><!-- 月球 --></div>
+			<span class="img-load img-load-1"><!--图片加载--></span>
+        </div>
+
+    	<!-- 计分板说明：
+			get-qb | 点中QB时 | 加在score后面
+    	-->
+    	<div class="score" style="z-index:999" id="js_score_wrap">分数：<span id="js_score">0</span><span class="hasqb"><i></i></span></div>
+
+        <!-- 倒计时说明：
+            设置time的width百分比0%~100%;
+        -->
+        <div class="countdown-wrap">
+            <div class="countdown"><div class="countdown-inner" id="js_time"></div></div>
+            <span class="time">0:30</span>
+        </div>
+
+        <!-- 
+			QB动画说明：
+			点击到QB时 |  qb-move-show | 增加到qb-move后
+         -->
+        <div class="qb-move" id="qb_anim"><!--QQ动画--></div>
+        <!-- 
+            说明：
+            1、饼类：
+                cake-fb | 福饼
+                cake-wr | 五仁君
+                cake-qb | QB
+
+            2、下落 | down-fb | 加在cake后面
+            	速度控制：
+            	一级：down-fb
+            	二级：down-fb-er
+            	二级：down-fb-est
+
+            3、点中饼“cake”时：
+            	在cake后增加"cut-fb"
+         -->
+        <div class="cakes" id="game_warpper">
+            <span class="cake cake-fb hide"><span class="inner"></span></span>
+            <span class="cake cake-wr hide"><span class="inner"></span></span>
+            <span class="cake cake-fb hide"><span class="inner"></span></span>
+            <span class="cake cake-fb hide"><span class="inner"></span></span>
+            <span class="cake cake-fb hide"><span class="inner"></span></span>
+            <span class="cake cake-wr hide"><span class="inner"></span></span>
+        </div>
+    </div>
+    <audio data-src="media/bg.wav" preload = "auto" id="bgAudio" autoplay loop="loop"></audio>
+    <audio data-src="media/qb.wav" preload = "auto" id="qbAudio"></audio>
+    <audio data-src="media/wr.wav" preload = "auto" id="wrAudio"></audio>
+    <audio data-src="media/fb.wav" preload = "auto" id="fbAudio"></audio>
+    <!-- 游戏结束(点到五仁君) -->
+
+    <div class="game-over">
+        <div class="wr-wrap">
+            <div class="wr-body"><!-- 五仁的身体 --></div>
+            <div class="wr-cz">
+                <span class="eyes">
+                    <span class="eye-l eyes-ring"></span>
+                    <span class="eye-r eyes-ring"></span>
+                </span>
+            </div>
+            <div class="wr-mouth rock"><!--嘴巴--></div>
+        </div>
+        <p class="font-gameover">GAME OVER</p>
+    </div>
+
+    <!-- 游戏结束(时间到) -->
+    <div class="game-timeout">
+        <p class="font-timeout">TIME OUT</p>
+    </div>
+
+    <!-- 游戏结果无Q币 -->
+    <div class="game-result result-wrap">
+    	<div class="result-cnt">
+	        <div class="explain">
+	            <p class="line-1">恭喜你抢到</p>
+	            <p class="line-2"><em class="js-cake-count">0</em>个福饼</p>
+	            <p class="line-3">为自己增加了<em class="js-percent">0</em>%的福运</p>
+	        </div>
+	        <div class="btn-line">
+	            <a data-adtag="WXPAY_2014.MID_AUT.SHARE.BTN" href="#none" class="btn-opt btn-share" id="btn_share_score">分享给好友</a>
+	        </div>
+	        <div class="btn-line">
+	            <a data-adtag="WXPAY_2014.MID_AUT.GAME.AGAIN" href="#none" class="btn-opt btn-again js-again">再玩一次</a>
+	        </div>
+    	</div>
+    	<span class="img-load img-load-2"><!--图片加载--></span>
+    </div>
+
+    <!-- 游戏结果有Q币(支付首页) -->
+    <div class="pay-index result-wrap">
+<div class="result-cnt">
+        <div class="explain">
+            <p class="line-1">恭喜你意外抢到</p>
+            <p class="line-2"><em>20</em>个Q币</p>
+            <p class="line-3">概率只有5%哦</p>
+        </div>
+        <form class="form" method="post" action="#" name="user_info">
+            <!-- 
+                交互：
+                领取Q币调起支付弹窗，输入充值QQ号
+             -->
+            <div class="btn-line" id="pay_btn_div">
+                <a href="###" class="btn-opt btn-getqb" id="btn_pay_qbi">立即领取Q币</a>
+            </div>
+            <div class="btn-line hide" id="pay_btn_loading">
+                <a class="btn-opt btn-gury">提交中，请稍后...</a>
+            </div>
+        </form>
+
+        <div class="btn-line">
+            <a data-adtag="WXPAY_2014.MID_AUT.GAME.GIVEUP" href="#none" class="btn-opt btn-again js-giveup">傲娇的放弃</a>
+ </div>
+        </div>
+    </div>
+
+    <!-- 支付成功页 -->
+    <div class="pay-success result-wrap">
+<div class="result-cnt">
+        <div class="explain">
+            <div class="ico-line"><span class="ico-ok"><!--成功提示--></span></div>
+            <p>Q币已发到你的QQ账户，请注意查收。这等好事，快和好友们分享吧！</p>
+        </div>
+        <div class="btn-line">
+            <a data-adtag="WXPAY_2014.MID_AUT.SHARE.BTN" href="#none" class="btn-opt btn-share" id="btn_share_pay">分享给好友</a>
+        </div>
+        <div class="btn-line">
+            <a data-adtag="WXPAY_2014.MID_AUT.GAME.AGAIN" href="#none" class="btn-opt btn-again js-again">再玩一次</a>
+</div>
+        </div>
+    </div>
+
+    <!-- 支付失败：弹窗报错 -->
+
+    <!-- 
+        交互说明：好友分享
+        点击“立即分享”按钮时，去掉hide
+     -->
+    <div class="share-layer hide" id="share_layer">
+        <div class="share-tips"><span class="font-share">点击分享给小伙伴吧！</span><span class="i-dir share-i-dir"><!--图标--></span></div>
+    </div>
+
+    <!-- 版权 -->
+    <footer class="copyright">
+        <div class="slogan"><!--TID&微信支付--></div>
+        <p>本活动由微信支付和财付通设计中心支持</p>
+    </footer>
+
+    <div class="high-layer hide" id="result_layer"><!-- 透明蒙层 --></div>
+</div>
+<!--#include virtual="/hybrid/action/inc/global/pop_warn.shtml" -->
+
+<script type="text/javascript" src="../js/zepto.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>【研究会】flex布局精灵</title>
+<link rel="icon" href="http://www.whatwg.org/images/icon">
+<style>  
+html{overflow-x:hidden;}
+body{background: #3D3D3D;}
+body,  ul, li{margin:0; padding:0;font-family: \5FAE\8F6F\96C5\9ED1;}
+a img{border:0;}
+ul, li{list-style:none;}
+.switchbox{position:absolute; width:1000px; height:5400px; overflow:hidden; top:0px; left:50%; margin-left:-500px;background: #fff;box-shadow: 0 0 15px #000;}
+.switchbox .switchbox-main{width:3000px; position:absolute; left:0px;}
+.switchbox .switchbox-li{width:1000px; float:left; /*height:1000px;*/ position:relative;margin:0 10px; }
+/*图片介绍标题*/
+.goto-right, .goto-left{width:30px; height:100%; background:url(http://mat1.gtimg.com/paipaimai/images/template/space.png); display:block; position:fixed; top:0;}
+.goto-right{left:0;}
+.goto-left{right:0;}
+.goto-right:hover, .goto-left:hover{background:#666;opacity:0.5;filter:alpha(opacity=50);height:100%;}
+/*页面内样式*/
+h2{font-size: 16px;color:#6E6C6C;}
+article{padding: 10px 0;}
+article h1{color:#6f9934;}
+em{font-style: normal;}
+article .tt{padding-left: 26px;line-height: 22px;}
+.box-wrap{padding:0 10px;}
+.box-wrap p{line-height: 28px;padding:0 5px;}
+.box-wrap em{color:#ec6c0f;}
+.box-wrap strong{color:#ff6633;font-size: 18px}
+
+.syntax{background: #f4f5f3;padding:5px 10px;}
+.syntax .js{font-size: 14px;}
+.syntax .js p{border:1px dotted #ccc;background: #fff}
+.syntax .js table{width:100%;}
+.syntax .js table th{text-align: left;background: #ccc;text-indent: 12px;}
+.syntax .js table td{text-indent: 12px;background: #d1dfac;}
+
+.exp-code pre, .exp-code pre em{color:#5aa610;font-family: \5FAE\8F6F\96C5\9ED1;font-size: 14px;line-height: 24px;}
+.exp-code pre em{font-weight: bold;}
+.exp-code pre span{color:#999;}
+
+.explain {margin: 0 20px;}
+.explain li {list-style:decimal inside;}
+.explain li em {margin: 0 5px;font-weight: bold;}
+
+iframe {border: none;width: 100%;height: 564px;margin-bottom: 20px;}
+.iframe-ac {height: 600px;}
+.iframe-ff {height: 80px;}
+.iframe-flex {height: 450px;margin-bottom: 0;}
+</style>
+</head> 
+
+<body>
+<div class="switchbox">
+      <ul id="conTend" class="switchbox-main">  
+        <li class="switchbox-li">
+          <article>
+    <h1>背景</h1>
+    <p>长期以来，我们用到表格、浮动、行内块元素或结合其他 CSS 属性，甚至用到CSS网格框架去实现复杂页面的布局。</p>
+    <p>我们寻找一种更简单、灵活地布局复的方法：伸缩布局盒(Flexbox)，也就是弹性布局盒。</p>
+</article>
+<article>
+  <h1>伸缩盒子的概述</h1>
+    <ul class="explain">
+      <li>Flexbox由<em>伸缩容器</em>和<em>伸缩项目</em>组成。</li>
+      <li>
+        <p>通过设置元素的 display 属性为 flex 或 inline-flex 可以得到一个伸缩容器。</p>
+        <iframe class="iframe-flex" src="demo_attr/display.html"></iframe>
+      </li>
+      <li>
+        <p>简单地说，Flexbox 定义了伸缩容器内伸缩项目该如何布局。</p>
+        <p>伸缩容器中的每一个子元素都是一个伸缩项目。</p>
+        <p>伸缩项目可以是任意数量的。</p>
+        <p>伸缩容器外和伸缩项目内的一切元素都不受影响。</p>
+      </li>
+      <li>
+        <p>新旧写法简介：</p>
+<pre>
+Final syntax                    2009 syntax                 2011 hybrid syntax
+display: flex                   display: box                display: flexbox
+flex-direction: row             box-orient: horizontal      box-orient: horizontal
+justify-content: flex-start     box-pack: start             box-pack: start
+align-items: flex-start         box-align: start            box-align: start
+flex: 1                         box-flex: 1                 flex: 1
+</pre>
+        <p>兼容：</p>
+        <pre>
+.flex{
+    display:-webkit-box;/* android 2.1-3.0, ios 3.2-4.3 */
+    display:-webkit-flex;/* Chrome 21+ */
+    display:-ms-flexbox;/* WP IE 10 */
+    display:flex;/* android 4.4 */
+}
+        </pre>
+        <a href="http://caniuse.com/#search=flex" target="_blank">flex的兼容</a>
+      </li>
+    </ul>
+</article>
+<article>
+  <h1>三个概念</h1>
+    <ul class="explain">
+      <li>
+        <h2>伸缩行</h2>
+        <p>伸缩项目沿着伸缩容器内的一个 伸缩行 定位。默认情况下，每个伸缩容器只有一个伸缩行。</p>
+        <div><img alt="伸缩行概念" height="275" src="demo_attr/img/stru.jpg" width="532"></div>
+      </li>
+      <li>
+        <h2>主轴和侧轴</h2>
+        <p>Flexbox 使用 主轴 和 侧轴的概念。伸缩行跟随主轴。侧轴则垂直于主轴。</p>
+        <div><img alt="主轴和侧轴概念" height="277" src="demo_attr/img/flex-direction-terms.svg" width="750"></div>
+      </li>
+      <li>
+        <h2>书写模式</h2>
+        <p>默认情况下，伸缩行和文本方向一致：从左至右，从上往下。</p>
+        <p>设置改变CSS 属性direction 来改变文字书写方式。</p>
+      </li>
+    </ul>
+</article>
+<article>
+    <h1>伸缩容器的属性(5个)</h1>
+    <iframe class="iframe-fd" src="demo_attr/flex_direction.html"></iframe>
+    <iframe class="iframe-jc" src="demo_attr/justify_content.html"></iframe>
+    <iframe class="iframe-ai" src="demo_attr/align_items.html"></iframe>
+    <iframe class="iframe-fw" src="demo_attr/flex_wrap.html"></iframe>
+    <iframe class="iframe-ac" src="demo_attr/align_content.html"></iframe>
+    <iframe class="iframe-ff" src="demo_attr/flex_flow.html"></iframe>
+</article>
+</li>
+<li class="switchbox-li">
+<article>
+    <h1>伸缩项目的属性</h1>
+	<!--#include virtual="/v2/demo/pub/flex_layout/flex.html"-->
+	<!--#include virtual="/v2/demo/pub/flex_layout/flex_order.html"-->
+	<!--#include virtual="/v2/demo/pub/flex_layout/flex_align.html"-->
+</article>
+</li>
+        <li class="switchbox-li">
+          <article>
+            <h1>更多参考</h1>
+            <p><a href="http://www.w3.org/html/ig/zh/css-flex-1/" target="_blank">W3C CSS伸缩盒布局模组</a></p>
+            <p><a href="http://www.w3cplus.com/blog/666.html" target="_blank">深入了解 Flexbox 伸缩盒模型</a></p>
+          </article>
+        </li>
+      </ul>
+  </div>
+  <div>
+    <a href="#nolink" class="goto-right" id="btnR" ></a>
+    <a href="#nolink" class="goto-left" id="btnL" ></a>
+  </div>  
+<script>
+var k=0;//速度
+var gotoLeft;
+var gotoRight;
+var nowLeft=0;//当前位置
+var targetLeft;//移动后的目标位置
+var isContrl=true;
+
+var $id=function(id){
+	if(id) return document.getElementById(id);
+}
+
+//ul的总宽度
+//li的宽度
+//(ul-li)最后一屏的位置
+//点击右边按钮，展示区域向左滑动
+function goToLeft(lst, ul, li){
+//控制右按钮禁用
+  if(lst.offsetLeft === -(ul-li)){
+    targetLeft = -(ul-li);
+    alert('这是最后一张');
+  }
+  else if(isContrl==true){
+    isContrl=false;
+    targetLeft=nowLeft-li;
+    goWhere(gotoLeft, gotoRight, lst);
+  }
+}
+//点击左边按钮，展示区域向右滑动 
+function goToRight(lst, ul, li){
+
+  //控制左按钮禁用
+  if(lst.offsetLeft === 0 ){
+    targetLeft=0;
+    alert('这是第一张');
+  }
+  else if(isContrl==true){
+    isContrl=false;
+    targetLeft=nowLeft+li;
+    goWhere(gotoLeft, gotoRight, lst);
+  }
+  
+}
+//控制左右滑动的时间，数值越大速度越慢
+function goWhere(gotoLeft, gotoRight, lst){
+  if(nowLeft>targetLeft){
+    gotoLeft = window.setInterval(
+      //控制向左的速度
+      function(){ 
+        if(lst.offsetLeft>targetLeft){
+          lst.style.left=lst.offsetLeft-k+"px";
+          k++;
+        }
+
+        else{
+            lst.style.left=targetLeft+"px";
+            window.clearInterval(gotoLeft);
+            nowLeft=targetLeft;
+            k=0;
+            isContrl=true;
+        } 
+      },10);
+  }
+  else{
+    gotoRight = window.setInterval(
+    //控制向右的速度
+    function(){
+      if(lst.offsetLeft<targetLeft){
+        lst.style.left=lst.offsetLeft+k+"px";
+        k++;
+      }
+
+      else{ 
+         lst.style.left=targetLeft+"px";
+          window.clearInterval(gotoRight);
+          nowLeft=targetLeft;
+          k=0;
+          isContrl=true;
+      } 
+    } ,10);
+  }  
+}
+
+$id('btnR').onclick = function(){
+  goToRight($id('conTend'), 3000, 1000);
+}
+$id('btnL').onclick = function(){
+  goToLeft($id('conTend'), 3000, 1000);
+}
+</script>
+</body>
+</html>

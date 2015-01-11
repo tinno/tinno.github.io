@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>动画叠加支持</title>
+<style type="text/css">
+html,body,div {margin: 0;padding: 0;}
+.contain {width: 300px;height: 10px; background-color: #ccc;}
+.object-1,.object-2 {display: block;width: 50px;height:50px;position: absolute;left: 0;background-color: #000;}
+.object-inner {display: inline-block;width: 100%;height: 100%;background-color: #ccc;}
+.object-2 {margin-top: 150px;}
+.anm-1 {
+	animation:moves 3s linear 0.5s infinite;
+	-webkit-animation:moves 1s linear 0.5s infinite;
+}
+.anm-2 {
+	animation:move-3 3s linear 0s 1 forwards;
+	-webkit-animation:move-3 3s linear 0s 1 forwards;
+}
+.anm-3 {
+     animation:move-2 3s linear 0s 1 forwards;
+}
+.btn-start {position: absolute;top: 300px;}
+@keyframes moves {
+     0% {
+     	transform:translateX(0);
+     }
+     100% {
+     	transform:translateX(200px);
+     	}
+}
+@-webkit-keyframes moves {
+     0% {
+     	-webkit-transform:translateX(0);
+     }
+     100% {
+     	-webkit-transform:translateX(200px);
+     	}
+}
+@keyframes move-2 {
+     0% {
+     	transform: scaleX(1) scaleY(1);
+     	opacity: 1;
+     }
+     100% {
+     	transform: scaleX(2) scaleY(2);
+     	opacity: 0;
+     	}
+}
+@-webkit-keyframes move-2 {
+     0% {
+     	-webkit-transform: scaleX(1) scaleY(1);
+     	opacity: 1;
+     }
+     100% {
+     	-webkit-transform: scaleX(2) scaleY(2);
+     	opacity: 0;
+     	}
+}
+@keyframes move-3 {
+     0% {
+          background-color: #000;
+     }
+     100% {
+          background-color: #f00;
+          }
+}
+@-webkit-keyframes move-3 {
+     0% {
+          background-color: #000;
+     }
+     100% {
+          background-color: #f00;
+          }
+}
+.stop {
+     animation-play-state:paused;
+     -webkit-animation-play-state:paused;
+}
+</style>
+</head>
+<body>
+<div class="contain">
+	<span class="object object-1"></span>
+	<!-- <span class="object object-2"></span> -->
+</div>
+<a class="btn-start" href="#">开始</a>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript" src="../js/touch.js"></script>
+<script type="text/javascript">
+$(".btn-start").click(function(){
+	$(".object").addClass("anm-1");
+});
+$(".object").on("tap",function(){
+     $(this).addClass("anm-2");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<article>
+    <h1>背景</h1>
+    <p>长期以来，我们用到表格、浮动、行内块元素或结合其他 CSS 属性，甚至用到CSS网格框架去实现复杂页面的布局。</p>
+    <p>我们寻找一种更简单、灵活地布局复的方法：伸缩布局盒(Flexbox)，也就是弹性布局盒。</p>
+</article>
+<article>
+	<h1>伸缩盒子的概述</h1>
+    <ul class="explain">
+    	<li>Flexbox由<em>伸缩容器</em>和<em>伸缩项目</em>组成。</li>
+    	<li>
+    		<p>通过设置元素的 display 属性为 flex 或 inline-flex 可以得到一个伸缩容器。</p>
+    		<iframe class="iframe-flex" src="demo_attr/display.html"></iframe>
+    	</li>
+    	<li>
+    		<p>简单地说，Flexbox 定义了伸缩容器内伸缩项目该如何布局。</p>
+    		<p>伸缩容器中的每一个子元素都是一个伸缩项目。</p>
+    		<p>伸缩项目可以是任意数量的。</p>
+    		<p>伸缩容器外和伸缩项目内的一切元素都不受影响。</p>
+    	</li>
+    	<li>
+    		<p>新旧写法简介：</p>
+<pre>
+Final syntax                    2009 syntax                 2011 hybrid syntax
+display: flex                   display: box                display: flexbox
+flex-direction: row             box-orient: horizontal      box-orient: horizontal
+justify-content: flex-start     box-pack: start             box-pack: start
+align-items: flex-start         box-align: start            box-align: start
+flex: 1                         box-flex: 1                 flex: 1
+</pre>
+    		<p>兼容：</p>
+    		<pre>
+.flex{
+    display:-webkit-box;/* android 2.1-3.0, ios 3.2-4.3 */
+    display:-webkit-flex;/* Chrome 21+ */
+    display:-ms-flexbox;/* WP IE 10 */
+    display:flex;/* android 4.4 */
+}
+    		</pre>
+    		<a href="http://caniuse.com/#search=flex" target="_blank">flex的兼容</a>
+    	</li>
+    </ul>
+</article>
+<article>
+	<h1>三个概念</h1>
+    <ul class="explain">
+    	<li>
+    		<h2>伸缩行</h2>
+    		<p>伸缩项目沿着伸缩容器内的一个 伸缩行 定位。默认情况下，每个伸缩容器只有一个伸缩行。</p>
+    		<div><img alt="伸缩行概念" height="275" src="demo_attr/img/stru.jpg" width="532"></div>
+    	</li>
+    	<li>
+    		<h2>主轴和侧轴</h2>
+    		<p>Flexbox 使用 主轴 和 侧轴的概念。伸缩行跟随主轴。侧轴则垂直于主轴。</p>
+    		<div><img alt="主轴和侧轴概念" height="277" src="demo_attr/img/flex-direction-terms.svg" width="750"></div>
+    	</li>
+    	<li>
+    		<h2>书写模式</h2>
+    		<p>默认情况下，伸缩行和文本方向一致：从左至右，从上往下。</p>
+    		<p>设置改变CSS 属性direction 来改变文字书写方式。</p>
+    	</li>
+    </ul>
+</article>
+<article>
+    <h1>伸缩容器的属性(5个)</h1>
+    <iframe class="iframe-fd" src="demo_attr/flex_direction.html"></iframe>
+    <iframe class="iframe-jc" src="demo_attr/justify_content.html"></iframe>
+    <iframe class="iframe-ai" src="demo_attr/align_items.html"></iframe>
+    <iframe class="iframe-fw" src="demo_attr/flex_wrap.html"></iframe>
+    <iframe class="iframe-ac" src="demo_attr/align_content.html"></iframe>
+    <iframe class="iframe-ff" src="demo_attr/flex_flow.html"></iframe>
+</article>

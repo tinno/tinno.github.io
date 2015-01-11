@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>flex-wrap伸缩行换行</title>
+<link rel="icon" href="http://www.whatwg.org/images/icon">
+<style>
+/* 公共 */
+body,div,h1,h2,ul,li,p {margin: 0;padding: 0;}
+ul {list-style: none;}
+body {font: 14px/1.5 \5FAE\8F6F\96C5\9ED1;}
+
+.state{margin: 10px;font-size: 16px;}
+.attr-li {margin-bottom: 10px;}
+.attr-li:after{content: "";display: block;width: 0;height: 0;clear: both;}
+.attr-li label {width: 150px; font-weight: bolder;margin-right: 20px;}
+.attr-li label,.attr-li p {float: left;}
+
+.demo-area {clear: both;}
+
+/* 私有 */
+.item-wrap {
+  height: 300px;
+  margin: 10px;
+  border: 1px solid #000;
+  background-color: #aaa;
+  direction: ltr;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap:nowrap;
+  -webkit-flex-wrap:nowrap;
+}
+.item {
+  width: 500px;
+  height: 30px;
+  border:1px solid #000;
+  font-size: 20px;
+  background-color: #ccc;
+}
+</style>
+</head> 
+<body>
+<section>
+  <header>
+    <h1>[伸缩行换行]  flex-wrap</h1>
+  </header>
+  <div class="opt-area">
+    <p class="state">属性值</p>
+    <ul class="attrs">
+      <li class="attr-li"><label for="item_1"><input id="item_1" type="radio" name="attr" value="nowrap" checked="checked">nowrap(默认)</label><p>伸缩项目强制在一个伸缩行上展示</p></li>
+      <li class="attr-li"><label for="item_2"><input id="item_2" type="radio" name="attr" value="wrap">wrap</label><p>在一个伸缩行容不下所有伸缩项目时，伸缩项目会换行到一条新增的伸缩行上。新增的伸缩行根据侧轴的方向添加</p></li>
+      <li class="attr-li"><label for="item_3"><input id="item_3" type="radio" name="attr" value="wrap-reverse">wrap-reverse</label><p>和 wrap 一样，只是新的伸缩行会被添加到侧轴的反方向上</p></li>
+    </ul>
+  </div>
+  <div class="demo-area">
+    <div class="item-wrap">
+      <div class="item item-1">item 1</div>
+      <div class="item item-2">item 2</div>
+      <div class="item item-3">item 3</div>
+      <div class="item item-4">item 4</div>
+    </div>
+  </div>
+</section>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$("input[type='radio']").click(function(event) {
+  var attr_value = $(this).attr('value');
+  $(".item-wrap").css('flex-wrap',attr_value);
+  $(".item-wrap").css('-webkit-flex-wrap',attr_value);
+});
+</script>
+</body>
+</html>

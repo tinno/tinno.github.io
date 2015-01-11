@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>flex-direction伸缩流的方向</title>
+<link rel="icon" href="http://www.whatwg.org/images/icon">
+<style>
+/* 公共 */
+body,div,h1,h2,ul,li,p {margin: 0;padding: 0;}
+ul {list-style: none;}
+body {font: 14px/1.5 \5FAE\8F6F\96C5\9ED1;}
+
+.state{margin: 10px;font-size: 16px;}
+.attr-li {margin-bottom: 10px;}
+.attr-li:after{content: "";display: block;width: 0;height: 0;clear: both;}
+.attr-li label {width: 150px; font-weight: bolder;margin-right: 20px;}
+.attr-li label,.attr-li p {float: left;}
+
+.demo-area {clear: both;}
+/* 私有 */
+.item-wrap {
+  height: 350px;
+  margin: 10px;
+  border: 1px solid #000;
+  background-color: #aaa;
+  direction: ltr;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction:row;
+  -webkit-flex-direction:row;
+}
+.item {
+  width: 100px;
+  height: 30px;
+  border:1px solid #000;
+  font-size: 20px;
+  background-color: #ccc;
+}
+</style>
+</head> 
+<body>
+<section>
+  <header>
+    <h1>[伸缩流的方向]  flex-direction</h1>
+  </header>
+  <div class="opt-area">
+    <p class="state">属性值</p>
+    <ul class="attrs">
+      <li class="attr-li"><label for="item_1"><input id="item_1" type="radio" name="attr" value="row" checked="checked">row(默认)</label><p>伸缩项目根据书写模式的方向布局,书写模式根据direction定义(默认是从左至右，从上到下)</p></li>
+      <li class="attr-li"><label for="item_2"><input id="item_2" type="radio" name="attr" value="row-reverse">row-reverse</label><p>主轴起点和主轴终点交换。如果书写模式是从左至右，伸缩项目则是从右往左显示</p></li>
+      <li class="attr-li"><label for="item_3"><input id="item_3" type="radio" name="attr" value="column">column</label><p>主轴和侧轴交换。如果书写系统是垂直的，那么伸缩项目也是垂直显示的</p></li>
+      <li class="attr-li"><label for="item_4"><input id="item_4" type="radio" name="attr" value="column-reverse">column-reverse</label><p>和column 一样，但是方向相反</p></li>
+    </ul>
+  </div>
+  <div class="demo-area">
+    <div class="item-wrap">
+      <div class="item item-1">item 1</div>
+      <div class="item item-2">item 2</div>
+      <div class="item item-3">item 3</div>
+      <div class="item item-4">item 4</div>
+    </div>
+  </div>
+</section>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+$("input[type='radio']").click(function(event) {
+  var attr_value = $(this).attr('value');
+  $(".item-wrap").css('flex-direction',attr_value);
+  $(".item-wrap").css('-webkit-flex-direction',attr_value);
+});
+</script>
+</body>
+</html>

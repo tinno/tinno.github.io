@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>动画叠加支持</title>
+<style type="text/css">
+.object-1,.object-2 {display: block;width: 50px;height: 50px;background-color: #ccc;position: absolute;top: 0;left: 0;transition:all 4s ease 0;/*transition:transform:translateX(0);transform:translateY(0);*/}
+.object-2 {top: 100px;}
+.anm-1 {transform:translateX(100px);-webkit-transform:translateX(100px);}
+.anm-2 {transform: scaleX(1.5),scaleY(1.5);-webkit-transform: scaleX(1.5) scaleY(1.5);opacity: 0;}
+.btn-start {position: absolute;top: 200px;}
+</style>
+</head>
+<body>
+<div class="contain">
+	<span class="object object-1"><!--物品--></span>
+	<span class="object object-2"><!--物品--></span>
+</div>
+<a class="btn-start" href="#">开始</a>
+<script type="text/javascript" src="../js/zepto.min.js"></script>
+<script type="text/javascript">
+$(".btn-start").click(function(){
+	$(".object").addClass("anm-1");
+});
+$(".object").click(function(){
+	$(this).addClass("anm-2");
+});
+</script>
+</body>
+</html>

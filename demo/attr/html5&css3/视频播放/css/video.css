@@ -1,0 +1,90 @@
+/* 重置样式 [[*/
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,form,fieldset,legend,input,select,textarea,button,th,td,menu,article{margin:0;padding:0;}
+article,aside,dialog,figure,footer,header,hgroup,nav,section,select{display:block;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:100;vertical-align:middle;}
+ul,dl,ol{list-style:none;}
+img,fieldset,input[type="submit"]{border:none;}
+input{outline:none;background:transparent;vertical-align:top;}	
+table{border-collapse:collapse;border-spacing:0;}		
+button{cursor:pointer;border:none;}
+textarea{word-wrap:break-word;resize:none;}
+/* 去除IE下拉菜单箭头 */
+select::-ms-expand{display:none;}
+/* 去除IE下radio、checkbox默认样式 */
+::-ms-check{display:none;}
+/* 去除输入框、文本域默认边框和IOS4下的内阴影 */
+input, textarea, select{-webkit-appearance:none;border:none;outline:none;}
+/* 设置Gecko内核下输入框属性placeholder中值的文件颜色 */
+input:-moz-placeholder{color:#C4C4C4;}
+/* 设置webkit内核下输入框属性placeholder中值的文件颜色 */
+::-webkit-input-placeholder{color:#C4C4C4;}
+body{font-family:"Helvetica";-webkit-user-select:none;/* 禁止选中文本 */-webkit-tap-highlight-color:rgba(0,0,0,0.1);/* 设置点击链接时遮罩层为全透明 */overflow:hidden;min-height:100%;}
+/* 设置webkit内核下文字大小不小于12px */
+html,body{-webkit-text-size-adjust:none;height:100%;}
+/* 禁止长按链接、按钮、输入框出现系统默认弹框菜单 */
+a,button,input{-webkit-touch-callout:none;outline:none;}
+a,a:visited{text-decoration:none;-webkit-touch-callout:none;}
+/* 重置样式 ]]*/
+
+.hide {display: none !important;}
+html,body{height: 100%;}
+section header{display: none;}
+
+body{background-color: #001E00;}
+
+.my-prize,.show-act-main .get-prize,.show-act-main .share-video{min-height: 100%;background:rgb(1,1,1) url("../img/bg_inner.jpg") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;}
+
+/* 公共底部 */
+footer {position: fixed;bottom: 0;left: 0;right: 0;}
+.link-item {float: left;width: 50%;height: 50px;-webkit-box-sizing:border-box;box-sizing:border-box;background-color: #176B00;line-height: 50px;font-size: 16px;}
+.link-item,.link-item:active,.link-item:visited,.link-item:hover {color: #C1E619;}
+.link-item:nth-child(1){border-right:1px solid #003B00;}
+.link-item .ico {margin-right: 6px;vertical-align: middle;}
+.link-item .cnt {display: block; width:90px;margin: 0 auto;}
+.ico-rule {display: inline-block;width: 15px;height: 17px;background: url("../img/ico_rule.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;}
+.ico-prize {display: inline-block;width:15px;height: 18px;background: url("../img/ico_prize.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;}
+.ico-home {display: inline-block;width:18px;height: 17px;background: url("../img/ico_home.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;}
+
+/* 首页 [[ */
+.container {height: 100%;overflow: hidden;position: relative;}
+.show-index .index {background:rgb(2,28,3) url("../img/bg_index.jpg") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;}
+.index {position: absolute;left: 0;right: 0;top: 0;bottom: 0;min-height: 100%;}
+
+.bottom-part {width:261px;position: absolute;left: 50%;bottom:5px;margin-left: -130px;}
+.play-inner{display: block;width:261px;height:148px;position: relative;background: url("../img/title.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;}
+.btn-play {display: inline-block;width:50px;height: 50px;position: absolute;top: 0;right: 8px;text-indent: -9999em;overflow: hidden;}
+.btn-next {display: block;width:46px;height: 46px;margin: 4% auto 0;opacity: 0.6;position: relative;animation:move 1s ease 0s infinite;-webkit-animation:move 1s ease 0s infinite;background:url("../img/btn_next.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;line-height: 200px;overflow: hidden;}
+@media screen and (max-width: 320px){
+    .btn-next {position: absolute;bottom: 0;left: 50%;margin-left: -23px;}
+}
+
+@keyframes move {
+	0% {transform: translateY(-5px);}
+	100% {transform: translateY(0);}
+}
+@-webkit-keyframes move {
+	0% {-webkit-transform: translateY(-5px);}
+	100% {-webkit-transform: translateY(0);}
+}
+
+/* 分享视频 && 马上领取 */
+.act-main {position: absolute;left: 0;right: 0;top: 0;bottom: 0;}
+.act-main .inner {position: absolute;left: 0;right: 0;top: 0;bottom: 0;padding-bottom: 50px;overflow-y: auto;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
+.act-main footer {display: none;}
+.show-act-main .act-main footer {display: block;}
+
+.share-video {padding-top:40%;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.share-video .video-wrap {width: 90%;margin: 0 auto;position: relative;background:url("../img/container.png") no-repeat center 0;background-size: 110% 100%;-webkit-background-size: 110% 100%;}
+.share-video .video-wrap:before{content: "";display: block;width: 100%;height: 0;padding-top:56%;}
+.share-video .video-wrap .player {position: absolute;top: 14%;left: 12%;right: 0;width: 76%;height: 76%;}
+.share-video .btn-share {display:block;width: 232px;height: 56px;margin: 0 auto;background: url("../img/btn_share.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;line-height: 200px;overflow: hidden;}
+.share-video .steps {width:254px;height: 36px;margin:0 auto;padding-bottom: 60px;background: url("../img/steps.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;text-indent: -9999em;overflow: hidden;}
+
+.get-prize {padding-top:40%;}
+.get-prize .prize-wrap {padding-top:54%;margin: 0 auto;position: relative;background:url("../img/container.png") no-repeat center center;background-size: 100% 100%;-webkit-background-size: 100% 100%; color: #FFFFFF;text-align: center;}
+.get-prize .prize-inner {position: absolute;top: 0;width: 100%;}
+.get-prize .prize-inner h2{margin-top: 16.8%;font-size: 20px;font-weight: bold;}
+.get-prize .prize-inner p {margin-top: 3.75%;font-size: 14px;}
+.get-prize .btn-get-prize {display:block;width: 232px;height: 56px;margin:0 auto;background: url("../img/btn_get_prize.png") no-repeat;background-size: 100% auto;-webkit-background-size: 100% auto;line-height: 200px;overflow: hidden;}
+.get-prize .tips {padding-bottom: 60px;font-size: 12px;color: #163A00;text-align: center;line-height: 18px;}
+

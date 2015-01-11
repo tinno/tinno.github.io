@@ -1,0 +1,16 @@
+﻿{
+  "manifest_version": 2,
+  "name": "Quick Create",
+  "description": "H5页面本地文件路径快速生成测试url、二维码，也支持链接转化二维码",
+  "version": "3.0",
+  "icons":{
+    "48":"img/ico_48.png",
+    "128":"img/ico_128.png"
+    },
+  "options_page": "options.html",
+  "browser_action": {
+    "default_icon": "img/ico_19.png",
+    "default_title": "H5链接生成",
+    "default_popup": "popup.html"
+  }
+}

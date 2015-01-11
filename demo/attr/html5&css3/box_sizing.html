@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>盒模型box-sizing</title>
+	<style type="text/css">
+	.box{width: 200px;height: 200px;margin-bottom: 20px; box-sizing:inherit;-webkit-box-sizing:inherit;background-color: #CCC;padding: 20px;border: 5px solid #000;background-clip: content-box;-webkit-background-clip: content-box;}
+	.box-1{width: 200px;height: 200px;margin-bottom: 20px; box-sizing:content-box;-webkit-box-sizing:content-box;background-color: #CCC;padding: 20px;border: 5px solid #000;background-clip: content-box;-webkit-background-clip: content-box;}
+	.box-2{width: 200px;height: 200px;box-sizing:border-box;-webkit-box-sizing:border-box;background-color: #CCC;padding: 20px;border: 5px solid #000;background-clip: content-box;-webkit-background-clip: content-box;}
+	</style>
+</head>
+<body>
+<div class="box">
+	 inherit
+</div>
+<div class="box-1">
+	content-box
+</div>
+<div class="box-2">
+	border-box 
+</div>
+</body>
+</html>

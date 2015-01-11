@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>伸缩项目</title>
+<script type="text/javascript" src="jquery.js"></script>
+<style type="text/css">
+.info{
+margin:20xp 0;
+font-family:"微软雅黑";
+}
+
+.info h2{
+	font-size:22px;
+}
+
+.info p{
+	font-size:15px;
+	padding-left:10px;
+}
+
+.info ul{
+	margin:0 0 0 -10px;
+}
+
+.info li{
+	padding:5px 0;
+	font-size:14px;
+	overflow:hidden;
+	margin:5px 0;
+	width:700px;
+}
+
+.info strong{
+	width:150px;
+	float:left;
+}
+
+.info .try{
+	padding:5px 8px;
+	background-color:#666666;
+	color:#fff;
+	font-size:14px;
+	cursor:pointer;
+	float:right;
+}
+
+.info .red{
+	font-size:18px;
+	font-weight:700;
+	color:#E54645;
+}
+
+.info .text{
+	overflow:hidden;
+	display:inline-block;
+	width:500px;
+}
+
+.outer-box{
+	width:800px;
+	height:300px;
+	max-height:300px;
+	margin:10px;
+	background-color:#AAAAAA;
+	border:1px solid #000000;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.a, .b, .c, .d{
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	width: 25%;               /* For old syntax, otherwise collapses. */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	color:#000;
+	font-size:30px;
+	height:200px;
+}
+
+.a{
+	background-color:#9FE0F6;
+	-webkit-box-flex: 2;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 2;         /* OLD - Firefox 19- */
+	-webkit-flex: 2;          /* Chrome */
+	-ms-flex:2;              /* IE 10 */
+	flex:2;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.b{
+	background-color:#F3E59A;
+}
+
+.c{
+	background-color:#F3B59B;
+}
+
+.d{
+	background-color:#0092C7;
+}
+
+.a-flex{
+	-webkit-box-flex: 2 100px;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 2 100px;         /* OLD - Firefox 19- */
+	-webkit-flex: 2 100px;          /* Chrome */
+	-ms-flex: 2 100px;              /* IE 10 */
+	flex: 2 100px;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */	
+}
+
+.other-flex{
+	-webkit-box-flex: 1 220px;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1 220px;         /* OLD - Firefox 19- */
+	-webkit-flex: 1 220px;          /* Chrome */
+	-ms-flex: 1 220px;              /* IE 10 */
+	flex: 1 220px;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */	
+}
+
+.shrink1{
+	-webkit-box-flex: 1 1 300px;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1 1 300px;         /* OLD - Firefox 19- */
+	-webkit-flex: 1 1 300px;          /* Chrome */
+	-ms-flex: 1 1 300px;              /* IE 10 */
+	flex: 1 1 300px;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */	
+}
+
+.shrink2{
+	-webkit-box-flex: 1 2 300px;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1 2 300px;         /* OLD - Firefox 19- */
+	-webkit-flex: 1  2 300px;          /* Chrome */
+	-ms-flex: 1 2 300px;              /* IE 10 */
+	flex: 1 2 300px;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */	
+}
+
+</style>
+</head>
+
+<body>
+<div class="info">
+	<h2>[弹性]flex</h2>
+
+	<p>属性值：</p>
+
+	<ul >
+		<li><strong>flex-grow</strong><span class="text">决定伸缩项目在伸缩容器中的空间大小。</span></li>
+		<li><strong>flex-basis</strong><span class="text">决定伸缩项目的初始长度。</span><a class="try" id="add1">try</a></li>
+		<li><strong>flex-shrink</strong><span class="text">决定伸缩项目溢出收缩容器时的收缩比例 。</span><a class="try" id="add2">try</a></li>
+
+		<li class="red"><a href="http://tid.tenpay.com/v2/src/hybrid/doc/mch/weixin/coupons_v2/test_enter.shtml" target="_blank">实例&思路</a></li>
+	</ul>
+
+
+
+</div>
+
+<div class="outer-box" id="outerbox">
+
+	<span class="a " id="abox">item 1<br /></span>
+	<span class="b " id="bbox">item 2<br /></span>
+	<span class="c " id="cbox">item 3<br /></span>
+	<span class="d " id="dbox">item 4<br /></span>
+
+</div>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+(function($, win) {
+	$('#add1').on('click',function() {
+	$('#abox').addClass('a-flex');
+	$('#bbox').addClass('other-flex');
+	$('#cbox').addClass('other-flex');
+	$('#dbox').addClass('other-flex');
+	});	
+
+	$('#add2').on('click',function() {
+	$('#abox').addClass('shrink1');
+	$('#bbox').addClass('shrink1');
+	$('#cbox').addClass('shrink1');
+	$('#dbox').addClass('shrink2');
+	});	
+})(jQuery, window);
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>页面切换</title>
+<style>
+*{margin:0;padding:0;}
+html,body{position:relative;width:100%;height:100%;background:#fff;overflow: hidden;}
+a{display: block;padding-left:30px;height: 60px;line-height: 60px;/*text-align: center;*/background-color: #f68dbb;color: #fff;text-decoration: none}
+a:nth-child(2n){background-color: #60d7a9;}
+</style>
+</head>
+<body>
+	<!-- <a href="box.shtml?page=1">1</a>
+	<a href="box.shtml?page=2">2</a>
+	<a href="box.shtml?page=3">3</a> -->
+	<a href="h_2_margin.shtml" target="_blank">1、水平 - 2页 - margin</a>
+	<a href="h_2_left.shtml" target="_blank">2、水平 - 2页 - left</a>
+	<a href="h_2_translate.shtml" target="_blank">3、水平 - 2页 - translate</a>
+	<a href="h_3_margin.shtml" target="_blank">4、水平 - 3页 - translate</a>
+	<a href="v_2_top.shtml" target="_blank">5、垂直 - 2页 - top</a>
+	<a href="v_2_translate.shtml" target="_blank">6、垂直 - 2页 - translate</a>
+	<a href="v_2_margin.shtml" target="_blank">7、垂直 - 2页 - margin</a>
+</body>
+</html>

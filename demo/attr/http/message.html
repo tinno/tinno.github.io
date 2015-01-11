@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>HTTP报文</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js">
+</script>
+<style type="text/css">
+.artcle {color: #f00;}
+.tips {color: #333;margin-left: 10px;}
+</style>
+</head>
+<body>
+<section>
+	<p>使用JQuery的Ajax实现方法：$.ajax()来测试HTTP报文</p>
+	<ul>
+		<!-- <li>
+			<p>把下面的正文发送到http://ui.tenpay.com/v2/demo/tinno/http/s_1.json</p>
+			<p>正文：<span class="artcle" id="s_1">你是个姑娘！</span></p>
+			<p><button id="btn_send">发送按钮</button><span class="tips" id="status_1"></span></p>
+		</li> -->
+		<li>
+			<p>把测试文件的http://ui.tenpay.com/v2/demo/tinno/http/s_2.json的信息读到下面正文</p>
+			<p>正文：<span class="artcle" id="s_2">...</span></p>
+			<p><button id="btn_get">接收按钮</button><span class="tips" id="status_2"></span></p>
+		</li>
+	</ul>
+</section>
+<script type="text/javascript">
+$("#btn_send").click(function() {
+	var message = $("#s_1").text();
+	$.ajax({
+		url: './s_1.json',
+		type: 'POST',
+		dataType:'json',
+		data: {'text': message},
+		success:function(data,textStatus){
+			$("#status_1").text(textStatus);
+		}
+	});	
+});
+
+$("#btn_get").click(function() {
+	$.ajax({
+		type: 'GET',
+		url: './s_2.json',
+		dataType:'json',
+		success:function(data,textStatus){
+			$("#s_2").text(data["text"]);
+			$("#status_2").text(textStatus);
+		}
+	});	
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>页面切换</title>
+<style>
+*{margin:0;padding:0;}
+html,body{position:relative;width:100%;height:100%;background:#fff;overflow: hidden;text-align: center;}
+.demo,.demo .box{height: 100%}
+.box{position:relative;width:100%;height:100%;line-height:400px;text-align: center;color:#fff;font-weight:bold;font-size:30px;/*-webkit-backface-visibility: hidden;-webkit-perspective: 1000;-webkit-transform: translate3d(0, 0, 0);*/}  
+.a{background-color: #f68dbb}
+.b{background-color: #60d7a9}
+.c{background-color: orange}
+
+.hide{display: none}
+
+.demo{-webkit-transition:all 0.6s ease-in-out;transition:all 0.6s ease-in-out;}
+
+.arrow{position: absolute;z-index:99;width: 50px;height: 50px;background: url(arrow.png) no-repeat center center;background-size: 26% auto;cursor: pointer;}
+.btn-down,.btn-up{left:50%;margin-left:-25px;}
+.btn-down{bottom:0;-webkit-animation:scroll-down 0.6s ease infinite;animation:scroll-down 0.6s ease infinite;}
+@-webkit-keyframes scroll-down{
+0%{-webkit-transform:translate(0,0);}
+50%{-webkit-transform:translate(0,0.3rem);}
+100%{-webkit-transform:translate(0,0);}
+}
+@keyframes scroll-down{
+0%{transform:translate(0,0);}
+50%{transform:translate(0,0.3rem);}
+100%{transform:translate(0,0);}
+}
+.btn-up{top:0;-webkit-transform:rotate(180deg);transform:rotate(180deg);-webkit-animation:scroll-up 0.6s ease infinite;animation:scroll-up 0.6s ease infinite;}
+@-webkit-keyframes scroll-up{
+0%{-webkit-transform:rotate(180deg) translate(0,0);}
+50%{-webkit-transform:rotate(180deg) translate(0,-0.3rem);}
+100%{-webkit-transform:rotate(180deg) translate(0,0);}
+}
+@keyframes scroll-up{
+0%{transform:rotate(180deg) translate(0,0);}
+50%{transform:rotate(180deg) translate(0,-0.3rem);}
+100%{transform:rotate(180deg) translate(0,0);}
+}
+.btn-right,.btn-left{top:50%;margin-top: -25px;}
+.btn-right{right: 0;-webkit-transform:rotate(-90deg);transform:rotate(-90deg);}
+.btn-left{left: 0;-webkit-transform:rotate(90deg);transform:rotate(90deg);}
+</style>
+</head>
+<body>
+
+	<div class="demo1 hide" style="height:200%">  <!-- height:页面个数*100% -->
+		<div class="box a" style="height:50%">  <!-- height:100%/页面个数 -->
+			a
+			<div class="arrow btn-down"><!-- 向下滑 --></div>
+		</div>
+		<div class="box b" style="height:50%">  <!-- height:100%/页面个数 -->
+			b
+			<div class="arrow btn-up"><!-- 向上滑 --></div>
+		</div>
+	</div>
+
+	<div class="demo2 hide" style="height:300%">
+		<div class="box a" style="height:33.33%">
+			a
+			<div class="arrow btn-down"><!-- 向下滑 --></div>
+		</div>
+		<div class="box b" style="height:33.33%">
+			b
+			<div class="arrow btn-down"><!-- 向下滑 --></div>
+			<div class="arrow btn-up"><!-- 向上滑 --></div>
+		</div>
+		<div class="box c" style="height:33.33%">
+			c
+			<div class="arrow btn-up"><!-- 向上滑 --></div>
+		</div>
+	</div>
+
+	<div class="demo3 hide" style="height:300%">
+		<div class="box a" style="height:33.33%">
+			a
+			<div class="arrow btn-down"><!-- 向下滑 --></div>
+		</div>
+		<div class="box b" style="height:33.33%">
+			b
+			<div class="arrow btn-down"><!-- 向下滑 --></div>
+		</div>
+		<div class="box c" style="height:33.33%">
+			c
+			<div class="arrow btn-up"><!-- 向上滑 --></div>
+		</div>
+	</div>
+
+	<div class="demo4 hide" style="width:300%">
+		<div class="box a" style="width:33.33%">
+			a
+			<div class="arrow btn-right"><!-- 向右滑 --></div>
+		</div>
+		<div class="box b" style="width:33.33%">
+			b
+			<div class="arrow btn-right"><!-- 向右滑 --></div>
+			<div class="arrow btn-left"><!-- 向左滑 --></div>
+		</div>
+		<div class="box c" style="width:33.33%">
+			c
+			<div class="arrow btn-left"><!-- 向左滑 --></div>
+		</div>
+	</div>
+
+	<div class="demo5 hide" style="width:300%">
+		<div class="box a" style="width:33.33%">
+			a
+			<div class="arrow btn-right"><!-- 向右滑 --></div>
+		</div>
+		<div class="box b" style="width:33.33%">
+			b
+			<div class="arrow btn-right"><!-- 向右滑 --></div>
+			<div class="arrow btn-left"><!-- 向左滑 --></div>
+		</div>
+		<div class="box c" style="width:33.33%">
+			c
+			<div class="arrow btn-left"><!-- 向左滑 --></div>
+		</div>
+	</div>
+
+<script src="zepto.js"></script>
+<script src="touch.js"></script>
+<script>
+	var url = window.location.href;
+	var pos = url.lastIndexOf("?page=");
+	var flag = url.substr(pos+6,1);
+
+	if(flag==1){
+		$(".demo1").removeClass('hide');
+		
+	    $(".demo1 .a").on("swipeUp",function(){
+	        $(".demo1").css({"-webkit-transform":"translateY(-50%)"});
+	    });
+		
+	    $(".demo1 .b").on("swipeDown",function(){
+	        $(".demo1").css({"-webkit-transform":"translateY(0)"});
+	    });
+
+	}
+
+	if(flag==2){
+		$(".demo2").removeClass('hide');
+		
+	    $(".demo2 .a").on("swipeUp",function(){
+	        $(".demo2").css({"-webkit-transform":"translateY(-33.33%)"});
+	    });
+		
+	    $(".demo2 .b").on("swipeUp",function(){
+	        $(".demo2").css({"-webkit-transform":"translateY(-66.66%)"});
+	    });
+		
+	    $(".demo2 .b").on("swipeDown",function(){
+	        $(".demo2").css({"-webkit-transform":"translateY(0)"});
+	    });
+		
+	    $(".demo2 .c").on("swipeDown",function(){
+	        $(".demo2").css({"-webkit-transform":"translateY(-33.33%)"});
+	    });
+
+	}
+
+	if(flag==3){
+		$(".demo3").removeClass('hide');
+		
+	    $(".demo3 .a").on("swipeUp",function(){
+	        $(".demo3").css({"margin-top":"-100%"});
+	    });
+
+	}
+
+	if(flag==4){
+		$(".demo4").removeClass('hide');
+		
+	    $(".demo4 .a").on("swipeLeft",function(){
+	        $(".demo4").css({"margin-left":"-100%"});
+	    });
+		
+	    $(".demo4 .b").on("swipeLeft",function(){
+	        $(".demo4").css({"margin-left":"-200%"});
+	    });
+		
+	    $(".demo4 .b").on("swipeRight",function(){
+	        $(".demo4").css({"margin-left":"0"});
+	    });
+		
+	    $(".demo4 .c").on("swipeRight",function(){
+	        $(".demo4").css({"margin-left":"-100%"});
+	    });
+
+	}
+
+	if(flag==5){
+		$(".demo5").removeClass('hide');
+		
+	    $(".demo5 .a").on("swipeLeft",function(){
+	        $(".demo5").css({"-webkit-transform":"translateX(-33.33%)"});
+	    });
+		
+	    $(".demo5 .b").on("swipeLeft",function(){
+	        $(".demo5").css({"-webkit-transform":"translateX(-66.66%)"});
+	    });
+		
+	    $(".demo5 .b").on("swipeRight",function(){
+	        $(".demo5").css({"-webkit-transform":"translateX(0)"});
+	    });
+		
+	    $(".demo5 .c").on("swipeRight",function(){
+	        $(".demo5").css({"-webkit-transform":"translateX(-33.33%)"});
+	    });
+
+	}
+
+	//阻止iso的事件冒泡
+	$(document).on("touchmove",function(e){e.preventDefault();})
+
+</script>
+</body>
+</html>
