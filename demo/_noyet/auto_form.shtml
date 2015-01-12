@@ -14,14 +14,4 @@
 <body>
 
 </body>
-<script type="text/javascript" src="/ui_static/demo/tinno/demo_lib/js/zepto.min.js"></script>
-<script type="text/javascript">
-$(".ico-info").click(function(){
-    alert("被点到了，好疼");
-});
-//阻止iso的事件冒泡
-$(document).on("touchmove",function(e){e.preventDefault();})
-
-</script>
-</body>
 </html>
