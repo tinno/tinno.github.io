@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>表单控件UI美化</title>
+<style type="text/css">
+body,html{margin: 0;}
+
+/* 重置 */
+.reset input,.reset select{-webkit-appearance:none;appearance:none;}
+.reset input[type="text"],.reset select,.reset textarea{border: none;outline:none;background:transparent;}
+.reset input:disabled,.reset select:disabled{/*opacity: 1;*/color: #000;}
+
+/* 美化 */
+.beauty {background-color: #dddddd;}
+</style>
+</head>
+<body class="reset beauty">
+<div class="line">
+	<input type="text" name="" placeholder="请输入" value="">
+</div>
+<div class="line">
+	<label for="radio_1"><input id="radio_1" name="" type="radio" value="">选项值</label>
+	<label for="radio_2"><input id="radio_2" name="" type="radio" value="" checked>选项值</label>
+	<label for="radio_3"><input id="radio_3" name="" type="radio" value="" disabled>选项值</label>
+	<label for="radio_4"><input id="radio_4" name="" type="radio" value="" checked disabled>选项值</label>
+</div>
+<div class="line">
+	<label for="checkbox_1"><input id="checkbox_1" type="checkbox" name="" value="">选项值</label>
+	<label for="checkbox_2"><input id="checkbox_2" type="checkbox" name="" value="" checked>选项值</label>
+	<label for="checkbox_3"><input id="checkbox_3" type="checkbox" name="" value="" disabled>选项值</label>
+	<label for="checkbox_4"><input id="checkbox_4" type="checkbox" name="" value="" checked disabled>选项值</label>
+</div>
+<div class="line">
+	<select name="">
+		<option value="">值1</option>
+		<option value="">值2</option>
+		<option value="">值3</option>
+	</select>
+	<select name="" disabled>
+		<option value="">值1</option>
+		<option value="">值2</option>
+		<option value="">值3</option>
+	</select>
+</div>
+<div class="line">
+	<textarea></textarea>
+</div>
+
+</body>
+</html>
