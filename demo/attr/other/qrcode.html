@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>二維碼長按調起保存</title>
+<style type="text/css">
+</style>
+</head>
+<body class="">
+<img id="code_img" width="150" height="150" src="https://chart.googleapis.com/chart?cht=qr&amp;chs=150x150&amp;choe=UTF-8&amp;chld=L|1&amp;chl=http://www.css88.com/book/css/selectors/index.htm">
+<script type="text/javascript">
+
+//阻止iso的事件冒泡
+$(document).on("touchmove",function(e){e.preventDefault();})
+</script>
+
+</body>
+</html>

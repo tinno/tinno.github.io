@@ -49,9 +49,8 @@ body,html{margin: 0;}
 .beauty .checkbox-item:before {top: 4px;left: 10px;height: 10px;-webkit-transform: rotate(-135deg);transform: rotate(-135deg);}
 .beauty .checkbox-item:after {top: 7px;left: 5px;height: 6px;-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
 
-.beauty .select {padding: 5px 10px;display: block;width: 100%;font-size: 14px;-webkit-box-sizing:border-box;box-sizing:border-box;}
-.beauty .select option {color: #333;}
-.beauty .select option:first{color:#C4C4C4;}
+.beauty .select {padding: 5px 10px;display: block;width: 100%;font-size: 14px;color: #333;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.beauty .select.gray {color:#C4C4C4;}
 .beauty .textarea {font-size: 14px;padding:5px 10px;width: 100%;height: auto;-webkit-box-sizing:border-box;box-sizing:border-box;display: block;}
 </style>
 </head>
@@ -79,7 +78,7 @@ body,html{margin: 0;}
 </div>
 <div class="line">
 	<!--有选项时，去掉gray-->
-	<select class="select gray-bg" name="">
+	<select class="select gray gray-bg" name="">
 		<option value="">默认值</option>
 		<option value="">值1</option>
 		<option value="">值2</option>
