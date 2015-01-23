@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="msapplication-tap-highlight" content="no" />
+<meta content="www.tenpay.com;" name="pgv">
+<title>表单常用元素</title>
+<style type="text/css">
+/* body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,form,fieldset,legend,input,select,textarea,button,th,td,menu,article{margin:0;padding:0;}
+表单重置
+input,select,textarea{-webkit-appearance:none;appearance:none;border: none;outline: none;去掉PC端选中时外框background:transparent;}
+input:disabled,select:disabled{opacity: 1; 去掉禁用时文本半透明效果}
+input {margin: 0;}
+textarea {resize:none;}
+::-webkit-inner-spin-button {-webkit-appearance: none;}
+::-webkit-clear-button {-webkit-appearance: none;}
+::-webkit-input-placeholder{color:#C4C4C4;}
+body {
+	-webkit-user-select:none;禁止选中文本
+	-webkit-text-size-adjust:none;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);设置点击链接时安卓蓝框、苹果遮罩层为全透明
+} */
+.tips-1 {
+	margin-bottom: 10px;
+}
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,menu{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:400;}
+input,textarea,select,button,label{vertical-align:middle;}
+ul,dl,ol{list-style:none;}
+img,fieldset,input[type="submit"]{border:none;}
+img{display:inline-block;overflow:hidden;vertical-align:top;}
+input{outline:none;background:transparent;vertical-align:top;}
+input::-ms-clear{display:none;}/* IE去除获焦后的删除按钮 */
+em,i{font-style:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+button,input,textarea{cursor:pointer;border:none;}
+textarea{word-wrap:break-word;resize:none;}  /* word-wrap for opera, resize for webkit */
+input,textarea,select{-webkit-appearance:none;outline:none;}
+input:-moz-placeholder{color:#C7C7CD;}
+::-webkit-input-placeholder{color:#C7C7CD;}
+input[type="text"]:disabled{opacity: 1;}
+select::-ms-expand{display:none;}
+::-ms-check{display:none;}
+body{min-width:320px;-webkit-user-select:none;-webkit-text-size-adjust:none;font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0.04);overflow-x:hidden;background-color:#efeff4;}
+input[type="number"]{-webkit-user-select:text;}
+input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none !important;margin: 0;}
+a,button,input,img{-webkit-touch-callout:none;outline:none;}/* 1.ios 长按时不触发系统的菜单 2.禁止长按时下载图片 */
+
+/* 去除android4.0以下 a/button/input标签被点击时产生的边框 因为边框引起了不少bug */
+a,button,input,select,textarea{-webkit-tap-highlight-color:rgba(130,130,130,0)}
+/* Android4.0下不识别选择器-webkit-transform-3d 使用它可做Android4.0下版本兼容 */
+@media all and (-webkit-transform-3d){
+/* android4.0+ ios4+ 恢复按钮被点击时产生的效果 */
+textarea {background-color: transparent;}
+html,body{height:100%;}
+a{text-decoration:none;color:#333;}
+a:hover { color:#00A7EE;}
+a,button,input{-webkit-touch-callout:none;}
+.tips-2 {
+	margin-bottom: 10px;
+}
+.item-checkbox{width: 12px;height: 12px;border: 1px solid #7c7c7d;border-radius: 2px;display: inline-block;position: relative;cursor: pointer;/*-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;*/}
+.item-checkbox:before, .item-checkbox:after{-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;position: absolute;height: 0px;width: 2px;background-color: #000;display: inline-block;-moz-transform-origin: left top;-ms-transform-origin: left top;-o-transform-origin: left top;-webkit-transform-origin: left top;transform-origin: left top;border-radius: 5px;content: ' ';-webkit-transition: opacity ease .5;-moz-transition: opacity ease .5;transition: opacity ease .5;}
+.item-checkbox::before {top: 10px;left: 5px;-moz-transform: rotate(-145deg);-ms-transform: rotate(-145deg);-o-transform: rotate(-145deg);-webkit-transform: rotate(-145deg);transform: rotate(-145deg);}
+.item-checkbox::after {top: 6px;left: 0px;-moz-transform: rotate(-45deg);-ms-transform: rotate(-45deg);-o-transform: rotate(-45deg);-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
+.item-checkbox:checked::after,.item-checkbox.checked::after {
+  height: 6px;
+  -moz-animation: dothabottomcheck 0.2s ease 0s forwards;
+  -o-animation: dothabottomcheck 0.2s ease 0s forwards;
+  -webkit-animation: dothabottomcheck 0.2s ease 0s forwards;
+  animation: dothabottomcheck 0.2s ease 0s forwards;
+}
+.item-checkbox:checked::before,.item-checkbox.checked::before {
+  height: 9px;
+  -moz-animation: dothatopcheck 0.4s ease 0s forwards;
+  -o-animation: dothatopcheck 0.4s ease 0s forwards;
+  -webkit-animation: dothatopcheck 0.4s ease 0s forwards;
+  animation: dothatopcheck 0.4s ease 0s forwards;
+}
+
+.form{width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.form fieldset {margin-bottom: 20px;}
+.form fieldset legend {padding:0 0 7px 15px;color: #888888;}
+.input-wrap {padding-left: 15px;background-color: #FFFFFF;border-top:1px solid #E5E5E5;border-bottom:1px solid #E5E5E5;}
+.input-wrap .form-line {border-bottom:1px solid #EEEEEE;position: relative;}
+.input-wrap .form-line:last-child {border-bottom: none;}
+.input-wrap .form-line:after {content:".";display:block;height:0;overflow:hidden;visibility:hidden;clear:both;}
+.form-line .form-label,.form-line .form-cnt {padding: 14px 0;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.form-line .form-label {float: left;width: 65px;margin-right: -65px;padding:12px 10px 12px 0;color: #000000;}
+.form-line .long-label {width: 100%;}
+.form-line .form-cnt {float: right;width: 100%;display: block;padding:12px 15px 12px 61px;}
+.form-line .form-cnt-cardstyle {color: #007AFF;}
+.form-line-del .form-ico.ico-delete{display: inline-block;}
+.form-line-btn {width:93.75%;margin:40px auto 20px;}
+.form-line-btn-s {width:93.75%;margin:20px auto;}
+.form-ico {position: absolute;top:50%;right: 5px;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
+.form-ico.ico-info {right: 15px;padding: 10px;}
+.form-ico.ico-arrow {right: 15px;}
+.form-ico.ico-selected {right: 15px;}
+.form-ico.ico-delete{right: 9px;display: none;}
+.form-line-tips .g-link{margin-left: 15px;}
+.form-cnt .select{-webkit-appearance:none;appearance:none;border:none;display:block;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background-color: #FFFFFF;color:#333333;border-radius:4px;}
+.form-cnt .select::-ms-expand{display:none;}
+.form-cnt .select {color: #C7C7CD;}
+.form-cnt .select option {padding: 0;}
+.form-cnt .select option:first-child {display: none;}
+.form-cnt .select.on {color: #000000;}
+.form-cnt.textarea {font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;padding-top:0;padding-bottom: 0;margin-top:12px;margin-bottom:12px; }
+.form-line-agreement {margin-left: 3%;font-size: 14px;}
+.form-line-agreement .item-checkbox {/* width: 15px;height: 15px;  */vertical-align: -2px;margin:0 5px;background-color: #EBEBEB;border: 1px solid #7C7C7D;-webkit-border-radius: 3px;border-radius: 3px;}
+/* .form-line-agreement .checkbox.selected {background-color: #aaa;} */
+.form-line-agreement .g-link {margin-left: 5px;}
+.select-time-wrap .select {float: left;width: auto;}
+.select-time-wrap .select-year {width:65%;}
+.select-time-wrap .split {float: left;padding:1px 10px;}
+
+.tips-2 {padding: 20px 0 24px;}
+.tips-2 .form-line-tips.style-2 {margin:7px 7px 0 0; color: #808080;font-size: 14px;padding-left:15px;}
+.tips-2 .form-line-tips.style-2 .ico-safe {margin:0 5px; vertical-align: -2px;}
+.tips-2 .input-wrap .card-tailnumber{display: none}
+.tips-2 .show-forget-input-wrap .form-line .form-cnt{display:inline-block;width:auto;padding-right:0px;float:none;}
+.tips-2 .show-forget-input-wrap .form-line .form-cnt-width{width:75px;}
+.tips-2 .show-forget-input-wrap .card-tailnumber{display:inline-block;padding:12px 15px 12px 0px;}
+
+</style>
+</head>
+<body>
+<h1>表单</h1>
+<div class="tips-1">
+<h2>实例表单</h2>
+<ul>
+	<li><a href="http://tid.tenpay.com/ui_static/hybrid/www/weixin/hkrace/pay_index.shtml">香港賽馬會公眾席入場門票</a></li>
+	<li><a href="http://tid.tenpay.com/ui_static/hkwallet/zh_hk/bank_cards/add_cardinfo.shtml">香港WeChat钱包</a></li>
+	<li><a href="http://tid.tenpay.com/ui_static/hybrid/www/mobile_qq/account/charge/buspos/pay_index.shtml">公交卡充值, 圈存异常处理和退款细节优化</a></li>
+</ul>
+</div>
+
+<div class="tips-2">
+	<h2>表单模块</h2>
+	<form action="" class="form">
+		<fieldset class="">
+			<legend class="hide">卡類型</legend>
+			<div class="input-wrap">
+				<div class="form-line">
+					<label class="form-label" for="">卡類型</label>
+					<input class="form-cnt form-cnt-cardstyle" type="text" id="" value="VISA信用卡(中國銀行)" disabled>
+				</div>
+			</div>
+			<div class="form-line-tips style-2">將扣除HK$0.5以驗證賬戶<a class="g-link" href="#">了解更多</a></div>
+		</fieldset>
+		<fieldset class="hide">
+			<legend>請輸入新的銀行卡號</legend>
+			<div class="input-wrap show-forget-input-wrap"><!-- 添加 show-forget-input-wrap 显示尾号跟随 -->
+				<div class="form-line">
+					<label class="form-label" for="">卡號</label>
+					<input class="form-cnt form-cnt-width" type="tel" id="" placeholder="尾號為(0000)的VISA信用卡號" value="">
+                    <div class="card-tailnumber">4444</div>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="">
+			<legend>請填寫銀行卡信息</legend>
+			<div class="input-wrap">
+				<div class="form-line">
+					<label class="form-label" for="">有效期</label>
+					<!--交互說明
+						點擊/無選項時 | 在select后追加on
+			        -->
+			        <div class="form-cnt select-time-wrap">
+			        	<select class="select select-month" name="" id="">
+				        	<option value="">月份</option>
+				            <option value="">12月</option>
+				            <option value="">11月</option>
+				        </select>
+				        <span class="split">/</span>
+				        <!--交互說明
+							點擊/無選項時 | 在select后追加on
+					        -->
+				        <select class="select select-year" name="" id="">
+				        	<option value="">年份</option>
+				            <option value="">2015年</option>
+				            <option value="">2014年</option>
+				        </select>
+			        </div>
+			        
+					<span class="form-ico ico-info"><!--信息圖標--></span>
+				</div>
+				<div class="form-line">
+					<label class="form-label" for="">安全碼</label>
+					<input class="form-cnt" type="tel" id="" placeholder="卡背面末三位" value="">
+					<span class="form-ico ico-info"><!--信息圖標--></span>
+				</div>
+			</div>
+		</fieldset>
+		<fieldset class="">
+			<legend>賬單寄送地址</legend>
+			<div class="input-wrap">
+				<div class="form-line">
+					<label class="form-label" for="">名</label>
+					<input class="form-cnt" type="text" id="" placeholder="請輸入名(英文)" value="">
+				</div>
+				<div class="form-line">
+					<label class="form-label" for="">姓</label>
+					<input class="form-cnt" type="text" id="" placeholder="請輸入姓(英文)" value="">
+				</div>
+				<div class="form-line">
+					<label class="form-label" for="">地址</label>
+					<textarea class="form-cnt textarea" name="" id=""placeholder="請輸入地址"></textarea>
+				</div>
+				<div class="form-line">
+					<label class="form-label" for="">地區</label>
+					<input class="form-cnt" type="text" id="" placeholder="請選擇地區" value=""  disabled>
+					<span class="form-ico ico-arrow"><!--外選圖標--></span>
+				</div>
+				<div class="form-line">
+					<label class="form-label" for="">電郵</label>
+					<input class="form-cnt" type="text" id="" placeholder="請輸入電子郵件" value="">
+				</div>
+                <div class="form-line">
+					<label class="form-label" for="">電話</label>
+					<input class="form-cnt" type="text" id="" placeholder="請輸入電話號碼" value="">
+				</div>
+			</div>
+		</fieldset>
+		<div class="form-line-agreement">
+			<input id="agree_xy" type="checkbox" value="" class="item-checkbox">
+			<label for="agree_xy" class="form-cnt">同意<a class="g-link" href="#">《用戶協議》</a></label>
+			<!-- <input type="checkbox" class="hide" id="item-checkbox">
+			<label class="item-checkbox" for="item-checkbox"></label>
+			<label class="txt" for="item-checkbox">關注</label>-->
+		</div>
+		<div class="form-line-btn-s">
+			<a class="btn-opt" href="#">下一步</a>
+		</div>
+	</form>
+</div>
+</body>
+</html>

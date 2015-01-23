@@ -11,21 +11,18 @@
 <style type="text/css">
 body,html{margin: 0;}
 /* 表单重置 */
-.reset ::-webkit-input-placeholder{color:#C4C4C4;}
-
-.reset {
+input,select,textarea{-webkit-appearance:none;appearance:none;border: none;outline: none;/* 去掉PC端选中时外框 */background:transparent;}
+input:disabled,select:disabled{opacity: 1; /*去掉禁用时文本半透明效果 */}
+input {margin: 0;}
+textarea {resize:none;}
+::-webkit-inner-spin-button {-webkit-appearance: none;}
+::-webkit-clear-button {-webkit-appearance: none;}
+::-webkit-input-placeholder{color:#C4C4C4;}
+body {
 	-webkit-user-select:none;/* 禁止选中文本 */
+	-webkit-text-size-adjust:none;
 	-webkit-tap-highlight-color:rgba(0,0,0,0);/* 设置点击链接时安卓蓝框、苹果遮罩层为全透明 */
 }
-.reset input,.reset select,.reset textarea{-webkit-appearance:none;appearance:none;}
-.reset input,.reset select,.reset textarea{border: none;outline: none;/* 去掉PC端选中时外框 */background:transparent;}
-.reset input:disabled,.reset select:disabled{opacity: 1; /*去掉禁用时文本半透明效果 */}
-.reset input {margin: 0;}
-.reset ::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-}
-.reset textarea {resize:none;}
-
 /* 美化 */
 .beauty {background-color: #EDEDED;}
 .beauty .line {padding: 10px 0;border-bottom: 1px solid #CCCCCC;background-color: #FFFFFF;}
@@ -56,13 +53,14 @@ body,html{margin: 0;}
 .beauty .select {padding: 5px 10px;display: block;width: 100%;font-size: 14px;color: #333;-webkit-box-sizing:border-box;box-sizing:border-box;}
 .beauty .select option:first{color:#C4C4C4;}
 .beauty .textarea {font-size: 14px;padding:5px 10px;width: 100%;height: auto;-webkit-box-sizing:border-box;box-sizing:border-box;display: block;}
+.beauty  .select-r {direction: rtl;}
 </style>
 </head>
-<body class="reset beauty">
+<body class="beauty">
 <div class="line">
 	<input class="text-item gray-bg" type="text" name="" placeholder="请输入文本信息" value=""><br>
 	<input class="text-item gray-bg" type="tel" name="" placeholder="请输入数字" value=""><br>
-	<input class="text-item gray-bg" type="number" name="" placeholder="请选择数字" value=""><br>
+	<input class="text-item gray-bg" type="number" name="" placeholder="请选择数字" value="1"><br>
 	<input id="date" class="text-item gray-bg" type="date" name="" placeholder="" value=""><br>
 	<input class="text-item gray-bg" type="month" name="" placeholder="" value=""><br>
 	<input class="text-item gray-bg" type="text" name="" placeholder="请输入文本信息" value="我是输入值"><br>
@@ -84,7 +82,16 @@ body,html{margin: 0;}
 <div class="line">
 	<!--有选项时，去掉gray-->
 	<select class="select gray-bg" name="">
-		<option value="">默认值</option>
+		<option value="">默认选项居左</option>
+		<option value="">值1</option>
+		<option value="">值2</option>
+		<option value="">值3</option>
+	</select>
+</div>
+<div class="line">
+	<!--有选项时，去掉gray-->
+	<select class="select select-r gray-bg" name="">
+		<option value="">默认选项居右</option>
 		<option value="">值1</option>
 		<option value="">值2</option>
 		<option value="">值3</option>
@@ -92,7 +99,7 @@ body,html{margin: 0;}
 </div>
 <div class="line">
 	<select class="select" name="" disabled>
-		<option value="">默认值</option>
+		<option value="">默认选项</option>
 		<option value="">值2</option>
 		<option value="">值3</option>
 	</select>
