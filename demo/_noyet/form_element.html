@@ -14,12 +14,16 @@ body,html{margin: 0;}
 .reset ::-webkit-input-placeholder{color:#C4C4C4;}
 
 .reset {
-	-webkit-user-select:none;/* 禁止选中文本 */-webkit-tap-highlight-color:rgba(0,0,0,0);/* 设置点击链接时安卓蓝框、苹果遮罩层为全透明 */
+	-webkit-user-select:none;/* 禁止选中文本 */
+	-webkit-tap-highlight-color:rgba(0,0,0,0);/* 设置点击链接时安卓蓝框、苹果遮罩层为全透明 */
 }
 .reset input,.reset select,.reset textarea{-webkit-appearance:none;appearance:none;}
 .reset input,.reset select,.reset textarea{border: none;outline: none;/* 去掉PC端选中时外框 */background:transparent;}
 .reset input:disabled,.reset select:disabled{opacity: 1; /*去掉禁用时文本半透明效果 */}
 .reset input {margin: 0;}
+.reset ::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
 .reset textarea {resize:none;}
 
 /* 美化 */
@@ -49,8 +53,7 @@ body,html{margin: 0;}
 .beauty .checkbox-item:before {top: 4px;left: 10px;height: 10px;-webkit-transform: rotate(-135deg);transform: rotate(-135deg);}
 .beauty .checkbox-item:after {top: 7px;left: 5px;height: 6px;-webkit-transform: rotate(-45deg);transform: rotate(-45deg);}
 
-.beauty .select {padding: 5px 10px;display: block;width: 100%;font-size: 14px;-webkit-box-sizing:border-box;box-sizing:border-box;}
-.beauty .select option {color: #333;}
+.beauty .select {padding: 5px 10px;display: block;width: 100%;font-size: 14px;color: #333;-webkit-box-sizing:border-box;box-sizing:border-box;}
 .beauty .select option:first{color:#C4C4C4;}
 .beauty .textarea {font-size: 14px;padding:5px 10px;width: 100%;height: auto;-webkit-box-sizing:border-box;box-sizing:border-box;display: block;}
 </style>
@@ -59,6 +62,7 @@ body,html{margin: 0;}
 <div class="line">
 	<input class="text-item gray-bg" type="text" name="" placeholder="请输入文本信息" value=""><br>
 	<input class="text-item gray-bg" type="tel" name="" placeholder="请输入数字" value=""><br>
+	<input class="text-item gray-bg" type="number" name="" placeholder="请选择数字" value=""><br>
 	<input id="date" class="text-item gray-bg" type="date" name="" placeholder="" value=""><br>
 	<input class="text-item gray-bg" type="month" name="" placeholder="" value=""><br>
 	<input class="text-item gray-bg" type="text" name="" placeholder="请输入文本信息" value="我是输入值"><br>

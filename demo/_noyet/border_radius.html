@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title></title>
+<style type="text/css">
+html,body {
+	margin:0;
+	padding: 0;
+}
+.container {
+	background-color: #000;
+}
+.box {
+	width: 93.75%;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	overflow: hidden;
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+}
+.box-inner {
+	position: relative;
+	height: 100px;
+	border-top:4px solid #ccc;
+	background-color: #4E83A9;
+}
+.box-inner:before, .box-inner:after{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: #4B4B4B;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    position: absolute;
+}
+.box-inner:before {
+	left: -8px;
+    top:20px;
+}
+.box-inner:after {
+	right: -8px;
+    top:20px;
+}
+</style>
+</head>
+<body class="container">
+<div class="box">
+	<div class="box-inner"></div>
+</div>
+
+
+<script type="text/javascript">
+//阻止iso的事件冒泡
+$(document).on("touchmove",function(e){e.preventDefault();})
+</script>
+</body>
+</html>
