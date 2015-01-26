@@ -15,11 +15,25 @@ html,body {
 	height: 100%;
 }
 .wedding {
-	background: url("bg.jpg") no-repeat 0 center;
+	position: relative;
+	background:#000 url("bg.jpg") no-repeat 0 center;
 	background-size: 100% auto;
 }
-.opt-btn {display: inline-block;width: 40px;height: 40px;border-radius: 20px;-webkit-border-radius: 20px;background-color: green;}
-.close {background-color: red;}
+.opt-btn,.opt-btn:after {background: url("music_opt.png") no-repeat;background-size:32px 53px;}
+.opt-btn {display: inline-block;width: 32px;height: 34px;position: absolute;right: 10px;top:10px;}
+.opt-btn:after{
+	content: "";
+	visibility: hidden;
+	width: 30px;
+	height: 18px;
+	background-position: 0 -35px;
+	position: absolute;
+	top:4px;
+	left: 3px;
+}
+.close:after {
+	visibility: visible;
+}
 </style>
 </head>
 <body class="wedding">
@@ -29,7 +43,7 @@ html,body {
 	 controls | 值controls，向用户显示控件，比如播放按钮
 	 autoplay | 值autoplay，音频在就绪后马上播放
 	 loop	  | 值loop，每当音频结束时重新开始播放
-	 muted	  | 值muted，规定视频输出应该被静音
+	 muted	  | 值muted(true/false)，规定视频输出应该被静音
 	 preload  | 值preload，音频在页面加载时进行加载，并预备播放，如果使用 "autoplay"，则忽略该属性
 	 src 	  | 值url，要播放的音频的 URL
  -->
@@ -39,15 +53,17 @@ html,body {
 </audio>
 <script type="text/javascript" src="../../../../res/js/zepto.min.js"></script>
 <script type="text/javascript">
+var music = document.getElementById("bg_music");
 $(".opt-btn").on("click",function() {
 	//console.log($(this).attr("class").indexOf("close"));
-	var music = document.getElementById("bg_music");
 	if($(this).attr("class").indexOf("close") <= 0){
 		music.pause();
+		//music.muted = true;
 		$(this).addClass("close");
 	}
 	else{
 		music.play();
+		//music.muted = false;
 		$(this).removeClass("close");
 	}
 });
