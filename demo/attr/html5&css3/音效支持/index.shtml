@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="format-detection" content="email=no" />
-<title>音效支持</title>
+<title>迪迪的婚礼</title>
 <style type="text/css">
 html,body {
 	margin: 0;
@@ -19,9 +19,9 @@ html,body {
 	background:#000 url("bg.jpg") no-repeat 0 center;
 	background-size: 100% auto;
 }
-.opt-btn,.opt-btn:after {background: url("music_opt.png") no-repeat;background-size:32px 53px;}
-.opt-btn {display: inline-block;width: 32px;height: 34px;position: absolute;right: 10px;top:10px;}
-.opt-btn:after{
+.btn-music,.btn-music:after {background: url("music_opt.png") no-repeat;background-size:32px 53px;}
+.btn-music {display: inline-block;width: 32px;height: 34px;position: absolute;right: 10px;top:10px;}
+.btn-music:after{
 	content: "";
 	visibility: hidden;
 	width: 30px;
@@ -31,13 +31,22 @@ html,body {
 	top:4px;
 	left: 3px;
 }
-.close:after {
+.btn-music.close:after {
 	visibility: visible;
+}
+.btn-movie {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-color: green;
+}
+.btn-movie.close {
+	background-color: red;
 }
 </style>
 </head>
 <body class="wedding">
-<i class="opt-btn"></i>
+<i class="btn-music"></i>
 <!-- 背景音乐
 	 属性 
 	 controls | 值controls，向用户显示控件，比如播放按钮
@@ -51,17 +60,43 @@ html,body {
 	<source src="wedding.mp3" type="audio/mp3" />
 	Your browser does not support this audio format.
 </audio>
+<div class="movie-wrap">
+
+<video id="movie" poster="surface.jpg" preload>
+	<source src="http://www.w3school.com.cn/i/movie.ogg" type="video/ogg" />
+	Your browser does not support this video format.
+</video>
+<i class="btn-movie"></i>
+</div>
+
 <script type="text/javascript" src="../../../../res/js/zepto.min.js"></script>
 <script type="text/javascript">
+//背景音乐设置
 var music = document.getElementById("bg_music");
-$(".opt-btn").on("click",function() {
-	//console.log($(this).attr("class").indexOf("close"));
+$(".btn-music").on("click",function() {
 	if($(this).attr("class").indexOf("close") <= 0){
 		music.pause();
 		//music.muted = true;
 		$(this).addClass("close");
 	}
 	else{
+		music.play();
+		//music.muted = false;
+		$(this).removeClass("close");
+	}
+});
+
+//设置视频
+var movie = document.getElementById("movie");
+$(".btn-movie").on("click",function() {
+	if($(this).attr("class").indexOf("close") <= 0){
+		movie.play();
+		music.pause();
+		//music.muted = true;
+		$(this).addClass("close");
+	}
+	else{
+		movie.pause();
 		music.play();
 		//music.muted = false;
 		$(this).removeClass("close");
