@@ -1,9 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #151515 url("../images/bkg.png") 0 0;
-  color: #eaeaea;
-  font: 16px;
+  background: #000 url("../images/bkg.png") 0 0;
+  color: #333;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
@@ -15,7 +14,10 @@ body {
   max-width: 600px;
   margin: 0 auto;
 }
-
+.main{
+  font-size: 20px;
+  color: #8D8D8D;
+}
 section {
   display: block;
   margin: 0 0 20px 0;
