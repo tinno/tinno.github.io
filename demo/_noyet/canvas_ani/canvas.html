@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="msapplication-tap-highlight" content="no" />
+<meta content="www.tenpay.com;" name="pgv">
+
+<title>canvas动画</title>
+<script src="http://code.createjs.com/easeljs-0.7.1.min.js"></script>
+<script src="http://code.createjs.com/tweenjs-0.5.1.min.js"></script>
+<script src="http://code.createjs.com/movieclip-0.7.1.min.js"></script>
+<script>
+var canvas, stage, exportRoot;
+function init() {
+	canvas = document.getElementById("canvas");
+	exportRoot = new lib.无标题1();
+
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	stage.update();
+
+	createjs.Ticker.setFPS(lib.properties.fps);
+	createjs.Ticker.addEventListener("tick", stage);
+}
+</script>
+<style>
+html,body {
+	margin:0;
+	padding: 0;
+	height: 100%;
+}
+
+</style>
+</head>
+<body onload="init();" style="background-color:#D4D4D4">
+	<canvas id="canvas" width="640" height="960" style="background-color:#000000"></canvas>
+</body>
+<script type="text/javascript" src="http://tid.tenpay.com//ui_static/demo/tinno/demo_lib/js/zepto.min.js"></script>
+<script type="text/javascript">
+var body_width = document.body.clientWidth;
+var body_height= document.body.clientHeight;
+console.log(body_width + "," + body_height);
+
+var canvas = document.getElementById("canvas");
+canvas.width = body_width;
+canvas.height = body_height;
+canvas.style.width = body_width + 'px';
+canvas.style.height = body_height + 'px';
+//阻止iso的事件冒泡
+$(document).on("touchmove",function(e){e.preventDefault();})
+</script>
+<script src="canvas.js"></script>
+</html>
