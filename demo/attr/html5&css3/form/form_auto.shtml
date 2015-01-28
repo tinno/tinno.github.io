@@ -176,7 +176,7 @@ h2.page-title {
 	<!-- 
 		安卓版本选择弹窗皮肤:
 		支付宝  | style-taobao
-		微信安卓 | style-wx
+		微信 | style-wx
 	 -->
 	<div id="layer_date" class="layer-select style-wx beauty">
 		<div class="select-main">
@@ -185,7 +185,7 @@ h2.page-title {
 			</div>
 			<div class="select-cnt">
 				<div class="data-list">
-					<ul class="year">
+					<ul class="year hide">
 						<li class="select-li"><label class="radio-wrap" for="radio_1">2015年<input class="radio-item" id="radio_1" name="item1" type="radio" value=""></label></li>
 						<li class="select-li"><label class="radio-wrap" for="radio_2">2014年<input class="radio-item" id="radio_2" name="item1" type="radio" value=""></label></li>
 						<li class="select-li"><label class="radio-wrap" for="radio_3">2013年<input class="radio-item" id="radio_3" name="item1" type="radio" value=""></label></li>
@@ -202,7 +202,23 @@ h2.page-title {
 						<li class="select-li"><label class="radio-wrap" for="radio_14">2002年<input class="radio-item" id="radio_14" name="item1" type="radio" value=""></label></li>
 						<li class="select-li"><label class="radio-wrap" for="radio_15">2001年<input class="radio-item" id="radio_15" name="item1" type="radio" value=""></label></li>
 					</ul>
-					<ul class="month">
+					<div class="sl-item-wrap"><ul class="year" id="year">
+						<li class="select-li">2015年</li>
+						<li class="select-li">2014年</li>
+						<li class="select-li">2013年</li>
+						<li class="select-li">2012年</li>
+						<li class="select-li">2011年</li>
+						<li class="select-li">2010年</li>
+						<li class="select-li">2009年</li>
+						<li class="select-li">2008年</li>
+						<li class="select-li">2007年</li>
+						<li class="select-li">2006年</li>
+						<li class="select-li">2005年</li>
+						<li class="select-li">2004年</li>
+					</ul>
+					</div>
+					<div class="sl-item-wrap">
+					<ul class="month" id="month">
 						<li class="select-li">1月</li>
 						<li class="select-li">2月</li>
 						<li class="select-li">3月</li>
@@ -217,11 +233,11 @@ h2.page-title {
 						<li class="select-li">12月</li>
 					</ul>
 				</div>
+				</div>
 			</div>
 			
 			<div class="select-btn">
 				<a class="btn-done" href="javascript:void(0)">完成</a>
-				<a class="btn-cancel" href="javascript:void(0)">取消</a>
 			</div>
 		</div>
 	</div>
@@ -238,7 +254,23 @@ function preventDefaultEvent(e) {
             e && e.stopPropagation();
         }
 
-$(".container").on("touchmove",preventDefaultEvent);
+/*$(".container").on("touchmove",preventDefaultEvent);*/
+var year_y = 0;
+var month_y = 0;
+$("#year").on("click",function(){
+	if(year_y > (30 - $("#year").height()) ){
+		year_y -= 30;
+	}
+	$(this).css("transform","translateY(" + year_y + "px)");
+	$(this).css("-webkit-transform","translateY(" + year_y + "px)");
+});
+$("#month").on("click",function(){
+	if(month_y > (30 - $("#month").height()) ){
+		month_y -= 30;
+	}
+	$(this).css("transform","translateY(" + month_y + "px)");
+	$(this).css("-webkit-transform","translateY(" + month_y + "px)");
+});
 </script>
 </body>
 </html>

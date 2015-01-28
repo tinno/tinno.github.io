@@ -3,6 +3,7 @@ body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,tex
 h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:400;}
 input,textarea,select,button,label{vertical-align:middle;}
 img,fieldset{border:none;}
+ul {list-style: none;}
 a{text-decoration:none;}
 a,a:visited { color:#00A7EE;}
 
@@ -98,12 +99,24 @@ body {background-color: #EFEFF4;-webkit-user-select:none;/* 禁止选中文本 *
 /* 安卓选择框弹窗 */
 .layer-select {position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 9999;width: 100%;height: 100%;background-color: rgba(0,0,0,0.7);}
 .layer-select .select-main {width: 92%; padding-bottom: 3px;border-radius: 3px;-webkit-border-radius: 3px;position:absolute;top:50%;left:50%;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);z-index: 10000;overflow: hidden;background-color: #FFFFFF;}
-.style-taobao .select-title {border-bottom:2px solid #33b5e5;}
-.style-taobao .select-title p {font-size: 22px;color: #33b5e5;text-indent:16px;padding: 22px 0;}
+.layer-select .select-title {border-bottom:2px solid #33b5e5;}
+.layer-select .select-title p {font-size: 22px;color: #33b5e5;text-indent:16px;padding: 22px 0;}
+/* 支付宝 */
 .style-taobao .data-list {overflow-y: scroll;height: 364px;}
-.style-taobao .data-list ul {list-style: none;}
 .style-taobao .data-list .select-li {width: 100%; font-size: 18px;text-indent: 15px;border-bottom: 1px solid #dbdbdb;}
 .style-taobao .data-list .select-li:last-child {border-bottom: none;}
 .style-taobao .data-list .select-li .radio-wrap {display: block; padding: 15px 0;}
 .style-taobao .data-list .radio-item {float: right;margin-right: 23px;border-color: #7b7b7b;}
 .style-taobao .select-btn {position: absolute;display: none;}
+/* 微信 */
+.style-wx .data-list {width: 155px;height: 34px;margin: 30px auto ;overflow: hidden;padding-top: 30px;padding-bottom: 30px;position: relative;}
+.style-wx .data-list .sl-item-wrap {float: left; width: 70px;height: 30px;border-top:2px solid #33b5e5;border-bottom:2px solid #33b5e5; text-align: center;position: relative;}
+.style-wx .data-list .sl-item-wrap:nth-child(2){margin-right: 15px;}
+.style-wx .data-list .sl-item-wrap ul {position: absolute;width: 100%;top:0;}
+.style-wx .data-list .sl-item-wrap ul li {height: 30px;line-height: 30px;}
+.style-wx .data-list:before,.style-wx .data-list:after{content: "";display: block;width:100%;height: 30px;background-color: rgba(255,255,255,0.7);position: absolute;z-index: 1;}
+.style-wx .data-list:before {top: 0;}
+.style-wx .data-list:after {bottom: 0;}
+.style-wx .select-cnt:after {content: "";display: block;width: 0;height: 0;clear: both;}
+.style-wx .select-btn {border-top:1px solid #E5E5E5;}
+.style-wx .select-btn .btn-done {display: block;line-height: 42px;text-align: center;}
