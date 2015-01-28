@@ -173,7 +173,12 @@ h2.page-title {
 
 	
 </div>
-	<div id="layer_date" class="layer-select style-taobao beauty">
+	<!-- 
+		安卓版本选择弹窗皮肤:
+		支付宝  | style-taobao
+		微信安卓 | style-wx
+	 -->
+	<div id="layer_date" class="layer-select style-wx beauty">
 		<div class="select-main">
 			<div class="select-title">
 				<p>选择提示日期</p>
@@ -197,7 +202,7 @@ h2.page-title {
 						<li class="select-li"><label class="radio-wrap" for="radio_14">2002年<input class="radio-item" id="radio_14" name="item1" type="radio" value=""></label></li>
 						<li class="select-li"><label class="radio-wrap" for="radio_15">2001年<input class="radio-item" id="radio_15" name="item1" type="radio" value=""></label></li>
 					</ul>
-					<ul class="month hide">
+					<ul class="month">
 						<li class="select-li">1月</li>
 						<li class="select-li">2月</li>
 						<li class="select-li">3月</li>
@@ -221,7 +226,7 @@ h2.page-title {
 		</div>
 	</div>
 
-<script type="text/javascript" src="http://tid.tenpay.com/ui_static/demo/tinno/demo_lib/js/zepto.min.js"></script>
+<script src="http://cdn.bootcss.com/zepto/1.1.4/zepto.min.js"></script>
 <script type="text/javascript">
 $(".warmtips").click(function(){
     $(".warmtips").addClass("slip-up");
