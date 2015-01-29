@@ -243,6 +243,7 @@ h2.page-title {
 	</div>
 
 <script src="http://cdn.bootcss.com/zepto/1.1.4/zepto.min.js"></script>
+<script src="http://code.baidu.com/touch-0.2.14.min.js"></script>
 <script type="text/javascript">
 $(".warmtips").click(function(){
     $(".warmtips").addClass("slip-up");
@@ -257,19 +258,28 @@ function preventDefaultEvent(e) {
 /*$(".container").on("touchmove",preventDefaultEvent);*/
 var year_y = 0;
 var month_y = 0;
-$("#year").on("click",function(){
+/*$("#year").on("click",function(){
 	if(year_y > (30 - $("#year").height()) ){
 		year_y -= 30;
 	}
 	$(this).css("transform","translateY(" + year_y + "px)");
 	$(this).css("-webkit-transform","translateY(" + year_y + "px)");
-});
+});*/
 $("#month").on("click",function(){
 	if(month_y > (30 - $("#month").height()) ){
 		month_y -= 30;
 	}
 	$(this).css("transform","translateY(" + month_y + "px)");
 	$(this).css("-webkit-transform","translateY(" + month_y + "px)");
+});
+
+touch.config({swipe: true});
+touch.on($("#year"), "swipeup",function(){
+	if(year_y > (30 - $("#year").height()) ){
+		year_y -= 30;
+	}
+	$(this).css("transform","translateY(" + year_y + "px)");
+	$(this).css("-webkit-transform","translateY(" + year_y + "px)");
 });
 </script>
 </body>
