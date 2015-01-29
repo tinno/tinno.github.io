@@ -178,7 +178,7 @@ h2.page-title {
 		支付宝  | style-taobao
 		微信 | style-wx
 	 -->
-	<div id="layer_date" class="layer-select style-wx beauty">
+	<div id="layer_date" class="layer-select style-wx beauty hide">
 		<div class="select-main">
 			<div class="select-title">
 				<p>选择提示日期</p>

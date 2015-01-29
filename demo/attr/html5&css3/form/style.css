@@ -52,6 +52,10 @@ body {background-color: #EFEFF4;-webkit-user-select:none;/* 禁止选中文本 *
 .form-cnt .select option {padding: 0;}
 .form-cnt .select option:first-child {display: none;}
 .form-cnt .select.on {color: #333333;}
+.form-ico {position: absolute;top:50%;right: 15px;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
+.form-line-tips {margin:7px 7px 0 0; color: #808080;font-size: 14px;padding-left:15px;}
+.form-line-tips .g-link{margin-left: 15px;}
+.form-line-btn {width:93.75%;margin:40px auto 20px;}
 
 .select-time-wrap .select {float: left;width: auto;}
 .select-time-wrap .split {float: left;padding-left: 10px;padding-right: 10px;}
@@ -71,10 +75,6 @@ body {background-color: #EFEFF4;-webkit-user-select:none;/* 禁止选中文本 *
 .count-select .del:before, .count-select .add:before,.count-select .add:after{content: "";display: inline-block;width: 13px;height: 2px;background-color: #666666;position: absolute;top:50%;left:50%;-webkit-transform: translate(-50%,-50%);transform: translate(-50%,-50%);}
 .count-select .add:after{width: 2px;height: 13px;}
 
-.form-ico {position: absolute;top:50%;right: 15px;transform:translateY(-50%);-webkit-transform:translateY(-50%);}
-.form-line-tips {margin:7px 7px 0 0; color: #808080;font-size: 14px;padding-left:15px;}
-.form-line-tips .g-link{margin-left: 15px;}
-.form-line-btn {width:93.75%;margin:40px auto 20px;}
 
 .beauty .radio-item {border: 1px solid #CCCCCC;width: 20px;height: 20px;border-radius: 10px;vertical-align:-4px;margin-right: 3px;position: relative;}
 .beauty .radio-item:checked {background-color: #5393E8;border-color: #5393E8;}
