@@ -8,6 +8,7 @@ a{text-decoration:none;}
 a,a:visited { color:#00A7EE;}
 
 .hide {display: none;}
+
 /* 表单重置 */
 input,select,textarea{-webkit-appearance:none;appearance:none;border: none;outline: none;/* 去掉PC端选中时外框 */background:transparent;}
 input:disabled,select:disabled{opacity: 1; /* 去掉禁用时文本半透明效果 */}
@@ -18,6 +19,7 @@ textarea {resize:none;}
 ::-webkit-input-placeholder{color:#C4C4C4;}
 
 body {background-color: #EFEFF4;-webkit-user-select:none;/* 禁止选中文本 */-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);/* 设置点击链接时安卓蓝框、苹果遮罩层为全透明 */}
+
 /* 元素 */
 .ico-arrow {display: inline-block;width:8px;height: 13px;background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAaCAYAAAC+aNwHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAVhJREFUeNqcldFKAkEUhnUTLc2yBwi6L8RY6EJRCkRDECqkB8gnU+9CTNNKvBIJIth9gh5DCBJi+0fOwnHa3Zlx4OfI0e/bcTk7G/c8LyaW67qnKAe2bX/EDJZF8DnKHJnic8lEEHcc5wx1gRxRb4k0sJN33R18IZ+sl0XesJOylgBX+kG9ERDr75OkonUPQiQZklwpBSRZkeSVfZ9GJpBUlQImuUVeJMkIkppSwCR3AZIhJHWlQJKMWXuPJNdKAZO0JMkuSRpKgSR5Zu0U8gRJcz2J/rMQtfDjJEofabK2kN9bmiMvButY6u0gOUvj6ocoM6TA2r9IG3+xY2nCdhAceRMBZ2kqL8LgUAHgNA1SMQoOFDC4rIL/CQgeIZc6sFgJBosBGSBVCX4A3FWdiUmC6ybwWkDwozgHTWF/B3mktg3sn4kOzfi3KbzxMNEpfAK4Z/Je+BNgAMrnlgtB8v9tAAAAAElFTkSuQmCC") no-repeat;background-size: 100% 100%;}
 
