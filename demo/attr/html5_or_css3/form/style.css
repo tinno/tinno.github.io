@@ -9,6 +9,9 @@ a,a:visited { color:#00A7EE;}
 
 .hide {display: none;}
 
+/* 表格重置 */
+table {border-collapse: collapse;border-spacing: 0;}
+
 /* 表单重置 */
 input,select,textarea{-webkit-appearance:none;appearance:none;border: none;outline: none;/* 去掉PC端选中时外框 */background:transparent;}
 input:disabled,select:disabled{opacity: 1; /* 去掉禁用时文本半透明效果 */}
@@ -42,13 +45,14 @@ body {background-color: #EFEFF4;-webkit-user-select:none;/* 禁止选中文本 *
 .input-wrap .form-line {border-bottom:1px solid #EEEEEE;position: relative;}
 .input-wrap .form-line:last-child {border-bottom: none;}
 .input-wrap .form-line:after {content:".";display:block;height:0;overflow:hidden;visibility:hidden;clear:both;}
-.form-line .form-label label,.form-line .form-cnt > * {padding: 14px 0;}
-.form-line .form-label {float: left;width: 90px;margin-right: -100px;padding:12px 10px 12px 0;color: #000000;}
+.form-line .form-label label,.form-line .form-cnt > * {display: block; padding: 14px 0;}
+.form-line .form-label {float: left;width: 90px;margin-right: -90px;padding:0 10px 0 0;color: #000000;-webkit-box-sizing:border-box;box-sizing:border-box;}
 .form-line .form-cnt {float: right;width: 100%;display: block;padding:0 0 0 100px;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.form-line .form-cnt .form-cnt-long {width: 100%;padding-right: 23px;-webkit-box-sizing:border-box;box-sizing:border-box;}
 .form-line .form-cnt .text {color: #333;}
 .form-line .form-cnt .text.static-text {color: #007AFF;}
 .form-cnt .textarea {font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;}
-.form-cnt .select{-webkit-appearance:none;appearance:none;border:none;display:block;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background-color: #FFFFFF;color:#333333;border-radius:4px;}
+.form-cnt .select{-webkit-appearance:none;appearance:none;border:none;display:block;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background-color: #FFFFFF;color:#333333;}
 .form-cnt .select::-ms-expand{display:none;}
 .form-cnt .select {color: #C7C7CD;}
 .form-cnt .select option {padding: 0;}
@@ -122,3 +126,12 @@ body {background-color: #EFEFF4;-webkit-user-select:none;/* 禁止选中文本 *
 .style-wx .select-cnt:after {content: "";display: block;width: 0;height: 0;clear: both;}
 .style-wx .select-btn {border-top:1px solid #E5E5E5;}
 .style-wx .select-btn .btn-done {display: block;line-height: 42px;text-align: center;}
+
+/* 表格 */
+.table {width: 100%;}
+.table tr {border-bottom: 1px solid #EEEEEE;}
+.table tr th,.table tr td{float: left;}
+.table tr th {text-align: left;/* min-width: 30px;max-width: 100px; */}
+.table tr th label {display: block; padding: 14px 0;}
+.table tr td {padding-right: 23px;}
+.table tr td > * {padding: 14px 0;width: 100%;}

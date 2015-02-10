@@ -44,6 +44,7 @@ h2.page-title {
 		<li><a href="http://tid.tenpay.com/ui_static/hybrid/www/weixin/hkrace/pay_index.shtml">1.香港賽馬會公眾席入場門票</a></li>
 		<li><a href="http://tid.tenpay.com/ui_static/hkwallet/zh_hk/bank_cards/add_cardinfo.shtml">2.香港WeChat钱包</a></li>
 		<li><a href="http://tid.tenpay.com/ui_static/hybrid/www/mobile_qq/account/charge/buspos/pay_index.shtml">3.公交卡充值, 圈存异常处理和退款细节优化</a></li>
+		<li><a href="http://tid.tenpay.com/ui_static/hybrid/mpay/weixin/num_input.shtml">4.微停车产品优化</a></li>
 	</ul>
 </div>
 <div class="page-area-2">
@@ -57,7 +58,7 @@ h2.page-title {
 						<label for="">文本</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<input class="text static-text" type="text" id="" value="内容(disabled)" disabled>
+						<input class="text form-cnt-long static-text" type="text" id="" value="内容(disabled)" disabled>
 					</div>
 				</div>
 				<div class="form-line">
@@ -65,7 +66,7 @@ h2.page-title {
 						<label for="">文本</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<input class="text static-text" type="text" id="" value="固定文本(readonly)" readonly>
+						<input class="text form-cnt-long static-text" type="text" id="" value="固定文本(readonly)" readonly>
 					</div>
 				</div>
 				<div class="form-line">
@@ -73,7 +74,7 @@ h2.page-title {
 						<label for="">文本</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<input class="text" type="text" id="" placeholder="输入文本信息" value="">
+						<input class="text form-cnt-long" type="text" id="" placeholder="输入文本信息" value="">
 					</div>
 				</div>
 				<div class="form-line">
@@ -81,7 +82,7 @@ h2.page-title {
 						<label for="">数字</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<input class="number" type="number" id="" placeholder="输入数字信息" value="">
+						<input class="number form-cnt-long" type="number" id="" placeholder="输入数字信息" value="">
 					</div>
 				</div>
 				<div class="form-line">
@@ -89,7 +90,7 @@ h2.page-title {
 						<label for="">数字/电话</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<input class="tel" type="tel" id="" placeholder="输入数字/电话信息" value="">
+						<input class="tel form-cnt-long" type="tel" id="" placeholder="输入数字/电话信息" value="">
 					</div>
 				</div>
 				<div class="form-line">
@@ -97,7 +98,7 @@ h2.page-title {
 						<label for="">文本域</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<textarea class="textarea" name="" id=""placeholder="請輸入地址"></textarea>
+						<textarea class="textarea form-cnt-long" name="" id=""placeholder="請輸入地址"></textarea>
 					</div>
 				</div>
 			</div>
@@ -131,7 +132,7 @@ h2.page-title {
 						<label for="">外跳选择</label>
 					</div>
 					<div class="form-cnt"><!--表单控件-->
-						<input class="text" type="text" id="" placeholder="請選擇地區" value="" readonly>
+						<input class="text form-cnt-long" type="text" id="" placeholder="請選擇地區" value="" readonly>
 					</div>
 					<div class="form-ico"><span class="ico-arrow"><!--外選圖標--></span></div>
 				</div>
@@ -140,7 +141,7 @@ h2.page-title {
 						<label for="">选择框</label>
 					</div>
 					<div class="form-cnt"><!--表单控件：安卓系统采用弹窗效果-->
-						<select class="select select-location" name="" id="">
+						<select class="select form-cnt-long select-location" name="" id="">
 				        	<option value="">默认值</option>
 				        	<option value="">值1</option>
 				        </select>
@@ -162,6 +163,28 @@ h2.page-title {
 			</div>
 			<div class="form-line-tips">文本说明文本说明文本说明<a class="g-link" href="#">链接</a></div>
 		</fieldset>
+		<fieldset class="">
+			<legend>选择项</legend>
+			<div class="input-wrap">
+				<table class="table">
+					<tbody>
+						<tr class="">
+							<th class=""><label for="">外跳外跳外跳</label></th>
+							<td class=""><input class="text form-cnt-long" type="text" id="" placeholder="請選擇地區" value=""></td>
+						</tr>
+						<tr class="">
+							<th class=""><label for="">选择框</label></th>
+							<td class="">
+								<select class="select form-cnt-long select-location" name="" id="">
+						        	<option value="">默认值</option>
+						        	<option value="">值1</option>
+						        </select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</fieldset>
 		<div class="form-line-agreement beauty">
 			<label class="checkbox-wrap" for="checkbox_1"><input class="checkbox-item" id="checkbox_1" type="checkbox" name="" value="">同意<a class="g-link" href="#">《用戶協議》</a></label><br>
 		</div>
@@ -178,7 +201,7 @@ h2.page-title {
 		支付宝  | style-taobao
 		微信 | style-wx
 	 -->
-	<div id="layer_date" class="layer-select style-wx beauty">
+	<div id="layer_date" class="layer-select style-wx beauty hide">
 		<div class="select-main">
 			<div class="select-title">
 				<p>选择提示日期</p>
