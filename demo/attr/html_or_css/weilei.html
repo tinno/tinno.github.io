@@ -18,11 +18,26 @@ body {-webkit-tap-highlight-color:rgba(0,0,0,0);}
 .link-go:link {color: #A6CD1B;/* 绿色 */}
 .link-go:visited {color: #DFB41D;/* 黄色 */}
 .link-go:hover {color: #DB1D23;/* 红色 */}
-.link-go:active {color: #C01985;/* 粉色 */}
+.link-go:active {color: #000;/* 粉色background-color: #000;*/}
+/* .wrap:active{background-color: #ccc;}
+.add-color{color: #A6CD1B;} */
 </style>
 <body>
 <div class="wrap">
 	<a class="link-go" href="javascript:void(0)">点我吧</a>
 </div>
+<script src="http://lab.tinno.org/res/js/zepto.min.js"></script>
+<script src="http://lab.tinno.org/res/js/touch-0.2.14.min.js"></script>
+<script type="text/javascript">
+/*touch.on(".link-go","tap",function () {
+	$(".link-go").addClass("add-color");
+});*/
+/*$('.link-go').on('touchstart', 'a', function(){
+	$(this).addClass('add-color')
+}).on('touchend', 'a', function(){
+	$(this).removeClass('add-color');
+});*/
+
+</script>
 </body>
 </html>

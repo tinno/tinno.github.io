@@ -43,8 +43,7 @@ h2.page-title {
 	<ul>
 		<li><a href="http://tid.tenpay.com/ui_static/hybrid/www/weixin/hkrace/pay_index.shtml">1.香港賽馬會公眾席入場門票</a></li>
 		<li><a href="http://tid.tenpay.com/ui_static/hkwallet/zh_hk/bank_cards/add_cardinfo.shtml">2.香港WeChat钱包</a></li>
-		<li><a href="http://tid.tenpay.com/ui_static/hybrid/www/mobile_qq/account/charge/buspos/pay_index.shtml">3.公交卡充值, 圈存异常处理和退款细节优化</a></li>
-		<li><a href="http://tid.tenpay.com/ui_static/hybrid/mpay/weixin/num_input.shtml">4.微停车产品优化</a></li>
+		<li><a href="http://tid.tenpay.com/ui_static/hybrid/mpay/weixin/num_input.shtml">3.微停车产品优化</a></li>
 	</ul>
 </div>
 <div class="page-area-2">
@@ -225,20 +224,21 @@ h2.page-title {
 						<li class="select-li"><label class="radio-wrap" for="radio_14">2002年<input class="radio-item" id="radio_14" name="item1" type="radio" value=""></label></li>
 						<li class="select-li"><label class="radio-wrap" for="radio_15">2001年<input class="radio-item" id="radio_15" name="item1" type="radio" value=""></label></li>
 					</ul>
-					<div class="sl-item-wrap"><ul class="year" id="year">
-						<li class="select-li">2015年</li>
-						<li class="select-li">2014年</li>
-						<li class="select-li">2013年</li>
-						<li class="select-li">2012年</li>
-						<li class="select-li">2011年</li>
-						<li class="select-li">2010年</li>
-						<li class="select-li">2009年</li>
-						<li class="select-li">2008年</li>
-						<li class="select-li">2007年</li>
-						<li class="select-li">2006年</li>
-						<li class="select-li">2005年</li>
-						<li class="select-li">2004年</li>
-					</ul>
+					<div class="sl-item-wrap">
+						<ul class="year" id="year">
+							<li class="select-li">2015年</li>
+							<li class="select-li">2014年</li>
+							<li class="select-li">2013年</li>
+							<li class="select-li">2012年</li>
+							<li class="select-li">2011年</li>
+							<li class="select-li">2010年</li>
+							<li class="select-li">2009年</li>
+							<li class="select-li">2008年</li>
+							<li class="select-li">2007年</li>
+							<li class="select-li">2006年</li>
+							<li class="select-li">2005年</li>
+							<li class="select-li">2004年</li>
+						</ul>
 					</div>
 					<div class="sl-item-wrap">
 					<ul class="month" id="month">
