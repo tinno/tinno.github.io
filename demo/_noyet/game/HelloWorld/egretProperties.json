@@ -1,5 +1,5 @@
 {
-    "document_class": "Main",
+    "document_class": "HitTest",
     "modules": [
         {
             "name": "core"
