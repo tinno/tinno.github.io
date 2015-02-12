@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="msapplication-tap-highlight" content="no" />
+<title>伪类:link,:visited,:hover,:active在移动端支持情况 </title>
+</head>
+<style>
+*{margin: 0;padding: 0;}
+body {-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.wrap {text-align: center;padding-top: 30px;}
+.link-go {text-decoration: none;color: #18A5B8;font-size: 30px;}
+.link-go:link {color: #A6CD1B;/* 绿色 */}
+.link-go:visited {color: #DFB41D;/* 黄色 */}
+.link-go:hover {color: #DB1D23;/* 红色 */}
+.link-go:active {color: #C01985;/* 粉色 */}
+</style>
+<body>
+<div class="wrap">
+	<a class="link-go" href="javascript:void(0)">点我吧</a>
+</div>
+</body>
+</html>
