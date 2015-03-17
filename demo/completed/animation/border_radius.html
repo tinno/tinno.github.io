@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>圆边转动</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	.demo {display: block;width: 316px;height: 316px;position: relative;margin: 20px;}
+	.demo .pic {vertical-align: middle;border-radius: 158px;-webkit-border-radius: 158px;}
+	.demo .cover {display: block; border: 15px solid #CCCCCC;width:100%;height:100%;border-radius: 158px;-webkit-border-radius: 158px;position: absolute;top:0;left: 0;box-sizing:border-box;border-top-color: #999999;/* border-left-color: #999999; */background-color: rgba(0,0,0,0.3); transition:all .5s ease 0;}
+	.demo:hover .cover,.demo.on .cover {transform:rotate(180deg);background-color: rgba(0,0,0,0);}
+	</style>
+	
+</head>
+
+<body>
+<a class="demo">
+	<img class="pic" width="316" height="316" src="img/demo.jpg" alt="">
+	<span class="state">这不是一块蛋糕</span>
+	<span class="cover"></span>
+</a>
+</body>
+</html>
