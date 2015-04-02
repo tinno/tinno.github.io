@@ -1,0 +1,8 @@
+/* 基础重置 */
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,menu{margin:0;padding:0;}
+h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:400;}
+input,textarea,select,button,label{vertical-align:middle;}
+img,fieldset{border:none;}
+ul {list-style: none;}
+a{text-decoration:none;}
+a,a:visited { color:#00A7EE;}

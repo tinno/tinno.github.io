@@ -1,0 +1,8 @@
+/* 表单重置 */
+input,select,textarea{-webkit-appearance:none;appearance:none;border: none;outline: none;/* 去掉PC端选中时外框 */background:transparent;}
+input:disabled,select:disabled{opacity: 1; /* 去掉禁用时文本半透明效果 */}
+input {margin: 0;}
+textarea {resize:none;}
+::-webkit-inner-spin-button {-webkit-appearance: none;}
+::-webkit-clear-button {-webkit-appearance: none;}
+::-webkit-input-placeholder{color:#C4C4C4;}

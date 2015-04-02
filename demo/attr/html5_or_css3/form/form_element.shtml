@@ -8,14 +8,96 @@
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="format-detection" content="email=no" />
 	<title>微信表单组件</title>
-	<style type="text/css">
-	body,html{margin: 0;}
-	</style>
+	<link rel="stylesheet" href=".css">
+	<link rel="stylesheet" href="form.css">
 </head>
 <body class="form-component">
-	<form action="" method="" name="">
+	<form action="" method="">
 		<fieldset>
-			<legend>表单域标题</legend>
+			<legend>表单域——静态字段类型</legend>
+			<div>
+				<span>固定文本</span>
+			</div>
+			<div>
+				<input type="text" disabled="disabled" name="" value="固定文本(disabled)">
+			</div>
+			<div>
+				<input type="text" disabled="readonly" name="" value="固定文本(readonly)">
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>表单域——输入框类型</legend>
+			<div>
+				<input type="text" name="" placeholder="单行文本">
+			</div>
+			<div>
+				<textarea name="" placeholder="多行文本"></textarea>
+			</div>
+			<div>
+				<input type="search" name="" placeholder="搜索文本">
+			</div>
+			<div>
+				<input type="number" name="" placeholder="数字">
+			</div>
+			<div>
+				<input type="tel" name="" placeholder="电话">
+			</div>
+			<div>
+				<input type="email" name="" placeholder="邮件">
+			</div>
+			<div>
+				<input type="password" name="" placeholder="密码">
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>表单域——选择类型</legend>
+			<div>
+				<select name="">
+					<option value="">选项一</option>
+					<option value="" selected="selected">选项二</option>
+					<option value="">选项三</option>
+				</select>
+			</div>
+			<div>
+				<select name="">
+					<option value="">年份一</option>
+					<option value="">年份二</option>
+					<option value="">年份三</option>
+				</select>
+				<span>/</span>
+				<select name="">
+					<option value="">月份一</option>
+					<option value="">月份二</option>
+					<option value="">月份三</option>
+				</select>
+			</div>
+			<div>
+				<label for="checkbox_1">复选框1</label>
+				<input id="checkbox_1" type="checkbox" name="checkbox_name" value="">
+				<label for="checkbox_2">复选框2</label>
+				<input id="checkbox_2" type="checkbox" name="checkbox_name" value="" checked="checked">
+				<label for="checkbox_3">复选框3</label>
+				<input id="checkbox_3" type="checkbox" name="checkbox_name" value="" disabled="disabled">
+			</div>
+			<div>
+				<label for="radio_1">单选1</label>
+				<input id="radio_1" type="radio" name="radio_name" value="">
+				<label for="radio_2">单选2</label>
+				<input id="radio_2" type="radio" name="radio_name" value="" checked="checked">
+				<label for="radio_3">单选3</label>
+				<input id="radio_3" type="radio" name="radio_name" value="" disabled="disabled">
+			</div>
+			<div>
+				<div class="">
+					<span>上一个</span>
+					<input type="number" name="" placeholder="数字">
+					<span>下一个</span>
+				</div>
+			</div>
+			<div>
+				<a href="#">外跳列表页</a>
+				<input type="hidden" name="" value="">
+			</div>
 		</fieldset>
 	</form>
 </body>
