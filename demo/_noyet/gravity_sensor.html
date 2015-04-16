@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="format-detection" content="email=no" />
-<title></title>
+<title>重力感应</title>
 <style type="text/css">
 *{margin: 0;padding: 0;}
 .hide {display: none !important;}
@@ -34,10 +34,20 @@
 	</div>
 	<div class="main">
 		<div class="box"><p class="box-font" id="object-font">重力感应</p></div>
-		<div class="log"></div>
+		<div class="opt-line">
+			<p>灵敏度设置：</p>
+			<button class="btn-lm" type="button" data-type="10">低档</button>
+			<button class="btn-lm" type="button" data-type="5">中档</button>
+			<button class="btn-lm" type="button" data-type="2">高档</button>
+			<button class="btn-lm" type="button" data-type="1">原始档</button>
+		</div>
 	</div>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
-var start_alpha = 0;
+var param = 1;
+$(".opt-line").on("click",".btn-lm",function(){
+	param = $(this).attr("data-type");
+});
 if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
     //绑定重力感应事件
     window.addEventListener('deviceorientation', function(event) {
@@ -45,15 +55,14 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
         //alpha角度，三d坐标系z轴旋转，取值[0, 360)
         //document.getElementById('alpha').innerHTML = Math.round(event.alpha);
         var temp = 0 ;
-        if(event.alpha > 180) {
-        	temp = event.alpha -360;
-        }
-        temp = Math.round(temp/10);
+        temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
+        temp = Math.round(temp/param);
+        //console.log(event.alpha);
         
+        console.log(param);
         
 		$("#object-font").css("transform","rotate(" + temp +"deg)");
         $("#object-font").css("-webkit-transform","rotate(" + temp +"deg)");
-        
 
         //beta角度，三D坐标系X轴旋转，取值[-180, 180)
         //document.getElementById('beta').innerHTML = Math.round(event.beta);
@@ -67,6 +76,5 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
 //阻止iso的事件冒泡
 //$(document).on("touchmove",function(e){e.preventDefault();});
 </script>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </body>
 </html>
