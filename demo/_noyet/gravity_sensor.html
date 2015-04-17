@@ -55,7 +55,7 @@ html{overflow: hidden;}
 		</div>
 	</div>
 	<div class="main">
-		
+		<p class="log-text"></p>
 	</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -73,8 +73,6 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
         var temp = 0 ;
         temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
         temp = Math.round(temp/param);
-        
-        console.log(param);
         
         $("#object-font").css("-webkit-transform","rotate(" + temp +"deg)");
 
@@ -102,7 +100,7 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
 if(window.DeviceMotionEvent){
 	window.addEventListener("devicemotion", function(event){
 		var temp = event.rotationRate;
-		console.log(temp.alpha +","+ temp.beta +","+ temp.gamma);
+		$(".log-text").text(Math.round(temp.alpha) +","+ Math.round(temp.beta) +","+ Math.round(temp.gamma));
 	}, true);
 }
 //阻止iso的事件冒泡
