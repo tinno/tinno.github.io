@@ -56,16 +56,26 @@ html{overflow: hidden;}
 	</div>
 	<div class="main">
 		<h2>摇一摇</h2>
-		<p class="log-text">请使劲摇</p>
+		<div class="opt-line">
+			<p>灵敏度设置：</p>
+			<button class="btn-lm-c" type="button" data-type="100">低敏档</button>
+			<button class="btn-lm-c" type="button" data-type="50">中敏档</button>
+			<button class="btn-lm-c" type="button" data-type="20">较高敏档</button>
+			<button class="btn-lm-c" type="button" data-type="10">高敏档</button>
+		</div>
+		<p class="log-text">数据打印</p>
 	</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
-var param = 1,param = 1,param = 1;
+var param = 1,param = 1,maxRate = 1;
 $(".opt-line").on("click",".btn-lm-a",function(){
 	param = $(this).attr("data-type");
 });
 $(".opt-line").on("click",".btn-lm-b",function(){
 	param = $(this).attr("data-type");
+});
+$(".opt-line").on("click",".btn-lm-c",function(){
+	maxRate = $(this).attr("data-type");
 });
 if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
     //绑定重力感应事件
@@ -100,9 +110,9 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
 }
 if(window.DeviceMotionEvent){
 	window.addEventListener("devicemotion", function(event){
-		var temp = event.rotationRate;
+		var temp = event.rotationRate ;
 		//$(".log-text").text(Math.round(temp.alpha) +","+ Math.round(temp.beta) +","+ Math.round(temp.gamma));
-		if(Math.round(temp.alpha)>10 || Math.round(temp.beta)>10 ||Math.round(temp.gamma)>10){
+		if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate ||Math.round(temp.gamma)>maxRate){
 			alert("摇感强烈！");
 			$(".log-text").text(temp.alpha + "," + temp.beta + "," + temp.gamma + "。");
 		}
