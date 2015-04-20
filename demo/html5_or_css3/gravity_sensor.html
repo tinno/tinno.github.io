@@ -113,7 +113,7 @@ if(window.DeviceMotionEvent){
 		var temp = event.rotationRate ;
 		//$(".log-text").text(Math.round(temp.alpha) +","+ Math.round(temp.beta) +","+ Math.round(temp.gamma));
 		if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate ||Math.round(temp.gamma)>maxRate){
-			$(".log-text").text(Math.round(temp.alpha) + "," + Math.round(temp.alpha) + "," + Math.round(temp.alpha) + "。");
+			$(".log-text").text(Math.round(temp.alpha) + "," + Math.round(temp.beta) + "," + Math.round(temp.gamma) + "。");
 		}
 		
 	}, true);
