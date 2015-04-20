@@ -58,10 +58,10 @@ html{overflow: hidden;}
 		<h2>摇一摇</h2>
 		<div class="opt-line">
 			<p>灵敏度设置：</p>
-			<button class="btn-lm-c" type="button" data-type="100">低敏档</button>
-			<button class="btn-lm-c" type="button" data-type="50">中敏档</button>
-			<button class="btn-lm-c" type="button" data-type="20">较高敏档</button>
-			<button class="btn-lm-c" type="button" data-type="10">高敏档</button>
+			<button class="btn-lm-c" type="button" data-type="300">低敏档</button>
+			<button class="btn-lm-c" type="button" data-type="200">中敏档</button>
+			<button class="btn-lm-c" type="button" data-type="100">较高敏档</button>
+			<button class="btn-lm-c" type="button" data-type="50">高敏档</button>
 		</div>
 		<p class="log-text">数据打印</p>
 	</div>
@@ -113,9 +113,9 @@ if(window.DeviceMotionEvent){
 		var temp = event.rotationRate ;
 		//$(".log-text").text(Math.round(temp.alpha) +","+ Math.round(temp.beta) +","+ Math.round(temp.gamma));
 		if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate ||Math.round(temp.gamma)>maxRate){
-			alert("摇感强烈！");
 			$(".log-text").text(temp.alpha + "," + temp.beta + "," + temp.gamma + "。");
 		}
+		
 	}, true);
 }
 //阻止iso的事件冒泡
