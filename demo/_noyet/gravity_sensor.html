@@ -100,7 +100,10 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
 if(window.DeviceMotionEvent){
 	window.addEventListener("devicemotion", function(event){
 		var temp = event.rotationRate;
-		$(".log-text").text(Math.round(temp.alpha) +","+ Math.round(temp.beta) +","+ Math.round(temp.gamma));
+		//$(".log-text").text(Math.round(temp.alpha) +","+ Math.round(temp.beta) +","+ Math.round(temp.gamma));
+		if(Math.round(temp.alpha)>10 || Math.round(temp.beta)>10 ||Math.round(temp.gamma)>10){
+			alert("摇感强烈！");
+		}
 	}, true);
 }
 //阻止iso的事件冒泡
