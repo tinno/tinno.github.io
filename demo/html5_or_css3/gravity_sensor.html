@@ -87,11 +87,11 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
         
         $("#object-font").css("-webkit-transform","rotate(" + temp +"deg)");
 
-        //alpha角度，三d坐标系z轴旋转，取值[0, 360)，前后
+        //alpha角度，三d坐标系z轴旋转，取值[0, 360)
         //document.getElementById('alpha').innerHTML = Math.round(event.alpha);
-        //beta角度，三D坐标系X轴旋转，取值[-180, 180)，左右
+        //beta角度，三D坐标系X轴旋转，取值[-180, 180)
         //document.getElementById('beta').innerHTML = Math.round(event.beta);
-        //gamma角度，三D坐标系Y轴旋转，取值[-90, 90)，平衡于屏幕旋转
+        //gamma角度，三D坐标系Y轴旋转，取值[-90, 90)
         //document.getElementById('gamma').innerHTML = Math.round(event.gamma);
        //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
         //document.getElementById('absolute').innerHTML = event.absolute;
@@ -110,6 +110,9 @@ var num = 1;
 if(window.DeviceMotionEvent){
 	window.addEventListener("devicemotion", function(event){
 		var temp = event.rotationRate ;
+		//alpha：前后；
+		//beta：左右；
+		//gamma：平衡于屏幕旋转；
 		if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate || Math.round(temp.gamma)>maxRate){
 			$(".log-text").text("摇的第" + num + "次：alpha(" + Math.round(temp.alpha) + ");beta(" + Math.round(temp.beta) + ");gamma(" + Math.round(temp.gamma) + ")");
 			num ++;
