@@ -1,0 +1,96 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <meta content="" name="pgv">
+    <!-- 对比到主干时，href路径要替换成绝对路径，域名为https://mqq-imgcache.gtimg.cn -->
+    <link rel="stylesheet" type="text/css" href="/ui_static/res/weixin/creditcard/css/creditcard.css?v=20150409">
+    <title>信用卡还款</title>
+    <style>
+	body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td{margin:0;padding:0;}
+	h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+	ul,dl,ol{list-style:none;}
+	img,fieldset,input[type="submit"]{border:0 none;}
+	img{display:inline-block;overflow:hidden;vertical-align:top;}
+	em{font-style:normal;}
+	strong{font-weight:normal;}
+	table{border-collapse:collapse;border-spacing:0;}
+	button,input[type="button"]{cursor:pointer;border:0 none;}
+	textarea{word-wrap:break-word;resize:none;}  /* word-wrap for opera, resize for webkit */
+	menu{margin:0;padding:0;}
+	body{-webkit-user-select:none;-webkit-text-size-adjust:none;font-family:Helvetica;}
+	input[type="number"]{-webkit-user-select:text;}
+	a,button,input,img{-webkit-touch-callout:none;}/* 1.ios 长按时不触发系统的菜单 2.禁止长按时下载图片 */
+	input,select,textarea{outline:none;}
+	/* 去除android4.0以下 a/button/input标签被点击时产生的边框 因为边框引起了不少bug */
+	a,button,input{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+	/* Android4.0下不识别选择器-webkit-transform-3d 使用它可做Android4.0下版本兼容 */
+	@media all and (-webkit-transform-3d){
+	/* android4.0+ ios4+ 恢复按钮被点击时产生的效果 */
+	a,button,input{-webkit-tap-highlight-color:rgba(130,130,130,.52)};
+	} 
+	html,body{height:100%;}
+	a{text-decoration:none;color:#0099CC}
+
+	body{background-color:#ECECEC;-webkit-text-size-adjust:100%!important;}
+
+	/* 按钮[[ */
+	.btn-green,.btn-white{display:block;height:42px;line-height:42px;text-align:center;border-radius:5px;font-size:18px;}
+	.btn-green{color:rgba(255,255,255,1);background-color:#0DB310;height:42px;}
+	.btn-green.btn-on{color:rgba(255,255,255,0.6);-webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);background-image:-webkit-gradient(linear,left bottom, left top, from(#1E864F), to(#22A855));}
+
+	.btn-white{color:#666666;background-color: #FBFBFB;border: solid 1px #CACACA;background-image:-webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#F2F2F2));}
+	.btn-white.btn-on{background-color: #000000;background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(242,242,242,.9)), to(rgba(255,255,255,.9)));}
+
+	.btn-disable{border:1px solid #B0B0B0!important;color:#FFFFFF!important;background-color:#C5C5C5!important;-webkit-box-shadow:none!important;box-shadow:none!important;background-image:none!important;-webkit-tap-highlight-color:rgba(0,0,0,0);}/* 在任何按钮上添加class:btn-disable可使其变灰 */
+
+	/*
+	.show-red-pop-btn .pop-operate-multi .pop-btn:last-child{border-left:1px solid #316598;background-image: -webkit-gradient(linear, left top, left bottom, from(#316598), to(#35679A));color:#FFFFFF;border-top: 1px solid #316598;-webkit-box-shadow:0 1px 0 0 #DD4B39 inset;box-shadow:0 1px 0 0 #316598 inset;}
+	*/
+	.show-red-pop-btn .pop-operate-multi .pop-btn:last-child{color: #316598;}
+	.form-btn{margin:20px 10px 10px;}
+	/* 按钮]] */
+
+	/* 公用底部[[ */
+	.btm-txt{color:#999999;text-align: center;font-size: 11px;}
+	.btm-txt a{color: #317bc7;}
+	@media (min-device-height:667px) and (-webkit-min-device-pixel-ratio:2){
+	.btm-txt{font-size:12px;}v
+	.pay-btm-txt{font-size:11px;}
+	}
+	/* 公用底部[[ */
+
+	/* newguide.shtml 新手引导页 [[ */ 
+	.newguide {padding-top: 18%;}
+	.newguide .pic {margin: 0px 0 18px;text-align: center;}
+	.newguide .tips-1 {font-size: 17px;text-align: center;}
+	.newguide .tips-2 {margin:17px 0 26px;font-size: 15px;text-align: center;color: #666666;}
+	@media screen and (max-height: 480px) {
+	  .newguide {padding-top: 9%;}
+	}
+	/* newguide.shtml 新手引导页 ]] */ 
+    </style>
+</head>
+
+<body>
+    <div class="creditcard newguide">
+        <div class="main">
+            <div class="pic">
+                <img width="200" src="img/newguide_pic.png" alt="新手引导图片">
+            </div>
+            <p class="tips-1">2000万小伙伴都在使用微信还款！</p>
+            <p class="tips-2">每月提醒 · 零手续费</p>
+            <div class="form-btn">
+                <a href="javascript:" class="btn-green">马上体验</a>
+            </div>
+            <div class="btm-txt">本服务完全免费，由腾讯财付通提供安全技术支持</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
