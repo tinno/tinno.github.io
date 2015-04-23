@@ -26,16 +26,16 @@ if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
     //绑定重力感应事件
     window.addEventListener('deviceorientation', function(event) {
     	
-        var temp = 0 ;
-        temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
-        temp = Math.round(temp/param);
+      var temp = 0 ;
+      temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
+      temp = Math.round(temp/param);
         
-        $("#object-font").css("-webkit-transform","rotate(" + temp +"deg)");
-       var tempZ = 0,tempX = 0,tempY = 0;
-       tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
-       tempZ = Math.round(tempZ/param);
-       tempX = Math.round(event.beta/param);
-       tempY = Math.round(event.gamma/param);
+      $("#object-font").css("-webkit-transform","rotate(" + temp +"deg)");
+      var tempZ = 0,tempX = 0,tempY = 0;
+      tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
+      tempZ = Math.round(tempZ/param);
+      tempX = Math.round(event.beta/param);
+      tempY = Math.round(event.gamma/param);
     }, false);
 }
 </script>
