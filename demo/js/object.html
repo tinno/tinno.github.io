@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" /> 
+<title>JS 对象封装</title>
+<style>
+html,body{margin:0;padding:0;}
+</style>
+</head>
+<body>
+<script>
+//原型对象
+//对象：移动端传感器
+function PhoneSensor (){
+};
+PhoneSensor.prototype = {
+	constructor:PhoneSensor,
+	name:"移动端传感器"
+}
+var a = new PhoneSensor ();
+console.log(a.name);
+</script>
+</body>
+</html>
