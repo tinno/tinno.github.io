@@ -102,13 +102,14 @@ function Gravity(cfg){
 	this.gravity = function(){if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
     //绑定重力感应事件
     	var _this = this;
+	      var distance = $(".mmpic img").width() - screen.width;
 	    window.addEventListener('deviceorientation', function(event) { 
-	        var temp = 0 ;
+	        /*var temp = 0 ;
 	        temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
 	        temp = Math.round(temp/param);
 	
 
-	        $(_this.nodeID).css("-webkit-transform","rotate(" + temp +"deg)");
+	        $(_this.nodeID).css("-webkit-transform","rotate(" + temp +"deg)");*/
 
 	        //alpha角度，三d坐标系z轴旋转，取值[0, 360)
 	        //document.getElementById('alpha').innerHTML = Math.round(event.alpha);
@@ -120,23 +121,22 @@ function Gravity(cfg){
 	        //document.getElementById('absolute').innerHTML = event.absolute;
 	       //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
 
-	       var tempZ = 0,tempX = 0,tempY = 0;
+	       /*var tempZ = 0,tempX = 0,tempY = 0;
 	       tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
 	       tempZ = Math.round(tempZ/param);
 	       tempX = Math.round(event.beta/param);
 	       tempY = Math.round(event.gamma/param);
 
-	       $("#object-font-3d").css("-webkit-transform","rotateX("+ tempX +"deg) rotateY("+ tempY +"deg) rotateZ("+ tempZ +"deg)");
+	       $("#object-font-3d").css("-webkit-transform","rotateX("+ tempX +"deg) rotateY("+ tempY +"deg) rotateZ("+ tempZ +"deg)");*/
 
 	       //图片重力感应
 	       //设备物理宽高：screen.width，screen.height
-	       var distance = $(".mmpic img").width() - screen.width;
 	       var wy = 0;
 	       if (event.gamma > -10 && event.gamma < 10){
 	       		wy = (event.gamma + 10) / 20 * distance;
 	       		$("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
 	       }
-	       $("#location").text(Math.round(event.gamma));
+	       //$("#location").text(Math.round(event.gamma));
 	    }, false);
 	}
 }
@@ -145,7 +145,7 @@ var a = new Gravity();
 a.gravity();
 
 var num = 1;
-if(window.DeviceMotionEvent){
+/*if(window.DeviceMotionEvent){
 	window.addEventListener("devicemotion", function(event){
 		var temp = event.rotationRate ;
 		//alpha：前后；
@@ -160,7 +160,7 @@ if(window.DeviceMotionEvent){
 }
 else{
 	//不支持，点击
-}
+}*/
 //阻止iso的事件冒泡
 //$(document).on("touchmove",function(e){e.preventDefault();});
 </script>
