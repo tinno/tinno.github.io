@@ -41,12 +41,6 @@ html,body {height: 100%;overflow: hidden;}
 </head>
 <body class="gravity-sensor">
 	<div class="main">
-		<p>alpha:<span id="alpha"></span></p>
-		<p>beta:<span id="beta"></span></p>
-		<p>gamma:<span id="gamma"></span></p>
-		<p>absolute:<span id="absolute"></span></p>
-	</div>
-	<div class="main hide">
 		<div class="box"><p class="box-font" id="object-font">2D重感</p></div>
 		<div class="opt-line hide">
 			<p>灵敏度设置：</p>
@@ -56,7 +50,7 @@ html,body {height: 100%;overflow: hidden;}
 			<button class="btn-lm-a" type="button" data-type="1">原始档</button>
 		</div>
 	</div>
-	<div class="main hide">
+	<div class="main">
 		<div class="box"><p class="box-font" id="object-font-3d">3D重感</p></div>
 		<div class="opt-line">
 			<p>灵敏度设置：</p>
@@ -66,32 +60,14 @@ html,body {height: 100%;overflow: hidden;}
 			<button class="btn-lm-b" type="button" data-type="1">原始档</button>
 		</div>
 	</div>
-	<div class="main mmpic-wrap hide">
-		<div id="mmpic" class="mmpic"style="-webkit-transform: translateX(-50%);"><img height="100%" src="img/mmpic.jpg" alt=""></div>
-		<p>←→</p>
-	</div>
-	<div class="main hide">
-		<h2>摇一摇</h2>
-		<div class="opt-line">
-			<p>灵敏度设置：</p>
-			<button class="btn-lm-c" type="button" data-type="1000">低敏档</button>
-			<button class="btn-lm-c" type="button" data-type="800">中敏档</button>
-			<button class="btn-lm-c" type="button" data-type="600">较高敏档</button>
-			<button class="btn-lm-c" type="button" data-type="500">高敏档</button>
-		</div>
-		<p class="log-text">数据打印</p>
-	</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
-var param = 1,param = 1,maxRate = 500;
+var param = 1,param = 1;
 $(".opt-line").on("click",".btn-lm-a",function(){
 	param = $(this).attr("data-type");
 });
 $(".opt-line").on("click",".btn-lm-b",function(){
 	param = $(this).attr("data-type");
-});
-$(".opt-line").on("click",".btn-lm-c",function(){
-	maxRate = $(this).attr("data-type");
 });
 
 function Gravity(cfg){
@@ -104,39 +80,30 @@ function Gravity(cfg){
     	var _this = this;
 	      var distance = $(".mmpic img").width() - screen.width;
 	    window.addEventListener('deviceorientation', function(event) { 
-	        /*var temp = 0 ;
+	        var temp = 0 ;
 	        temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
 	        temp = Math.round(temp/param);
 	
 
-	        $(_this.nodeID).css("-webkit-transform","rotate(" + temp +"deg)");*/
+	        $(_this.nodeID).css("-webkit-transform","rotate(" + temp +"deg)");
 
 	        //alpha角度，三d坐标系z轴旋转，取值[0, 360)
-	        document.getElementById('alpha').innerHTML = Math.round(event.alpha);
+	        //document.getElementById('alpha').innerHTML = Math.round(event.alpha);
 	        //beta角度，三D坐标系X轴旋转，取值[-180, 180) || [-90, 90)
-	        document.getElementById('beta').innerHTML = Math.round(event.beta);
-	        //gamma角度，三D坐标系Y轴旋转，取值[-90, 90) ||  [-180, 180)
-	        document.getElementById('gamma').innerHTML = Math.round(event.gamma);
+	        //document.getElementById('beta').innerHTML = Math.round(event.beta);
+	        //gamma角度，三D坐标系Y轴旋转，取值[-90, 90) || [-180, 180) || [-360, 360)
+	        //document.getElementById('gamma').innerHTML = Math.round(event.gamma);
 	       //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
 	        //document.getElementById('absolute').innerHTML = event.absolute;
 	       //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
 
-	       /*var tempZ = 0,tempX = 0,tempY = 0;
+	       var tempZ = 0,tempX = 0,tempY = 0;
 	       tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
 	       tempZ = Math.round(tempZ/param);
 	       tempX = Math.round(event.beta/param);
 	       tempY = Math.round(event.gamma/param);
 
-	       $("#object-font-3d").css("-webkit-transform","rotateX("+ tempX +"deg) rotateY("+ tempY +"deg) rotateZ("+ tempZ +"deg)");*/
-
-	       //图片重力感应
-	       //设备物理宽高：screen.width，screen.height
-	       var wy = 0;
-	       if (event.gamma > -10 && event.gamma < 10){
-	       		wy = (event.gamma + 10) / 20 * distance;
-	       		$("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
-	       }
-	       //$("#location").text(Math.round(event.gamma));
+	       $("#object-font-3d").css("-webkit-transform","rotateX("+ tempX +"deg) rotateY("+ tempY +"deg) rotateZ("+ tempZ +"deg)");
 	    }, false);
 	}
 }
@@ -144,25 +111,9 @@ function Gravity(cfg){
 var a = new Gravity();
 a.gravity();
 
-var num = 1;
-/*if(window.DeviceMotionEvent){
-	window.addEventListener("devicemotion", function(event){
-		var temp = event.rotationRate ;
-		//alpha：前后；
-		//beta：左右；
-		//gamma：平衡于屏幕旋转；
-		if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate || Math.round(temp.gamma)>maxRate){
-			$(".log-text").text("摇的第" + num + "次：alpha(" + Math.round(temp.alpha) + ");beta(" + Math.round(temp.beta) + ");gamma(" + Math.round(temp.gamma) + ")");
-			num ++;
-		}
-		
-	}, true);
-}
-else{
-	//不支持，点击
-}*/
+
 //阻止iso的事件冒泡
-//$(document).on("touchmove",function(e){e.preventDefault();});
+$(document).on("touchmove",function(e){e.preventDefault();});
 </script>
 </body>
 </html>

@@ -7,35 +7,40 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="format-detection" content="email=no" />
-<title>重力感应</title>
+<title>重力感应（礼花）</title>
 <style type="text/css">
 * {margin:0;padding: 0;}
 html,body {height: 100%;}
 .gravity-sensor {background-color: #faf5d5;position: relative;}
-.lihua {width: 170px;height: 150px;background: url("img/gravity_1.png") no-repeat center center;background-size: 100%;position: absolute;top:50%;left: 50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}
-.lihua-title {width: 100%;text-align: center;color: #333;position: absolute;top:50%;left: 50%;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}
+.lihua {width: 170px;height: 150px;background: url("img/gravity_1.png") no-repeat center center;background-size: 100%;position: absolute;top:50%;left: 50%;margin:-75px 0 0 -85px;}
+.lihua-title {width: 170px;height:38px;text-align: center;color: #333;position: absolute;top:50%;left: 50%;margin: -19px 0 0 -85px;}
 </style>
 </head>
 <body class="gravity-sensor">
-	<div class="lihua"></div>
+	<div id="lihua" class="lihua" style=""></div>
 	<h1 class="lihua-title">礼花重力感</h1>
+  <p>礼花位移：x <span id="transX"></span>，y <span id="transY"></span></p>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 var param = 2;
+var transX = 0,transY = 0;
+var checkAngle = 45,transR = 20;
 if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
     //绑定重力感应事件
     window.addEventListener('deviceorientation', function(event) {
-    	
-      var temp = 0 ;
-      temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
-      temp = Math.round(temp/param);
-        
-      $("#object-font").css("-webkit-transform","rotate(" + temp +"deg)");
-      var tempZ = 0,tempX = 0,tempY = 0;
-      tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
-      tempZ = Math.round(tempZ/param);
-      tempX = Math.round(event.beta/param);
-      tempY = Math.round(event.gamma/param);
+      var gamma = event.gamma,beta = event.beta;
+      if(gamma > -checkAngle && gamma < checkAngle){
+        transX = (gamma + checkAngle) * transR / checkAngle - transR;
+      } 
+      if(beta > -checkAngle && beta < checkAngle){
+        transY = (beta + checkAngle) * transR / checkAngle - transR;
+      }
+      
+      console.log(transX + "," + transY); 
+      $("#transX").text(Math.round(transX));
+      $("#transY").text(Math.round(transY));
+      $("#lihua").css("-webkit-transform","translate3d(" + Math.round(-transX) +"px," + Math.round(-transY) + "px,0)");
+      $(".lihua-title").css("-webkit-transform","translate3d(" + Math.round(-transX/5) +"px," + Math.round(-transY/5) + "px,0)");
     }, false);
 }
 </script>
