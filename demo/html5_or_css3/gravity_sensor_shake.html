@@ -26,6 +26,7 @@ html,body {height: 100%;overflow: hidden;}
 			<button class="btn-lm-c" type="button" data-type="500">高敏档</button>
 		</div>
 		<p class="log-text">数据打印</p>
+		<p>获取频率<span id="getCount"></span></p>
 	</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -43,6 +44,7 @@ var num = 1;
 if(window.DeviceMotionEvent){
 	window.addEventListener("devicemotion", function(event){
 		var temp = event.rotationRate ;
+		$("#getCount").text(event.interval);
 		//alpha：前后；
 		//beta：左右；
 		//gamma：平衡于屏幕旋转；
