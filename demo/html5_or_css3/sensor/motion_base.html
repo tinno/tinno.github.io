@@ -31,33 +31,30 @@ html,body {height: 100%;overflow: hidden;}
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 var param = 1,param = 1,maxRate = 500;
-$(".opt-line").on("click",".btn-lm-a",function(){
-	param = $(this).attr("data-type");
-});
-$(".opt-line").on("click",".btn-lm-b",function(){
-	param = $(this).attr("data-type");
-});
 $(".opt-line").on("click",".btn-lm-c",function(){
 	maxRate = $(this).attr("data-type");
 });
 var num = 1;
+
+function shake (event){
+	var temp = event.rotationRate ;
+	$("#getCount").text(event.interval);
+	//alpha：前后；
+	//beta：左右；
+	//gamma：平衡于屏幕旋转；
+	if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate || Math.round(temp.gamma)>maxRate){
+		$(".log-text").text("摇的第" + num + "次：alpha(" + Math.round(temp.alpha) + ");beta(" + Math.round(temp.beta) + ");gamma(" + Math.round(temp.gamma) + ")");
+		num ++;
+		alert("你获得一只非洲迷你刺猬");
+		window.removeEventListener("devicemotion", shake);
+
+	}
+	else{
+		//$(".log-text").text("你摇不到我！")
+	}
+}
 if(window.DeviceMotionEvent){
-	window.addEventListener("devicemotion", function(event){
-		var temp = event.rotationRate ;
-		$("#getCount").text(event.interval);
-		//alpha：前后；
-		//beta：左右；
-		//gamma：平衡于屏幕旋转；
-		if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate || Math.round(temp.gamma)>maxRate){
-			$(".log-text").text("摇的第" + num + "次：alpha(" + Math.round(temp.alpha) + ");beta(" + Math.round(temp.beta) + ");gamma(" + Math.round(temp.gamma) + ")");
-			num ++;
-			alert("你获得一只非洲迷你刺猬");
-		}
-		else{
-			//$(".log-text").text("你摇不到我！")
-		}
-		
-	}, true);
+	window.addEventListener("devicemotion", shake);
 }
 else{
 	//不支持，点击
