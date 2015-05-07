@@ -31,8 +31,12 @@ html,body {height: 100%;overflow: hidden;}
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 var param = 1,param = 1,maxRate = 500;
+var openFlag = true;
 $(".opt-line").on("click",".btn-lm-c",function(){
 	maxRate = $(this).attr("data-type");
+	if(!openFlag){
+		bindMotion();
+	}
 });
 var num = 1;
 
@@ -53,12 +57,16 @@ function shake (event){
 		//$(".log-text").text("你摇不到我！")
 	}
 }
-if(window.DeviceMotionEvent){
-	window.addEventListener("devicemotion", shake);
+
+function bindMotion (){
+	if(window.DeviceMotionEvent){
+		window.addEventListener("devicemotion", shake);
+	}
+	else{
+		//不支持，点击
+	}
 }
-else{
-	//不支持，点击
-}
+bindMotion();
 //阻止iso的事件冒泡
 //$(document).on("touchmove",function(e){e.preventDefault();});
 </script>
