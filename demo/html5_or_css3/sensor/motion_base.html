@@ -60,7 +60,7 @@ function shake (event){
 
 function bindMotion (){
 	if(window.DeviceMotionEvent){
-		window.addEventListener("devicemotion", shake);
+		window.addEventListener("devicemotion", shake,true);
 	}
 	else{
 		//不支持，点击
