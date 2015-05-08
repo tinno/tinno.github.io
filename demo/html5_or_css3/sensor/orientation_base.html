@@ -41,9 +41,11 @@ html,body {height: 100%;overflow: hidden;}
 </head>
 <body class="gravity-sensor">
 	<div class="main">
-		<p>alpha:<span id="alpha"></span></p>
-		<p>beta:<span id="beta"></span></p>
-		<p>gamma:<span id="gamma"></span></p>
+		<p>左右平转（alpha）:<span id="alpha"></span></p>
+		<p>前后翻转（beta）:<span id="beta"></span></p>
+		<p>左右扭转（gamma）:<span id="gamma"></span></p>
+		<p>指北针指向:<span id="webkitCompassHeading"></span></p>
+		<p>指北针精度:<span id="webkitCompassAccuracy"></span></p>
 		<p>absolute:<span id="absolute"></span></p>
 	</div>
 	<div class="main hide">
@@ -117,6 +119,10 @@ function Gravity(cfg){
 	        document.getElementById('beta').innerHTML = Math.round(event.beta);
 	        //gamma角度，三D坐标系Y轴旋转，取值[-90, 90) ||  [-180, 180)
 	        document.getElementById('gamma').innerHTML = Math.round(event.gamma);
+
+	        document.getElementById('webkitCompassHeading').innerHTML = Math.round(event.webkitCompassHeading);
+
+	        document.getElementById('webkitCompassAccuracy').innerHTML = Math.round(event.webkitCompassAccuracy);
 	       //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
 	        //document.getElementById('absolute').innerHTML = event.absolute;
 	       //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
@@ -163,6 +169,18 @@ else{
 }
 //阻止iso的事件冒泡
 //$(document).on("touchmove",function(e){e.preventDefault();});
+
+if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
+    //绑定重力感应事件
+    window.addEventListener('deviceorientation', function(event) {
+      var device_x = event.beta,device_y = event.gamma,device_z = event.alpha;
+      //do something
+
+    }, false);
+}
+else {
+  //不支持重力感应事件的效果
+}
 </script>
 </body>
 </html>
