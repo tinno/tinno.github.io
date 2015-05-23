@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>走路人</title>
+</head>
+<style type="text/css">
+.person {display:block;width: 53px;height: 156px;background: url(img/person.jpg) no-repeat 0 0;-webkit-animation: person2 1s linear 0s infinite;}
+@-webkit-keyframes person {
+	0% {background-position:0 0;}
+	100% {background-position:-477px 0;}
+}
+@-webkit-keyframes person2 {
+	0%,9% {background-position:0 0; }
+	10%,19% {background-position:-53px 0; }
+	20%,30% {background-position:-106px 0; }
+	30%,39% {background-position:-159px 0; }
+	40%,49% {background-position:-212px 0; }
+	50%,59% {background-position:-265px 0; }
+	60%,69% {background-position:-318px 0; }
+	70%,79% {background-position:-371px 0; }
+	80%,89% {background-position:-424px 0; }
+	90%,100% {background-position:-477px 0; }
+}
+</style>
+<body>
+<div class="section">
+	<!--主容器[[ -->
+	<div class="container">
+		<div class="person"></div>
+	</div>
+	<!--主容器]] -->
+</div>
+</body>
+</html>
