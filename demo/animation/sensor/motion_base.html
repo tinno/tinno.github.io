@@ -13,6 +13,8 @@
 html{overflow: hidden;}
 html,body {height: 100%;overflow: hidden;}
 .hide {display: none !important;}
+.params {margin-top: 10px;}
+.params p {margin: 10px 5px 15px;}
 </style>
 </head>
 <body class="gravity-sensor">
@@ -25,50 +27,45 @@ html,body {height: 100%;overflow: hidden;}
 			<button class="btn-lm-c" type="button" data-type="600">较高敏档</button>
 			<button class="btn-lm-c" type="button" data-type="500">高敏档</button>
 		</div>
-		<p class="log-text">数据打印</p>
-		<p>获取频率<span id="getCount"></span></p>
+		<div class="params">
+			<h3>参数：</h3>
+			<p>设备相对于地球坐标系的加速度(m/s^2):<br><span id="getAcceleration"></span></p>
+			<p>设备的加速信息(-g,m/s^2):<br><span id="getAccelerationIncludingGravity"></span></p>
+			<p>设备旋转速率(deg/s):<br><span id="getRotationRate"></span></p>
+			<p>获取数据的间隔(毫秒):<br><span id="getCount"></span></p>
+		</div>
+		
 	</div>
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script type="text/javascript">
 var param = 1,param = 1,maxRate = 500;
-var openFlag = true;
-$(".opt-line").on("click",".btn-lm-c",function(){
-	maxRate = $(this).attr("data-type");
-	if(!openFlag){
-		bindMotion();
-	}
-});
 var num = 1;
 
+//参数测试
 function shake (event){
-	var temp = event.rotationRate ;
-	$("#getCount").text(event.interval);
-	//alpha：前后；
-	//beta：左右；
-	//gamma：平衡于屏幕旋转；
-	if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate || Math.round(temp.gamma)>maxRate){
-		$(".log-text").text("摇的第" + num + "次：alpha(" + Math.round(temp.alpha) + ");beta(" + Math.round(temp.beta) + ");gamma(" + Math.round(temp.gamma) + ")");
-		num ++;
-		//alert("你获得一只非洲迷你刺猬");
-		window.removeEventListener("devicemotion", shake);
-
-	}
-	else{
-		//$(".log-text").text("你摇不到我！")
-	}
+	var al = event.acceleration,
+		alig = event.accelerationIncludingGravity,
+		rorate = event.rotationRate,
+		count = event.interval;
+	$("#getAcceleration").text("x:" + al.x + ",y:" + al.y + ",z:" + al.z + ".");
+	$("#getAccelerationIncludingGravity").text("gamma:" + alig.x + ",beta:" + alig.y + ",alpha:" + alig.z + ".");
+	$("#getRotationRate").text("x:" + rorate.x + ",y:" + rorate.y + ",z:" + rorate.z + ".");
+	$("#getCount").text(count);
 }
 
-function bindMotion (){
-	if(window.DeviceMotionEvent){
+if(window.DeviceMotionEvent){
 		window.addEventListener("devicemotion", shake,true);
 	}
-	else{
-		//不支持，点击
-	}
+else{
+	//不支持，点击
 }
-bindMotion();
-//阻止iso的事件冒泡
-//$(document).on("touchmove",function(e){e.preventDefault();});
+
+
+//检测大于某个值的次数
+$(".opt-line").on("click",".btn-lm-c",function(){
+	maxRate = $(this).attr("data-type");
+});
+
 </script>
 </body>
 </html>
