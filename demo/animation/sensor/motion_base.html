@@ -49,7 +49,7 @@ function shake (event){
 	if(Math.round(temp.alpha)>maxRate || Math.round(temp.beta)>maxRate || Math.round(temp.gamma)>maxRate){
 		$(".log-text").text("摇的第" + num + "次：alpha(" + Math.round(temp.alpha) + ");beta(" + Math.round(temp.beta) + ");gamma(" + Math.round(temp.gamma) + ")");
 		num ++;
-		alert("你获得一只非洲迷你刺猬");
+		//alert("你获得一只非洲迷你刺猬");
 		window.removeEventListener("devicemotion", shake);
 
 	}
