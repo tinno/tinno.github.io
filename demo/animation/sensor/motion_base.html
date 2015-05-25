@@ -32,7 +32,7 @@ html,body {height: 100%;overflow: hidden;}
 			<p>设备相对于地球坐标系的加速度(m/s^2):<br><span id="getAcceleration"></span></p>
 			<p>设备的加速信息(-g,m/s^2):<br><span id="getAccelerationIncludingGravity"></span></p>
 			<p>设备旋转速率(deg/s):<br><span id="getRotationRate"></span></p>
-			<p>获取数据的间隔(毫秒):<br><span id="getCount"></span></p>
+			<p>获取数据的间隔(秒):<br><span id="getCount"></span></p>
 		</div>
 		
 	</div>
@@ -47,10 +47,10 @@ function shake (event){
 		alig = event.accelerationIncludingGravity,
 		rorate = event.rotationRate,
 		count = event.interval;
-	$("#getAcceleration").text("x:" + al.x + ",\n y:" + al.y + ",\n z:" + al.z + ".");
-	$("#getAccelerationIncludingGravity").text("x:" + alig.x + ",\n y:" + alig.y + ",\n z:" + alig.z + ".");
-	$("#getRotationRate").text("gamma:" + rorate.gamma + ",\n beta:" + rorate.beta + ",\n alpha:" + rorate.alpha + ".");
-	$("#getCount").text(count);
+	$("#getAcceleration").text("x:" + Math.round(al.x) + ",\n y:" + Math.round(al.y) + ",\n z:" + Math.round(al.z) + ".");
+	$("#getAccelerationIncludingGravity").text("x:" + Math.round(alig.x) + ",\n y:" + Math.round(alig.y) + ",\n z:" + Math.round(alig.z) + ".");
+	$("#getRotationRate").text("gamma:" + Math.round(rorate.gamma) + ",\n beta:" + Math.round(rorate.beta) + ",\n alpha:" + Math.round(rorate.alpha) + ".");
+	$("#getCount").text(Math.round(count*1000);
 }
 
 if(window.DeviceMotionEvent){
