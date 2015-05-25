@@ -47,9 +47,9 @@ function shake (event){
 		alig = event.accelerationIncludingGravity,
 		rorate = event.rotationRate,
 		count = event.interval;
-	$("#getAcceleration").text("x:" + al.x + ",y:" + al.y + ",z:" + al.z + ".");
-	$("#getAccelerationIncludingGravity").text("gamma:" + alig.x + ",beta:" + alig.y + ",alpha:" + alig.z + ".");
-	$("#getRotationRate").text("x:" + rorate.x + ",y:" + rorate.y + ",z:" + rorate.z + ".");
+	$("#getAcceleration").text("x:" + al.x + ",\n y:" + al.y + ",\n z:" + al.z + ".");
+	$("#getAccelerationIncludingGravity").text("x:" + alig.x + ",\n y:" + alig.y + ",\n z:" + alig.z + ".");
+	$("#getRotationRate").text("gamma:" + rorate.gamma + ",\n beta:" + rorate.beta + ",\n alpha:" + rorate.alpha + ".");
 	$("#getCount").text(count);
 }
 
