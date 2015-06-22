@@ -29,14 +29,15 @@ function Gravity () {
  					isInit = true;
  				}
 
+ 				//边缘值还需斟酌
  				if(Math.abs(event.beta-sourceX)<_range){
- 					_X = event.beta;
+ 					_X = event.beta-sourceX;
  				}
  				if(Math.abs(event.gamma-sourceY)<_range){
- 					_Y = event.gamma;
+ 					_Y = event.gamma-sourceY;
  				}
  				if(Math.abs(event.alpha-sourceZ)<_range){
- 					_Z = event.alpha;
+ 					_Z = event.alpha-sourceZ;
  				}
 
  				changeFunc(_X/_s,_Y/_s,_Z/_s,_range);

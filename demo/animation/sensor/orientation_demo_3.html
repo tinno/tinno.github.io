@@ -44,33 +44,18 @@ html,body {height: 100%;overflow: hidden;}
     <div id="mmpic" class="mmpic" style="-webkit-transform: translateX(-50%);"><img height="100%" src="../img/mmpic.jpg" alt=""></div>
     <p>←→</p>
   </div>
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="zepto.min.js"></script>  
+<script src="sensor.js"></script>
 <script type="text/javascript">
-var maxRate = 500;
-
-function Gravity(cfg){
-  this.cfg = cfg || {};
-  this.nodeID = this.cfg.nodeID || "#object-font";
-  this.gravity = function(){if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
-    //绑定重力感应事件
-      var _this = this;
-        var distance = $(".mmpic img").width() - screen.width;
-      window.addEventListener('deviceorientation', function(event) { 
-        //图片重力感应
-         //设备物理宽高：screen.width，screen.height
-         var wy = 0;
-         if (event.gamma > -10 && event.gamma < 10){
-            wy = (event.gamma + 10) / 20 * distance;
-            $("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
-         }
-         //$("#location").text(Math.round(event.gamma));
-      }, false);
-  }
-}
-}
 var a = new Gravity();
-a.gravity();
+//设备物理宽高：screen.width，screen.height
+var distance = $(".mmpic img").width() - screen.width;
+var wy = 0;
+a.startGravity(function (x,y,z,range) {
+    wy = 2*range*y / distance;
+    $("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
 
+  });
 //阻止iso的事件冒泡
 $(document).on("touchmove",function(e){e.preventDefault();});
 </script>
