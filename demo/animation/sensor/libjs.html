@@ -9,13 +9,46 @@
 <meta name="format-detection" content="email=no" />
 <title>传感器库设计</title>
 <style type="text/css">
+* {margin:0;padding: 0;}
+html,body {height: 100%;}
+.gravity-sensor {background-color: #faf5d5;position: relative;}
+.lihua {width: 170px;height: 150px;background: url("../img/gravity_1.png") no-repeat center center;background-size: 100%;position: absolute;top:50%;left: 50%;margin:-75px 0 0 -85px;}
+.lihua-title {width: 170px;height:38px;text-align: center;color: #333;position: absolute;top:50%;left: 50%;margin: -19px 0 0 -85px;}
+.btn {display: block;width: 40%;height: 40px;line-height: 40px;margin: 0 auto 10px;text-align: center;}
+.btn.start {background-color: #2EC062;color: #FFF;}
+.btn.stop {background-color: #3F3F3F;color: #FFF;}
 </style>
 </head>
 <body>
-	
+	<div id="lihua" class="lihua" style=""></div>
+	<h1 class="lihua-title">礼花重力感</h1>
+	<p class="btn start">重力感开启</p>
+	<p class="btn stop">重力感停止</p>
+  <!-- <p>礼花位移：x <span id="transX"></span>，y <span id="transY"></span></p> -->
+
+<script src="zepto.min.js"></script>	
 <script src="sensor.js"></script>
 <script>
-Sensor.gravity();
+//礼花背景
+var a = new Gravity ();
+$(".start").click(function(){
+	console.log("开启")
+	a.startGravity(function (x,y,z,range) {
+		var transR = 20;
+		var transX = 0,transY = 0;
+		var rateBg = 1;
+		var rateTitle = 0.2;
+
+		transX = (y + range) * transR / range - transR;
+		transY = (x + range) * transR / range - transR;
+		$("#lihua").css("-webkit-transform","translate3d(" + Math.round(-transX) +"px," + Math.round(-transY) + "px,0)");
+      	$(".lihua-title").css("-webkit-transform","translate3d(" + Math.round(-transX*rateTitle) +"px," + Math.round(-transY*rateTitle) + "px,0)");
+	});
+})
+$(".stop").click(function(){
+	console.log("停止")
+	a.stopGravity();
+})
 </script>
 </body>
 </html>
