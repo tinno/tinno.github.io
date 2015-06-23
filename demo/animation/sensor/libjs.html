@@ -34,11 +34,9 @@ var transR = 20;
 var transX = 0,transY = 0;
 var rateBg = 1;
 var rateTitle = 0.2;
-var a = new Gravity ();
 $(".start").click(function(){
 	console.log("开启")
-	a.startGravity(function (x,y,z,range) {
-
+	tid.gravity.startgravity(function (x,y,z,range) {
 		transX = (y + range) * transR / range - transR;
 		transY = (x + range) * transR / range - transR;
 		$("#lihua").css("-webkit-transform","translate3d(" + Math.round(-transX) +"px," + Math.round(-transY) + "px,0)");
@@ -47,7 +45,7 @@ $(".start").click(function(){
 })
 $(".stop").click(function(){
 	console.log("停止")
-	a.stopGravity();
+	tid.gravity.stopgravity();
 })
 </script>
 </body>

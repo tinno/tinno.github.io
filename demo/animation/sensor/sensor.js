@@ -1,5 +1,7 @@
+var tid = {};
+
 //重力感应
-function Gravity () {
+tid.gravity = (function() {
 	//灵敏度：私有，默认原始档
  	var _s_array = {
  		prim:1,
@@ -15,33 +17,37 @@ function Gravity () {
  	//实时旋转角度
  	var _X = 0,_Y = 0,_Z = 0;
  	var _listerFunc;
+ 	var _isOpen = false;
 
  	//开启监听重力感
- 	this.startGravity = function(changeFunc){
+ 	var startgravity = function(changeFunc){
  		var isInit = false;
  		var sourceX = 0 ,sourceY = 0, sourceZ = 0;
  		if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
- 			window.addEventListener('deviceorientation', _listerFunc = function(event) {
- 				if(!isInit){
- 					sourceX = event.beta;
- 					sourceY = event.gamma;
- 					sourceZ = event.alpha;
- 					isInit = true;
- 				}
+ 			if(!_isOpen){
+ 				_isOpen = true;
+	 			window.addEventListener('deviceorientation', _listerFunc = function(event) {
+	 				if(!isInit){
+	 					sourceX = event.beta;
+	 					sourceY = event.gamma;
+	 					sourceZ = event.alpha;
+	 					isInit = true;
+	 				}
 
- 				//边缘值还需斟酌
- 				if(Math.abs(event.beta-sourceX)<_range){
- 					_X = event.beta-sourceX;
- 				}
- 				if(Math.abs(event.gamma-sourceY)<_range){
- 					_Y = event.gamma-sourceY;
- 				}
- 				if(Math.abs(event.alpha-sourceZ)<_range){
- 					_Z = event.alpha-sourceZ;
- 				}
+	 				//边缘值还需斟酌
+	 				if(Math.abs(event.beta-sourceX)<_range){
+	 					_X = event.beta-sourceX;
+	 				}
+	 				if(Math.abs(event.gamma-sourceY)<_range){
+	 					_Y = event.gamma-sourceY;
+	 				}
+	 				if(Math.abs(event.alpha-sourceZ)<_range){
+	 					_Z = event.alpha-sourceZ;
+	 				}
 
- 				changeFunc(_X/_s,_Y/_s,_Z/_s,_range);
- 			});
+	 				changeFunc(_X/_s,_Y/_s,_Z/_s,_range);
+	 			});
+ 			}
  		}
  		else{
  			//暂无供接口使用处理
@@ -50,12 +56,19 @@ function Gravity () {
  	}
 
  	//关闭监听重力感
- 	this.stopGravity = function(){
- 		window.removeEventListener('deviceorientation',_listerFunc);
+ 	var stopgravity = function(){
+ 		if(_isOpen){
+	 		window.removeEventListener('deviceorientation',_listerFunc);
+	 	}
  	}
-} 
+	return {
+		startgravity:startgravity,
+		stopgravity:stopgravity
+	};
+})();
+
 
 //加速度感应
-function Shake(){
-
-}
+tid.shake = (function() {
+	
+})();
