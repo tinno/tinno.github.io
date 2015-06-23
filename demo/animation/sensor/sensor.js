@@ -44,7 +44,6 @@ tid.gravity = (function() {
 	 				if(Math.abs(event.alpha-sourceZ)<_range){
 	 					_Z = event.alpha-sourceZ;
 	 				}
-
 	 				changeFunc(_X/_s,_Y/_s,_Z/_s,_range);
 	 			});
  			}
@@ -70,5 +69,5 @@ tid.gravity = (function() {
 
 //加速度感应
 tid.shake = (function() {
-	
+
 })();
