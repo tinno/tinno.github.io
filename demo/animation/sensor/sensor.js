@@ -33,24 +33,23 @@ tid.gravity = (function() {
 	 					sourceZ = event.alpha;
 	 					isInit = true;
 	 				}
-
 	 				//边缘值还需斟酌
-	 				if(Math.abs(event.beta-sourceX)<_range){
-	 					_X = event.beta-sourceX;
+	 				if(Math.abs(event.beta)<_range){
+	 					_X = Math.round(event.beta);
 	 				}
-	 				if(Math.abs(event.gamma-sourceY)<_range){
-	 					_Y = event.gamma-sourceY;
+	 				if(Math.abs(event.gamma)<_range){
+	 					_Y = Math.round(event.gamma);
 	 				}
-	 				if(Math.abs(event.alpha-sourceZ)<_range){
-	 					_Z = event.alpha-sourceZ;
+	 				if(Math.abs(event.alpha)<_range){
+	 					_Z = (event.alpha > 180)?(event.alpha -360):event.alpha;
+	       				_Z = Math.round(_Z);
 	 				}
-	 				changeFunc(_X/_s,_Y/_s,_Z/_s,_range);
+	 				changeFunc(_X,_Y,_Z,_range);
 	 			});
  			}
  		}
  		else{
- 			//暂无供接口使用处理
- 			console.log("该浏览器不支持重力感应器检测！");
+ 			return false;
  		}
  	}
 

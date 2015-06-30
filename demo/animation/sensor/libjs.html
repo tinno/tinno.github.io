@@ -36,12 +36,15 @@ var rateBg = 1;
 var rateTitle = 0.2;
 $(".start").click(function(){
 	console.log("开启")
-	tid.gravity.startgravity(function (x,y,z,range) {
+	var isSupported = tid.gravity.startgravity(function (x,y,z,range) {
 		transX = (y + range) * transR / range - transR;
 		transY = (x + range) * transR / range - transR;
 		$("#lihua").css("-webkit-transform","translate3d(" + Math.round(-transX) +"px," + Math.round(-transY) + "px,0)");
       	$(".lihua-title").css("-webkit-transform","translate3d(" + Math.round(-transX*rateTitle) +"px," + Math.round(-transY*rateTitle) + "px,0)");
 	});
+	if (!isSupported) {//不支持的处理，可删除
+		
+	}
 	
 })
 $(".stop").click(function(){

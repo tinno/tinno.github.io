@@ -47,11 +47,10 @@ html,body {height: 100%;overflow: hidden;}
 <script src="zepto.min.js"></script>  
 <script src="sensor.js"></script>
 <script type="text/javascript">
-var a = new Gravity();
 //设备物理宽高：screen.width，screen.height
 var distance = $(".mmpic img").width() - screen.width;
 var wy = 0;
-a.startGravity(function (x,y,z,range) {
+tid.gravity.startgravity(function (x,y,z,range) {
     wy = 2*range*y / distance;
     $("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
 

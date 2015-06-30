@@ -78,15 +78,14 @@ function Gravity(cfg){
 	this.gravity = function(){if (window.DeviceOrientationEvent) {//判断是否支持重力感应事件
     //绑定重力感应事件
     	var _this = this;
-	      var distance = $(".mmpic img").width() - screen.width;
+	     var isInit = false;
+ 		var sourceX = 0 ,sourceY = 0, sourceZ = 0;
+ 		var _X = 0,_Y = 0,_Z = 0;
+ 		var _range = 90;
 	    window.addEventListener('deviceorientation', function(event) { 
 	        var temp = 0 ;
 	        temp = (event.alpha > 180)?(event.alpha -360):event.alpha;
 	        temp = Math.round(temp/param);
-	
-
-	        $(_this.nodeID).css("-webkit-transform","rotate(" + temp +"deg)");
-
 	        //alpha角度，三d坐标系z轴旋转，取值[0, 360)
 	        //document.getElementById('alpha').innerHTML = Math.round(event.alpha);
 	        //beta角度，三D坐标系X轴旋转，取值[-180, 180) || [-90, 90)
@@ -97,11 +96,15 @@ function Gravity(cfg){
 	        //document.getElementById('absolute').innerHTML = event.absolute;
 	       //理论上还有一个event.absolute参数，但是实测的时候返回undefined..
 
-	       var tempZ = 0,tempX = 0,tempY = 0;
+
+	      var tempZ = 0,tempX = 0,tempY = 0;
 	       tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
 	       tempZ = Math.round(tempZ/param);
 	       tempX = Math.round(event.beta/param);
 	       tempY = Math.round(event.gamma/param);
+
+
+	        $(_this.nodeID).css("-webkit-transform","rotate(" + tempZ +"deg)");
 
 	       $("#object-font-3d").css("-webkit-transform","rotateX("+ tempX +"deg) rotateY("+ tempY +"deg) rotateZ("+ tempZ +"deg)");
 	    }, false);
