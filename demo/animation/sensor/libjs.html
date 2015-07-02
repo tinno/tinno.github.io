@@ -40,7 +40,6 @@ $(".start").click(function(){
 	var isSupported = sensor.gravity.startgravity(function (x,y,z,range) {
 		transX = (y + range) * transR / range - transR;
 		transY = (x + range) * transR / range - transR;
-		$(".reget").text("角度获取：x=" + x + "°,y=" + y + "°,z=" + z+ "°");
 
 		$("#lihua").css("-webkit-transform","translate3d(" + Math.round(-transX) +"px," + Math.round(-transY) + "px,0)");
       	$(".lihua-title").css("-webkit-transform","translate3d(" + Math.round(-transX*rateTitle) +"px," + Math.round(-transY*rateTitle) + "px,0)");
