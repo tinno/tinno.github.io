@@ -58,7 +58,7 @@ if (distance > 0) {
   //初始化：居中
   $("#mmpic").css("-webkit-transform","translateX(-"+ distance/2 +"px)");
   $(".num").text(distance/2);
-  tid.gravity.startgravity(function (x,y,z,range) {
+  sensor.gravity.startgravity(function (x,y,z,range) {
       wy = distance * (y + range)/(2 * range);
       $("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
       $(".num").text(x + "," + y + "," + z);
