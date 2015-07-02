@@ -37,24 +37,33 @@ html,body {height: 100%;overflow: hidden;}
   height: 100%;
 }
 .mmpic-wrap p {position: absolute;top: 30%;width: 100%;text-align: center;color: #fff;font-weight: bold;font-size: 70px;}
+.mmpic-wrap .tips {font-size: 20px;}
 </style>
 </head>
 <body class="gravity-sensor">
   <div class="main mmpic-wrap">
-    <div id="mmpic" class="mmpic" style="-webkit-transform: translateX(-50%);"><img height="100%" src="../img/mmpic.jpg" alt=""></div>
+    <div id="mmpic" class="mmpic" style=""><img id="g_pic" width="658" height="100%" src="mmpic.jpg" alt=""></div>
     <p>←→</p>
+    <p class="tips">偏移数字<span class="num">-</span></p>
   </div>
 <script src="zepto.min.js"></script>  
 <script src="sensor.js"></script>
 <script type="text/javascript">
-//设备物理宽高：screen.width，screen.height
-var distance = $(".mmpic img").width() - screen.width;
-var wy = 0;
-tid.gravity.startgravity(function (x,y,z,range) {
-    wy = 2*range*y / distance;
-    $("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
+//初始化，distance = 图片的宽度-父容器的宽度
+var distance = $("#g_pic").width() - $(".gravity-sensor").width();
 
+if (distance > 0) {
+  var wy = 0;
+
+  //初始化：居中
+  $("#mmpic").css("-webkit-transform","translateX(-"+ distance/2 +"px)");
+  $(".num").text(distance/2);
+  tid.gravity.startgravity(function (x,y,z,range) {
+      wy = distance * (y + range)/(2 * range);
+      $("#mmpic").css("-webkit-transform","translateX(-"+ wy +"px)");
+      $(".num").text(x + "," + y + "," + z);
   });
+}
 //阻止iso的事件冒泡
 $(document).on("touchmove",function(e){e.preventDefault();});
 </script>
