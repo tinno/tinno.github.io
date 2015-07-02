@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>加速感-摇一摇抽奖</title>
+<style type="text/css">
+*{margin: 0;padding: 0;}
+html{overflow: hidden;}
+html,body {height: 100%;overflow: hidden;}
+.hide {display: none !important;}
+
+body{background-color: #EDEDED;}
+.main {height: 100%;box-sizing:border-box;-webkit-box-sizing:border-box;overflow: hidden;position: relative;background: url(../img/money.png) no-repeat top center;background-size: 100% auto;}
+.tips {padding: 10px 0;background-color:#db5745;color:#FFFFFF;text-align: center;}
+.get-way {position: absolute;top:50%;left: 50%;-webkit-transform:translate3d(-50%,-50%,0);text-align: center;color: #db5745;}
+.hand {display: block;width:125px;height:158px;background: url(../img/hand.png) no-repeat center center;background-size: 100% 100%;margin-bottom: 20px;}
+.btn-act,.btn-act:visited {display: block;padding: 10px 30px;color: #db5430;background-color:#ffc931;text-decoration: none;font-size: 24px;border-radius: 3px;}
+.layer {width: 100%;height: 100%;background-color: rgba(0,0,0,0.5);position: absolute;top:0;left: 0;z-index: 1;}
+.layer .prize {position: absolute;top:50%;left: 50%;-webkit-transform:translate3d(-50%,-50%,0);text-align: center;color: #000;}
+.layer .bag {width: 220px;height:168px;background: url(../img/bag.png) no-repeat center center;background-size: 100% 100%;}
+.layer .bag p {padding-top: 75px;color: #FFF1D7;}
+.layer .bag .num{margin: 0 3px;color: #ffc931;}
+.layer .btn-close{display: inline-block;background-color:rgba(0,0,0,0.75);text-decoration: none;padding: 10px 20px;position: absolute;top:50px;right:20px;border-radius: 30px;}
+.layer .btn-close,.layer .btn-close:visited{color: #fff;}
+</style>
+</head>
+<body class="gravity-sensor">
+	<div class="main">
+		<div class="tips">
+			<p>参与抽奖赢最高1000元</p>
+		</div>
+		<div class="get-way">
+			<div class="shark hide">
+				<div class="hand"></div>
+				<p>摇一摇</p>
+			</div>
+			<div class="click hide">
+				<a class="btn-act" href="#">点我抽奖</a>
+			</div>
+		</div>
+	</div>
+	<div id="layer_prize" class="layer hide">
+		<a class="btn-close" href="#">关闭</a>
+		<div class="prize">
+			<div class="bag">
+				<p>恭喜你获得<strong class="num" id="num">10</strong>元</p>
+			</div>
+		</div>
+	</div>
+<script src="zepto.min.js"></script>
+<script type="text/javascript">
+var hadSensor = false;
+
+if(window.DeviceMotionEvent){
+	hadSensor = true;
+	$(".shark").removeClass("hide");
+	window.addEventListener("devicemotion",shake ,true);
+}
+else{
+	$(".click").removeClass("hide");
+}
+$(".click").click(function(){
+	getPrize ();
+})
+$(".btn-close").click(function(){
+	$("#layer_prize").addClass("hide");
+	if(hadSensor){
+		window.addEventListener("devicemotion",shake ,true);
+	}
+});
+
+function getPrize () {
+	var money = Math.round(1000 * Math.random());
+	if(money == 0){
+		money = 1;
+	}
+	$("#num").text(money);
+	$("#layer_prize").removeClass("hide");
+}
+function shake (event){
+	var maxRate = 600;//灵敏度
+	var al = event.acceleration,
+	alig = event.accelerationIncludingGravity,
+	rorate = event.rotationRate,
+	count = event.interval;
+
+	if(Math.round(rorate.alpha)>maxRate || Math.round(rorate.beta)>maxRate || Math.round(rorate.gamma)>maxRate){
+		getPrize ();
+		window.removeEventListener('devicemotion',shake);
+	}
+}
+</script>
+</body>
+</html>

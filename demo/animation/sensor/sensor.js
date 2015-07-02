@@ -70,5 +70,8 @@ sensor.gravity = (function() {
 
 //加速度感应
 sensor.accelerate = (function() {
-	
+	//开启摇一摇
+ 	var startshark = function(){
+
+ 	}
 })();
