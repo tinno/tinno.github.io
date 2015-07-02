@@ -1,7 +1,7 @@
-var tid = {};
+var sensor = {};
 
 //重力感应
-tid.gravity = (function() {
+sensor.gravity = (function() {
 	//灵敏度：私有，默认原始档
  	var _s_array = {
  		prim:1,
@@ -40,9 +40,11 @@ tid.gravity = (function() {
 	 				if(Math.abs(event.gamma)<_range){
 	 					_Y = Math.round(event.gamma);
 	 				}
-	 				if(Math.abs(event.alpha)<_range){
-	 					//_Z = (event.alpha > 180)?(event.alpha -360):event.alpha;
-	       				_Z = Math.round(_Z);
+	 				
+	 				//处理成右旋转正值，左旋转负值
+	 				var tempZ = (event.alpha > 180)?(event.alpha -360):event.alpha;
+	 				if(Math.abs(tempZ) <_range){
+	       				_Z = Math.round(tempZ);
 	 				}
 	 				changeFunc(_X,_Y,_Z,_range);
 	 			});
@@ -67,6 +69,6 @@ tid.gravity = (function() {
 
 
 //加速度感应
-tid.shake = (function() {
-
+sensor.accelerate = (function() {
+	
 })();
