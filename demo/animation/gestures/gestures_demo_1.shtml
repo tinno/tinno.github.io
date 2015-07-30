@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<title>常用手势(hammer调用)</title>
+<style type="text/css">
+*{margin:0;padding: 0;}
+html,body{height: 100%;}
+.gesture-area {width: 100%;height:100%;margin:0 auto;text-align: center;}
+.brash-area {width:276px;height:82px;background:url(img/brash.png) no-repeat;background-size:276px 82px;position: absolute;top: 50%;left: 50%;margin: -41px -138px;-webkit-transform-origin:center center;opacity: 0;}
+.finger-area {width:100px;height:150px;background:url(img/hand.png) no-repeat;background-size:100px 150px;position: absolute;top: 50%;left: 50%;margin:-75px -50px ;-webkit-transform-origin:center center;opacity: 0;}
+.brash-area.left{}
+.brash-area.right{-webkit-transform:rotate(-180deg);transform:rotate(-180deg);}
+.brash-area.up{-webkit-transform:rotate(90deg);transform:rotate(90deg);}
+.brash-area.down{-webkit-transform:rotate(-90deg);transform:rotate(-90deg);}
+.brash-area.on {-webkit-animation:opyIn .5s 0s linear 1;animation:opyIn .5s 0s linear 1;}
+
+.finger-area.on {-webkit-animation:opyIn .2s 0s linear 1;animation:opyIn .2s 0s linear 1;}
+.finger-area.onlong {-webkit-animation:opyIn 1s 0s linear 1;animation:opyIn 1s 0s linear 1;}
+.finger-area.ontwice {-webkit-animation:opyIn .2s 0s linear 2;animation:opyIn .2s 0s linear 2;}
+
+@-webkit-keyframes opyIn{
+	0%{opacity: 0;}
+	30%{opacity: 1;}
+	70%{opacity: 1;}
+	100%{opacity: 0;}
+}
+@keyframes opyIn{
+	0%{opacity: 0;}
+	30%{opacity: 1;}
+	70%{opacity: 1;}
+	100%{opacity: 0;}
+}
+</style>
+</head>
+<body class="">
+<div id="gesture" class="gesture-area">
+	<p>手势触碰区</p>
+	<p id="tips">...</p>
+	<div id="brash_area" class="brash-area"></div>
+	<div id="finger_area" class="finger-area"></div>
+</div>
+<script src="hammer.min.js"></script>
+<script type="text/javascript">
+var handType = {
+	panleft:"left",
+	panright:"right",
+	panup:"up",
+	pandown:"down",
+	tap:"on",
+	doubletap:"ontwice",
+	press:"onlong"
+}
+var brash = document.getElementById("brash_area");
+var finger = document.getElementById("finger_area");
+var tips = document.getElementById("tips");
+var hammertime = new Hammer(document.getElementById("gesture"));
+hammertime.add(new Hammer.Pinch());
+hammertime.add(new Hammer.Rotate());
+hammertime.on("tap doubletap press panleft panright panup pandown", function (e) {
+    console.log(e.type);
+    tips.innerHTML = e.type;
+    if(e.type == "tap" || e.type == "press" || e.type == "doubletap"){
+    	if(e.type == "doubletap"){
+    	}
+    	else {
+    		finger.className = "finger-area " + handType[e.type];
+
+    	}
+    }
+    else {
+		brash.className = "brash-area " + handType[e.type] + " on";
+    }
+   });
+brash.addEventListener('webkitAnimationEnd',function(e){
+	this.className = "brash-area";
+},false);
+finger.addEventListener('webkitAnimationEnd',function(e){
+	this.className = "finger-area";
+},false);
+window.addEventListener('touchmove',function(e){
+	e.preventDefault();
+},false);
+
+</script>
+</body>
+</html>
