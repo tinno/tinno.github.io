@@ -12,7 +12,7 @@
 *{margin:0;padding: 0;}
 html,body{height: 100%;}
 .hide{display: none !important;}
-.gesture-area {width: 100%;height:100%;margin:0 auto;text-align: center;}
+.gesture-area {width: 100%;height:100%;margin:0 auto;text-align: center;overflow: hidden;}
 .brash-area {width:276px;height:82px;background:url(img/brash.png) no-repeat;background-size:276px 82px;position: absolute;top: 50%;left: 50%;margin: -41px -138px;-webkit-transform-origin:center center;opacity: 0;}
 .finger-area {width:100px;height:150px;background:url(img/hand.png) no-repeat;background-size:100px 150px;position: absolute;top: 50%;left: 50%;margin:-75px -50px ;-webkit-transform-origin:center center;opacity: 0;}
 .brash-area.left{}
@@ -23,18 +23,22 @@ html,body{height: 100%;}
 
 .finger-area.on {-webkit-animation:opyIn .2s 0s linear 1;animation:opyIn .2s 0s linear 1;}
 .finger-area.onlong {-webkit-animation:opyIn 1s 0s linear 1;animation:opyIn 1s 0s linear 1;}
-.finger-area.ontwice {-webkit-animation:opyIn .2s 0s linear 2;animation:opyIn .2s 0s linear 2;}
+.finger-area.ontwice {-webkit-animation:opyIn .1s 0s linear 2;animation:opyIn .1s 0s linear 2;}
 
 .nav-wrap .nav {position: relative;}
-.nav-wrap .nav li {float: left;width: 50%;padding: 14px 0;-webkit-box-sizing:border-box;box-sizing:border-box;list-style: none;color: #333333;border-bottom: 1px solid #eee;}
-.nav-wrap .nav li:first-child {border-right:1px solid #eee;}
-.nav-wrap .nav:before{content: "";display: block;width: 50%;height: 2px;background-color: #04A9F0;position: absolute;bottom: 0;-webkit-transition:all .5s 0s ease-in-out;left: 0;}
+.nav-wrap .nav li {float: left;width: 50%;padding: 14px 0;-webkit-box-sizing:border-box;box-sizing:border-box;list-style: none;color: #333333;border-bottom: 1px solid #cbcaca;}
+.nav-wrap .nav li.on {color: #00a5e0;
+}
+.nav-wrap .nav:before{content: "";display: block;width: 50%;height: 2px;background-color: #00a5e0;position: absolute;bottom: 0;-webkit-transition:all .5s 0s ease-in-out;left: 0;}
 .nav-wrap .nav.left:before {left: 0;}
 .nav-wrap .nav.right:before {left: 50%;}
 .nav-wrap .nav:after{content: "";display: block;clear: both;}
 
-.area-multi .pic {padding: 20px;position: absolute;top:50%;left: 50%;margin: -20px -45px;-webkit-transform-origin:center center;}
+.area-single {height: 100%;}
+.area-multi .pic {padding: 20px;position: absolute;top:50%;left: 50%;-webkit-transform: translate(-50%,-50%);-webkit-transform-origin:center center;}
 .tips {color: #2BC233;}
+
+.exp {margin-top: 10px;font-size: 14px;color: #888888;}
 @-webkit-keyframes opyIn{
 	0%{opacity: 0;}
 	30%{opacity: 1;}
@@ -53,18 +57,18 @@ html,body{height: 100%;}
 <div id="gesture" class="gesture-area">
 	<div class="nav-wrap">
 		<ul id="nav" class="nav">
-			<li id="single">单点触控</li>
+			<li id="single" class="on">单点触控</li>
 			<li id="multi">多点触控</li>
 		</ul>
 	</div>
 	<div id="a_s" class="area-single">
-		<p>手势触碰区：<span class="tips" id="tips_1">...</span></p>
+		<p class="exp">我的咸猪手弄啥咧：<span class="tips" id="tips_1">...</span></p>
 		<div id="brash_area" class="brash-area"></div>
 		<div id="finger_area" class="finger-area"></div>
 	</div>
 	<div id="a_m" class="area-multi hide">
-		<p>看看苍老师写了什么：<span class="tips" id="tips_2">...</span></p>
-		<div class="pic" id="pic_cang"><img width="50" src="img/pic.jpg" alt=""></div>
+		<p class="exp">看看苍老师写了什么：<span class="tips" id="tips_2">...</span></p>
+		<div class="pic" id="pic_wrap"><img id="pic_cang" width="50" src="img/pic.jpg" alt=""></div>
 	</div>
 	
 </div>
@@ -96,18 +100,17 @@ var tips_1 = $id("tips_1");
 function $id(id){
 	return document.getElementById(id);
 }
-var hammertime = new Hammer($id("gesture"));
+var hammertime = new Hammer($id("a_s"));
 hammertime.add(new Hammer.Pinch());
 hammertime.add(new Hammer.Rotate());
 hammertime.on("tap doubletap press panleft panright panup pandown", function (e) {
-    console.log(e.type);
+    console.log(e);
     tips_1.innerHTML = nameType[e.type];
     if(e.type == "tap" || e.type == "press" || e.type == "doubletap"){
     	if(e.type == "doubletap"){
     	}
     	else {
     		finger.className = "finger-area " + handType[e.type];
-
     	}
     }
     else {
@@ -128,28 +131,39 @@ window.addEventListener('touchmove',function(e){
 var nav = new Hammer($id("nav"));
 nav.on("tap",function(e){
 	var target = e.srcEvent.target.id;
-	console.log(target);
+	console.log(e.srcEvent);
 	if(target == "single"){
 		$id("nav").className = "nav left";
+		$id("single").className = "on";
+		$id("multi").className = "";
 		$id("a_s").className = "area-single";
 		$id("a_m").className = "area-multi hide";
+
+		tips_1.innerHTML = "...";
 	}
 	else {
 		$id("nav").className = "nav right";
+		$id("single").className = "";
+		$id("multi").className = "on";
 		$id("a_s").className = "area-single hide";
 		$id("a_m").className = "area-multi";
 	}
 })
 
-
-var multi = new Hammer($id("pic_cang"));
+var scaleInit = 1;
+var widthInit = $id("pic_cang").width;
+var multi = new Hammer($id("pic_wrap"));
 multi.add(new Hammer.Pinch());
 multi.add(new Hammer.Rotate());
 multi.on("pinch", function (e) {
     console.log(e.type);
-    tips_2.innerHTML = nameType[e.type] + "" + e.scale;
-    $id("pic_cang").style.webkitTransform = "scale(" + e.scale +")";
-    e.scale = 1;
+    var scale = new Number(e.scale);
+    var toScale = scale.toFixed(2);
+    tips_2.innerHTML = nameType[e.type] + "~" + toScale + ";width:" + $id("pic_cang").width;
+    var tempWidth = $id("pic_cang").width * scale;
+    if (tempWidth < widthInit*6 && tempWidth >= widthInit){
+    	$id("pic_cang").width = tempWidth;
+    }
 });
 </script>
 </body>
