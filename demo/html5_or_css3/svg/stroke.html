@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<style>
+html,body{margin: 0;padding: 0;}
+.polyline{
+	fill-opacity:0;
+	stroke-width:2;
+	stroke:rgb(255,195,55);
+}
+.line-ani{
+	stroke-dasharray:100%;
+	stroke-dashoffset: 100%;
+	-webkit-animation:line 1s 0s ease infinite;
+	animation:line 1s 0s ease infinite;
+}
+@-webkit-keyframes line{
+	to{
+		stroke-dashoffset:15%;
+	}
+}
+@keyframes line{
+	to{
+		stroke-dashoffset:15%;
+	}
+}
+</style>
+</head>
+<body>
+<!--感觉stroke-dashoffset 100%，控制线条不是很准；这个例子，到15%就不能画线了-->
+<svg xmlns:svg="http://www.w3.org/2000/svg" width="500" height="500">
+	<polyline class="polyline line-ani" points="10 10,100 150,300 300" />
+</svg>
+</body>
+</html>
