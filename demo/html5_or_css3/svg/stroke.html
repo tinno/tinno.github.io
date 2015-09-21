@@ -9,6 +9,7 @@
 <meta name="format-detection" content="email=no" />
 <style>
 html,body{margin: 0;padding: 0;}
+.step{position: relative;}
 .polyline{
 	fill-opacity:0;
 	stroke-width:2;
@@ -17,25 +18,90 @@ html,body{margin: 0;padding: 0;}
 .line-ani{
 	stroke-dasharray:100%;
 	stroke-dashoffset: 100%;
-	-webkit-animation:line 1s 0s ease infinite;
-	animation:line 1s 0s ease infinite;
 }
 @-webkit-keyframes line{
 	to{
-		stroke-dashoffset:15%;
+		stroke-dashoffset:0;
 	}
 }
 @keyframes line{
 	to{
-		stroke-dashoffset:15%;
+		stroke-dashoffset:0;
 	}
+}
+.line-ani-1{
+	-webkit-animation:line 1s 0s ease forwards;
+	animation:line 1s 0s ease forwards;
+}
+.line-ani-2{
+	-webkit-animation:line 1s 1s ease forwards;
+	animation:line 1s 1s ease forwards;
+}
+.line-ani-3{
+	-webkit-animation:line 1s 3s ease forwards;
+	animation:line 1s 3s ease forwards;
+}
+.line-ani-4{
+	-webkit-animation:line 1s 4s ease forwards;
+	animation:line 1s 4s ease forwards;
+}
+.line-ani-5{
+	-webkit-animation:line 1s 5s ease forwards;
+	animation:line 1s 5s ease forwards;
+}
+.num span {display: inline-block;width: 30px;height: 30px;-webkit-border-radius: 15px;border-radius: 15px;background-color: #2CC3FA;color: #fff;text-align: center;line-height: 30px;position: absolute;}
+.num .one {top:5px;left: 5px;}
+.num .two {top: 135px;left:85px;}
+.num .three {top: 85px;left:185px;}
+.num .four {top: 185px;left:285px;}
+.num .five {top: 135px;left:385px;}
+.opacty-in {
+	opacity: 0;
+}
+@-webkit-keyframes opacityIn{
+	to{opacity: 1;}
+}
+@keyframes opacityIn{
+	to{opacity: 1;}
+}
+.opacty-in-1{
+	-webkit-animation:opacityIn .5s 0s ease forwards;
+	animation:opacityIn .5s 0s ease forwards;
+}
+.opacty-in-2{
+	-webkit-animation:opacityIn .5s 1s ease forwards;
+	animation:opacityIn .5s 1s ease forwards;
+}
+.opacty-in-3{
+	-webkit-animation:opacityIn .5s 3s ease forwards;
+	animation:opacityIn .5s 3s ease forwards;
+}
+.opacty-in-4{
+	-webkit-animation:opacityIn .5s 4s ease forwards;
+	animation:opacityIn .5s 4s ease forwards;
+}
+.opacty-in-5{
+	-webkit-animation:opacityIn .5s 5s ease forwards;
+	animation:opacityIn .5s 5s ease forwards;
 }
 </style>
 </head>
 <body>
 <!--感觉stroke-dashoffset 100%，控制线条不是很准；这个例子，到15%就不能画线了-->
-<svg xmlns:svg="http://www.w3.org/2000/svg" width="500" height="500">
-	<polyline class="polyline line-ani" points="10 10,100 150,300 300" />
-</svg>
+<div class="step">
+	<svg xmlns:svg="http://www.w3.org/2000/svg" width="500" height="500">
+		<polyline class="polyline line-ani line-ani-1" points="20 20,100 150" />
+		<polyline class="polyline line-ani line-ani-2" points="100 150,200 100" />
+		<polyline class="polyline line-ani line-ani-3" points="200 100,300 200" />
+		<polyline class="polyline line-ani line-ani-4" points="300 200,400 150" />
+	</svg>
+	<div class="num">
+		<span class="one opacty-in opacty-in-1">1</span>
+		<span class="two opacty-in opacty-in-2">2</span>
+		<span class="three opacty-in opacty-in-3">3</span>
+		<span class="four opacty-in opacty-in-4">4</span>
+		<span class="five opacty-in opacty-in-5">5</span>
+	</div>
+</div>
 </body>
 </html>
