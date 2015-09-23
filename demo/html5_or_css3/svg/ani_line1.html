@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<style>
+html,body{margin: 0;padding: 0;}
+.hide {display: none !important;}
+.step{position: relative;}
+.polyline{
+	fill-opacity:0;
+	stroke-width:1;
+	stroke:rgb(255,195,55);
+}
+.line-ani{
+	stroke-dasharray:1000;
+	stroke-dashoffset: 1000;
+}
+@-webkit-keyframes line{
+	to{
+		stroke-dashoffset:0;
+	}
+}
+@keyframes line{
+	to{
+		stroke-dashoffset:0;
+	}
+}
+.line-ani-1{
+	-webkit-animation:line .5s 0s linear forwards;
+}
+.line-ani-2{
+	-webkit-animation:line .5s .5s linear forwards;
+}
+.line-ani-3{
+	-webkit-animation:line .5s 1s linear forwards;
+}
+.line-ani-4{
+	-webkit-animation:line .5s 1.5s linear forwards;
+}
+.line-ani-5{
+	-webkit-animation:line .5s 2s linear forwards;
+}
+.num span {display: inline-block;width: 30px;height: 30px;-webkit-border-radius: 15px;border-radius: 15px;background-color: #2CC3FA;color: #fff;text-align: center;line-height: 30px;position: absolute;}
+.num .one {top:5px;left: 5px;}
+.num .two {top: 135px;left:85px;}
+.num .three {top: 85px;left:185px;}
+.num .four {top: 185px;left:285px;}
+.num .five {top: 135px;left:385px;}
+.circle-ani {
+	opacity: 0;
+	-webkit-transform:scale(0.5);
+}
+@-webkit-keyframes opacityIn{
+	to{opacity: 1;}
+}
+@keyframes opacityIn{
+	to{opacity: 1;}
+}
+@-webkit-keyframes bigen{
+	from{-webkit-transform:scale(0);}
+	to{-webkit-transform:scale(1);}
+}
+.circle-ani-1{
+	-webkit-animation:opacityIn .2s 0s linear forwards,bigen .3s 0s cubic-bezier(.3,.69,.89,1.3) forwards;
+}
+.circle-ani-2{
+	-webkit-animation:opacityIn .2s .2s linear forwards,bigen .3s .2s cubic-bezier(.3,.69,.89,1.3) forwards;
+}
+.circle-ani-3{
+	-webkit-animation:opacityIn .2s .7s linear forwards,bigen .3s .7s cubic-bezier(.3,.69,.89,1.3) forwards;
+}
+.circle-ani-4{
+	-webkit-animation:opacityIn .2s 1.2s linear forwards,bigen .3s 1.2s cubic-bezier(.3,.69,.89,1.3) forwards;
+}
+.circle-ani-5{
+	-webkit-animation:opacityIn .2s 1.7s linear forwards,bigen .3s 1.7s cubic-bezier(.3,.69,.89,1.3) forwards;
+}
+</style>
+</head>
+<body>
+<div class="step">
+	<svg xmlns:svg="http://www.w3.org/2000/svg" width="500" height="500">
+		<polyline class="polyline line-ani line-ani-1" points="20 20,100 150" />
+		<polyline class="polyline line-ani line-ani-2" points="100 150,200 100" />
+		<polyline class="polyline line-ani line-ani-3" points="200 100,300 200" />
+		<polyline class="polyline line-ani line-ani-4" points="300 200,400 150" />
+	</svg>
+	<div class="num">
+		<span class="one circle-ani circle-ani-1">1</span>
+		<span class="two circle-ani circle-ani-2">2</span>
+		<span class="three circle-ani circle-ani-3">3</span>
+		<span class="four circle-ani circle-ani-4">4</span>
+		<span class="five circle-ani circle-ani-5">5</span>
+	</div>
+</div>
+</body>
+</html>

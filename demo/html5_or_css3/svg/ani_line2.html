@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<style>
+html,body{width: 100%;height: 100%;margin: 0;padding: 0;}
+.hide {display: none !important;}
+.svgline {background-color: #000;}
+.line-g{
+	fill-opacity:0;
+	stroke-width:2;
+	stroke:#FFFFFF;
+	stroke-miterlimit:10;
+}
+.loading-line{
+	fill-opacity:0;
+	stroke-width:4;
+	stroke:#FF0075;
+	stroke-miterlimit:10;
+}
+.loading-bg{
+	stroke:#FFFFFF;
+	stroke-width:10;
+}
+.line-ani-1{
+	stroke-dasharray:336%;
+	stroke-dashoffset: 336%;
+	-webkit-animation:line 3s 0s linear forwards;
+}
+.line-ani-2{
+	stroke-dasharray:372%;
+	stroke-dashoffset: 372%;
+	-webkit-animation:line 3s 0s linear forwards;
+	}
+.line-ani-3{
+	stroke-dasharray:372%;
+	stroke-dashoffset: 372%;
+	-webkit-animation:line 3s 0s linear forwards;
+	}
+.process-ani {
+	stroke-dasharray:100%;
+	stroke-dashoffset: 100%;
+	-webkit-animation:line 1s 0s ease 1;
+}
+.loading-line-ani {
+	stroke-dasharray:100%;
+	stroke-dashoffset: 100%;
+	-webkit-animation:line-all 2s 1s ease forwards;
+}
+@-webkit-keyframes line{
+	to{
+		stroke-dashoffset:0;
+	}
+}
+@-webkit-keyframes line-all{
+	to{
+		stroke-dashoffset:-100%;
+	}
+}
+.page-item {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.page-item .cnt {position: absolute;top:0;color: #fff;}
+</style>
+</head>
+<body class="svgline">
+<div class="main">
+	<!--loading[[-->
+	<svg class="loading hide"  xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 640 1008">
+		<g class="">
+			<line class="loading-line loading-line-ani" x1="277.051" y1="340.385" x2="262.086" y2="319.72"/>
+			<line class="loading-line loading-line-ani" x1="300.566" y1="331.834" x2="300.566" y2="309.031"/>
+			<line class="loading-line loading-line-ani" x1="323.369" y1="336.822" x2="334.771" y2="314.019"/>
+			<circle class="loading-bg" cx="303.071" cy="392.127" r="47.031"/>
+			<path class="loading-line process-ani" d="M303.417,345.136
+				c25.975,0,47.031,21.056,47.031,47.031s-21.057,47.031-47.031,47.031s-47.031-21.057-47.031-47.031
+				c0-19.394,11.739-36.046,28.499-43.239"/>
+		</g>
+	</svg>
+	<!--loading]]-->
+	<section class="page-item">
+		<h1>总观点</h1>
+	</section>
+	<section class="page-item">
+		<svg xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 640 1008">
+			<!--第一页-->
+			<g class=" hide">
+				<path class="line-g line-ani-1" d="M-0.126,602.5h79.319l0.125-172.295L22.5,472.25V390.5
+		c0,0,54-36.333,58.167-54.832l62.288,0.334v265.793l228.046,0.666v-43.182L202.5,559.613l0.663-380.214l351.422-0.5L554.104,559.5
+		l-138.437,0.167V601L640,599.5"/>
+			</g>
+		</svg>
+		<div class="cnt">
+			<h2>观点一</h2>
+			<p>******</p>
+		</div>
+	</section>
+	<section class="page-item">
+		<svg xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 640 1008">
+			<!--第二页-->
+			<g class="hide">
+				<path class="line-g line-ani-2" d="M-0.625,601.795H32.5c0,0-22.75-42.295,80.25-141.045
+			c43.395-41.604-2.894-96.754-56.25-49.75c-2.506,2.207-17.75-41-17.75-41s39.131-34.064,74.049-33.201
+			c40.5,1,82.391,35.336,67.201,96.701c-12.5,50.5-80.833,90.334-76.333,119.834l13.832-0.516l49.751,0.183L167,601.795h68h123.308
+			l-24.297-136.943l-142.834-65.017l138.488-73.824l17.695-155.934l113.006,108.896l153.771-31.356L545.49,388.743l77.34,136.556
+			l-155.432-21.676l-89.877,98.172H640"/>
+			</g>
+		</svg>
+		<div class="cnt">
+			<h2>观点二</h2>
+			<p>******</p>
+		</div>
+	</section>
+	<section class="page-item">
+		<svg xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 640 1008">
+			<!--第三页-->
+			<g class="">
+				<path class="line-g line-ani-3" d="M-0.13,601.795H49.25l12.741-27.466c0,0,18.873,27.466,63.675,12.004
+		c33.406-11.529,43.923-87.882-37.784-79.862l1.012-39.974l0,0c0,0,47.274,3.203,53.105-38.497c4.5-32.177-24.868-39.254-47-34.5
+		C79.058,396.925,75,409,75,409l-28.829-15.5L63,366.5c36.167-37,83.5-14.5,83.5-14.5s36.572,9.221,41.5,58.5
+		c4.167,41.667-49.479,76.873-49.479,76.873s60.812,10.294,60.479,54.294c-0.331,43.667-27.797,60.128-27.797,60.128H271L311,518
+		c0,0-115.459-89.04-69.333-210.333c18-47.333,36.667-69.333,86-90c28.43-11.91,132-11.333,132-11.333s82.817,3.927,105.333,14
+		c50.667,22.667,70.526,72.249,65.333,125.333c-6,61.333-60.84,114.131-74.667,131.333c-21.294,26.493-77.48,65.513-98.133,71.277
+		c-57.333,16-86.71-9.672-92.798-8.112C338.294,546.937,290,601.795,290,601.795h350"/>
+			</g>
+		</svg>
+		<div class="cnt">
+			<h2>观点三</h2>
+			<p>******</p>
+		</div>
+	</section>
+	<section class="page-item">
+		<p>结语</p>
+	</section>
+</div>
+</body>
+</html>
